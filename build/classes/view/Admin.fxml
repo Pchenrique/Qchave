@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="controller.AdminController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminController">
    <children>
       <HBox prefHeight="49.0" prefWidth="900.0" style="-fx-background-color: #00c444;">
          <children>
@@ -37,9 +36,9 @@
                   </Label>
                </children>
             </HBox>
-            <TextField layoutX="29.0" layoutY="78.0" prefHeight="25.0" prefWidth="226.0" promptText="Nome Completo" />
-            <TextField layoutX="29.0" layoutY="135.0" prefHeight="25.0" prefWidth="226.0" promptText="CPF" />
-            <Button layoutX="29.0" layoutY="180.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="226.0" styleClass="key-buttom" stylesheets="@../style/css.css" text="Cadastrar" textFill="WHITE">
+            <TextField fx:id="nome_completo" layoutX="29.0" layoutY="78.0" prefHeight="30.0" prefWidth="226.0" promptText="Nome Completo" />
+            <TextField fx:id="cpf" layoutX="29.0" layoutY="122.0" prefHeight="30.0" prefWidth="226.0" promptText="CPF" />
+            <Button fx:id="btn_cadastrar_admin" layoutX="29.0" layoutY="173.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="226.0" styleClass="key-buttom" stylesheets="@../style/css.css" text="Cadastrar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

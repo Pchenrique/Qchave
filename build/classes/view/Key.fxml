@@ -49,10 +49,10 @@
                         </Label>
                      </children>
                   </HBox>
-                  <TextField layoutX="250.0" layoutY="162.0" prefHeight="30.0" prefWidth="131.0" promptText="Código da Chave" />
-                  <TextField layoutX="110.0" layoutY="109.0" prefHeight="30.0" prefWidth="271.0" promptText="Nome da Sala" />
-                  <TextField layoutX="110.0" layoutY="162.0" prefHeight="30.0" prefWidth="131.0" promptText="Bloco" />
-                  <Button layoutX="110.0" layoutY="225.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="271.0" styleClass="key-buttom" stylesheets="@../style/css.css" text="Cadastrar" textFill="WHITE">
+                  <TextField fx:id="codigo_chave" layoutX="250.0" layoutY="162.0" prefHeight="30.0" prefWidth="131.0" promptText="Código da Chave" />
+                  <TextField fx:id="nome_sala" layoutX="110.0" layoutY="109.0" prefHeight="30.0" prefWidth="271.0" promptText="Nome da Sala" />
+                  <TextField fx:id="bloco" layoutX="110.0" layoutY="162.0" prefHeight="30.0" prefWidth="131.0" promptText="Bloco" />
+                  <Button fx:id="btn_cadastrar_chave" layoutX="110.0" layoutY="225.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="271.0" styleClass="key-buttom" stylesheets="@../style/css.css" text="Cadastrar" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
