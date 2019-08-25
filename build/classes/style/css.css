@@ -1,0 +1,10 @@
+.form{
+    -fx-background-color: #ddd;
+    -fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);
+}
+.login-header{
+    -fx-background-color: #ABA7AE;
+}
+.key-buttom{
+    -fx-background-color: #00c444;
+}

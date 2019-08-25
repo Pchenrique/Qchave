@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+   <children>
+      <VBox prefHeight="500.0" prefWidth="281.0" style="-fx-background-color: linear-gradient(to bottom, #00c444, #00ae3c, #009835, #00832d, #006f26);;">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="49.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imgs/QchaveIFCE.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="49.0" top="15.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+            <Label prefHeight="19.0" prefWidth="285.0" text="Sistema de Gerenciamento de Chaves do IFCE" textFill="WHITE">
+               <font>
+                  <Font name="Candara Bold" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" top="-10.0" />
+               </VBox.margin>
+            </Label>
+            <Pane prefHeight="437.0" prefWidth="281.0">
+               <children>
+                  <HBox layoutY="238.0" prefHeight="32.0" prefWidth="281.0">
+                     <children>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imgs/menu_icon_admin.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="30.0" top="2.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Button fx:id="cadastrar_admin" mnemonicParsing="false" onAction="#registerAdmin" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: 0;" text="Cadastrar Admin" textFill="WHITE">
+                           <font>
+                              <Font name="Candara Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="1.0" top="8.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox layoutY="191.0" prefHeight="32.0" prefWidth="281.0">
+                     <children>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imgs/menu_icon_user.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Button fx:id="cadastrar_usuario" mnemonicParsing="false" onAction="#registerUser" prefHeight="30.0" prefWidth="172.0" style="-fx-background-color: 0;" text="Cadastrar Usuário" textFill="WHITE">
+                           <font>
+                              <Font name="Candara Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="-2.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox layoutY="138.0" prefHeight="32.0" prefWidth="281.0">
+                     <children>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imgs/menu_icon_key.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Button fx:id="cadastrar_chave" mnemonicParsing="false" onAction="#registerKey" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: 0;" text="Cadastrar Chave" textFill="WHITE">
+                           <font>
+                              <Font name="Candara Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="-1.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox layoutY="91.0" prefHeight="32.0" prefWidth="281.0">
+                     <children>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imgs/menu_icon_return_key.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Button fx:id="devolver_chave" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: 0;" text="Devolver Chave" textFill="WHITE">
+                           <font>
+                              <Font name="Candara Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="-3.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox layoutY="44.0" prefHeight="32.0" prefWidth="281.0">
+                     <children>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imgs/menu_icon_key_exit.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Button fx:id="emprestar_chave" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: 0;" text="Emprestar Chave" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Candara Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="1.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Label layoutX="80.0" layoutY="384.0" text="IFCE - Campus Cedro" textFill="WHITE">
+                     <font>
+                        <Font name="Candara Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+      <Pane layoutX="281.0" prefHeight="500.0" prefWidth="619.0">
+         <children>
+            <HBox layoutY="67.0" prefHeight="56.0" prefWidth="620.0" style="-fx-background-color: #ddd;">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="33.0" text="ID">
+                     <HBox.margin>
+                        <Insets left="45.0" top="20.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="11.0" />
+                     </padding>
+                  </Label>
+                  <Label text="Nome">
+                     <HBox.margin>
+                        <Insets left="200.0" top="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Status">
+                     <HBox.margin>
+                        <Insets left="220.0" top="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <Label layoutX="26.0" layoutY="24.0" text="Lista de Chaves">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ListView layoutX="-1.0" layoutY="123.0" prefHeight="378.0" prefWidth="620.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

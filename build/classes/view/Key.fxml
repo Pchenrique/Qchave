@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KeyController">
+   <children>
+      <Pane prefHeight="500.0" prefWidth="900.0">
+         <children>
+            <HBox prefHeight="49.0" prefWidth="900.0" style="-fx-background-color: #00c444;">
+               <children>
+                  <ImageView fitHeight="46.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imgs/QchaveIFCE.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Button mnemonicParsing="false" style="-fx-background-color: 0;" text="Voltar" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="650.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <Pane layoutX="224.0" layoutY="73.0" prefHeight="354.0" prefWidth="491.0" styleClass="form" stylesheets="@../style/css.css">
+               <children>
+                  <HBox prefHeight="38.0" prefWidth="491.0" styleClass="login-header">
+                     <children>
+                        <Label text="Cadastro de Chaves" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="180.0" top="7.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <TextField layoutX="250.0" layoutY="162.0" prefHeight="30.0" prefWidth="131.0" promptText="Código da Chave" />
+                  <TextField layoutX="110.0" layoutY="109.0" prefHeight="30.0" prefWidth="271.0" promptText="Nome da Sala" />
+                  <TextField layoutX="110.0" layoutY="162.0" prefHeight="30.0" prefWidth="131.0" promptText="Bloco" />
+                  <Button layoutX="110.0" layoutY="225.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="271.0" styleClass="key-buttom" stylesheets="@../style/css.css" text="Cadastrar" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
