@@ -3,14 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package Controller;
 
+import Classe.Home;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -27,6 +32,8 @@ public class KeyController implements Initializable {
     private TextField bloco;
     @FXML
     private Button btn_cadastrar_chave;
+    @FXML
+    private Button btn_come_back;
 
     /**
      * Initializes the controller class.
@@ -36,4 +43,8 @@ public class KeyController implements Initializable {
         // TODO
     }    
     
+    @FXML
+    void come_back(ActionEvent event) {
+        //
+    }
 }

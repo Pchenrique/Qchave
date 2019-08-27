@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeController">
    <children>
       <VBox prefHeight="500.0" prefWidth="281.0" style="-fx-background-color: linear-gradient(to bottom, #00c444, #00ae3c, #009835, #00832d, #006f26);;">
          <children>
@@ -20,7 +20,7 @@
                <children>
                   <ImageView fitHeight="49.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../imgs/QchaveIFCE.png" />
+                        <Image url="@../Images/QchaveIFCE.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="49.0" top="15.0" />
@@ -42,7 +42,7 @@
                      <children>
                         <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../imgs/menu_icon_admin.png" />
+                              <Image url="@../Images/menu_icon_admin.png" />
                            </image>
                            <HBox.margin>
                               <Insets left="30.0" top="2.0" />
@@ -62,7 +62,7 @@
                      <children>
                         <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../imgs/menu_icon_user.png" />
+                              <Image url="@../Images/menu_icon_user.png" />
                            </image>
                            <HBox.margin>
                               <Insets left="30.0" />
@@ -82,7 +82,7 @@
                      <children>
                         <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../imgs/menu_icon_key.png" />
+                              <Image url="@../Images/menu_icon_key.png" />
                            </image>
                            <HBox.margin>
                               <Insets left="30.0" />
@@ -102,7 +102,7 @@
                      <children>
                         <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../imgs/menu_icon_return_key.png" />
+                              <Image url="@../Images/menu_icon_return_key.png" />
                            </image>
                            <HBox.margin>
                               <Insets left="30.0" />
@@ -122,7 +122,7 @@
                      <children>
                         <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../imgs/menu_icon_key_exit.png" />
+                              <Image url="@../Images/menu_icon_key_exit.png" />
                            </image>
                            <HBox.margin>
                               <Insets left="30.0" />

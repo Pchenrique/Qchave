@@ -3,16 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package Controller;
 
-import classe.Home;
-import com.sun.org.apache.bcel.internal.generic.SWITCH;
-import java.awt.event.ActionEvent;
+import Classe.Admin;
+import Classe.Key;
+import Classe.User;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -43,23 +46,39 @@ public class HomeController implements Initializable {
     }    
 
     
-    
-    
+    //Métodos dos botões da home
     
     @FXML
     private void registerKey(javafx.event.ActionEvent event) {
-        Home.optionScreen("key");
+       Key key = new Key();
+        try {
+            key.start(new Stage());
+        } catch (Exception ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
     private void registerAdmin(javafx.event.ActionEvent event) {
-        Home.optionScreen("admin");
+        Admin admin = new Admin();
+        try {
+            admin.start(new Stage());
+        } catch (Exception ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
     private void registerUser(javafx.event.ActionEvent event) {
-        Home.optionScreen("user");
+        User user = new User();
+        try {
+            user.start(new Stage());
+        } catch (Exception ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+    
+    
     
     
     

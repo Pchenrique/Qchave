@@ -11,22 +11,22 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminController">
    <children>
       <HBox prefHeight="49.0" prefWidth="900.0" style="-fx-background-color: #00c444;">
          <children>
             <ImageView fitHeight="49.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../imgs/QchaveIFCE.png" />
+                  <Image url="@../Images/QchaveIFCE.png" />
                </image>
             </ImageView>
          </children>
       </HBox>
-      <Pane layoutX="309.0" layoutY="91.0" prefHeight="319.0" prefWidth="283.0" styleClass="form" stylesheets="@../style/css.css">
+      <Pane layoutX="309.0" layoutY="91.0" prefHeight="319.0" prefWidth="283.0" styleClass="form" stylesheets="@../Style/css.css">
          <children>
-            <HBox prefHeight="38.0" prefWidth="283.0" styleClass="login-header" stylesheets="@../style/css.css">
+            <HBox prefHeight="38.0" prefWidth="283.0" styleClass="login-header" stylesheets="@../Style/css.css">
                <children>
-                  <Label stylesheets="@../style/css.css" text="Cadastro de Administradores" textFill="WHITE">
+                  <Label stylesheets="@../Style/css.css" text="Cadastro de Administradores" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>

@@ -11,28 +11,28 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserController">
    <children>
       <HBox prefHeight="49.0" prefWidth="900.0" style="-fx-background-color: #00c444;">
          <children>
             <ImageView fitHeight="49.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../imgs/QchaveIFCE.png" />
+                  <Image url="@../Images/QchaveIFCE.png" />
                </image>
             </ImageView>
          </children>
       </HBox>
-      <Pane layoutX="286.0" layoutY="77.0" prefHeight="347.0" prefWidth="328.0" styleClass="form" stylesheets="@../style/css.css">
+      <Pane layoutX="286.0" layoutY="77.0" prefHeight="347.0" prefWidth="328.0" styleClass="form" stylesheets="@../Style/css.css">
          <children>
             <TextField fx:id="nome_completo" layoutX="44.0" layoutY="93.0" prefHeight="30.0" prefWidth="240.0" promptText="Nome Completo" />
             <TextField fx:id="email" layoutX="44.0" layoutY="131.0" prefHeight="30.0" prefWidth="240.0" promptText="E-mail" />
             <TextField fx:id="matricula" layoutX="44.0" layoutY="170.0" prefHeight="30.0" prefWidth="240.0" promptText="Matricula/SIAPE" />
-            <Button fx:id="btn_cadastrar_usuario" layoutX="44.0" layoutY="256.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="240.0" styleClass="key-buttom" stylesheets="@../style/css.css" text="Cadastrar" textFill="WHITE">
+            <Button fx:id="btn_cadastrar_usuario" layoutX="44.0" layoutY="256.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="240.0" styleClass="key-buttom" stylesheets="@../Style/css.css" text="Cadastrar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <HBox prefHeight="38.0" prefWidth="328.0" styleClass="login-header" stylesheets="@../style/css.css">
+            <HBox prefHeight="38.0" prefWidth="328.0" styleClass="login-header" stylesheets="@../Style/css.css">
                <children>
                   <Label text="Cadastro de Usuários" textFill="WHITE">
                      <font>
