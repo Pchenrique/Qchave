@@ -7,12 +7,16 @@ package Controller;
 
 import java.awt.event.ActionEvent;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+
+import DAO.AdminDao;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-
+import beans.Admin;
 /**
  * FXML Controller class
  *
@@ -36,8 +40,15 @@ public class AdminController implements Initializable {
     }    
     
     @FXML
-    private void cadastrar_admin(ActionEvent event) {
-        System.out.println("Deu certo!");
+    public void register_admin(javafx.event.ActionEvent event) throws SQLException {
+    	String name = this.nome_completo.getText();
+    	String cpf = this.cpf.getText();
+    
+    	Admin admin = new Admin(name, cpf);
+    	AdminDao admindao = new AdminDao();
+    	
+    	admindao.inserirAdmin(admin);
+    	
     }
     
 }

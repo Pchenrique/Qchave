@@ -6,6 +6,7 @@
 package Controller;
 
 import Classe.Admin;
+
 import Classe.Key;
 import Classe.User;
 import java.net.URL;
@@ -35,8 +36,6 @@ public class HomeController implements Initializable {
     @FXML
     private Button emprestar_chave;
     
-    private String button;
-    
     /**
      * Initializes the controller class.
      */
@@ -49,13 +48,15 @@ public class HomeController implements Initializable {
     //Métodos dos botões da home
     
     @FXML
-    private void registerKey(javafx.event.ActionEvent event) {
-       Key key = new Key();
-        try {
-            key.start(new Stage());
-        } catch (Exception ex) {
-            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private void registerKey(javafx.event.ActionEvent event) throws Exception {
+       Key chave = new Key();
+       
+       try {
+    	   chave.start(new Stage());
+       } catch (Exception ex) {
+    	   Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       
     }
 
     @FXML

@@ -6,7 +6,11 @@
 package Controller;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import DAO.UserDAO;
+import beans.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -37,5 +41,18 @@ public class UserController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    @FXML
+    void register_user(javafx.event.ActionEvent event) throws SQLException {
+    	String nome = this.nome_completo.getText();
+    	String email = this.email.getText();
+    	long matricula = Long.parseLong(this.matricula.getText());
+    	String tipo_user = this.tipo_usuario.getText();
+    	
+    	User user = new User(nome, email, matricula, tipo_user);
+    	
+    	UserDAO userdao =  new UserDAO();
+    	userdao.inserirUser(user);
+    }
     
 }

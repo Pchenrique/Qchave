@@ -5,17 +5,17 @@
  */
 package Controller;
 
-import Classe.Home;
+import DAO.KeyDao;
+import beans.Key;
+
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -34,6 +34,7 @@ public class KeyController implements Initializable {
     private Button btn_cadastrar_chave;
     @FXML
     private Button btn_come_back;
+    
 
     /**
      * Initializes the controller class.
@@ -47,4 +48,18 @@ public class KeyController implements Initializable {
     void come_back(ActionEvent event) {
         //
     }
+    @FXML
+    void register_key(javafx.event.ActionEvent event) throws SQLException {
+    	String nome_sala = this.nome_sala.getText();
+    	int number = Integer.parseInt(codigo_chave.getText());
+    	String bloco = this.bloco.getText();
+    	Boolean status_chave = true;
+    	
+		Key chave = new Key(nome_sala, number, bloco, status_chave);
+    	
+    	KeyDao keydao = new KeyDao();
+    	
+    	keydao.inserirKey(chave);
+    }
+
 }
