@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterKeyController">
+   <children>
+      <VBox prefHeight="500.0" prefWidth="281.0" style="-fx-background-color: #00ae3c;">
+         <children>
+            <ImageView fitHeight="96.0" fitWidth="212.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/Logo_qchaves05.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="35.0" top="160.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label text="Sistema de Gerenciamento de Chaves do IFCE" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="13.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="IFCE - Campus Cedro" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="70.0" top="205.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <Pane layoutX="347.0" layoutY="73.0" prefHeight="354.0" prefWidth="491.0" styleClass="form" stylesheets="@../Style/css.css">
+         <children>
+            <HBox prefHeight="38.0" prefWidth="491.0" styleClass="login-header">
+               <children>
+                  <Label text="Cadastro de Chaves" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="180.0" top="7.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <TextField fx:id="codigo_chave" layoutX="253.0" layoutY="169.0" prefHeight="30.0" prefWidth="127.0" promptText="Ex: 1112" />
+            <TextField fx:id="bloco" layoutX="110.0" layoutY="169.0" prefHeight="30.0" prefWidth="127.0" promptText="Ex: Bloco 01" />
+            <Button fx:id="btn_cadastrar_chave" layoutX="110.0" layoutY="224.0" mnemonicParsing="false" onAction="#registrarChave" prefHeight="30.0" prefWidth="271.0" styleClass="key-buttom" stylesheets="@../Style/css.css" text="Cadastrar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <TextField fx:id="nome_sala" layoutX="109.0" layoutY="103.0" prefHeight="30.0" prefWidth="271.0" promptText="Ex: Sala 20" styleClass="input-key" stylesheets="@../Style/css.css" />
+            <Label layoutX="110.0" layoutY="78.0" text="Nome da Sala">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="111.0" layoutY="145.0" text="Bloco da Sala">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="253.0" layoutY="145.0" text="Código da Chave">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</Pane>

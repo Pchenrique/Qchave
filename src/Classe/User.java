@@ -20,8 +20,8 @@ public class User extends Application{
     @Override
     public void start(Stage stage) throws Exception {
         
-        stage.setTitle("Cadastro de Usuários - Qchave");
-        Parent root = FXMLLoader.load(getClass().getResource("/View/User.fxml"));
+        stage.setTitle("Pagina do Usuário - Qchave");
+        Parent root = FXMLLoader.load(getClass().getResource("/View/UserPage.fxml"));
         
         Scene scene = new Scene(root);
       

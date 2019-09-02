@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import beans.Admin;
+import Model.ModelAdmin;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class AdminDao{
@@ -14,7 +16,7 @@ public class AdminDao{
 	
 	Connection conect = (Connection) qq.conectar();
 	
-	public void inserirAdmin(Admin admin) throws SQLException {
+	public void inserirAdmin(ModelAdmin admin) throws SQLException {
 		
 		String sql = "insert into admin (nome,cpf)values (?,?)";
 		PreparedStatement stmt =conect.prepareStatement(sql);
@@ -26,7 +28,7 @@ public class AdminDao{
 		conect.close();
 	}
 	
-	public void excluirAdmin(int id) throws SQLException {
+	/*public void excluirAdmin(int id) throws SQLException {
 		String sql = "DELETE FROM admin where admin.id = ?";
 		PreparedStatement stmt =conect.prepareStatement(sql);
 		
@@ -34,21 +36,31 @@ public class AdminDao{
 		stmt.execute();
 		stmt.close();
 		conect.close();
-	}
-	public void listar() throws SQLException {
-		Conexao conectar = new Conexao();
-		Connection conect = (Connection) conectar.conectar(); 
-		
-		Connection connection =(Connection) conectar.conectar();
-		String  sql = "select * from admin";
-		PreparedStatement stmt = connection.prepareStatement(sql);
-		
-		ResultSet rs = stmt.executeQuery();
-		while(rs.next()) {
-			String nome = rs.getString("nome");
-			String cpf = rs.getString("cpf");
-			
-			System.out.println(nome+"-"+cpf+"");
-	}
-}
+	}*/
+	public List<ModelAdmin> listar() throws SQLException{
+            
+            ResultSet rs = null;
+            
+            List<ModelAdmin> admins = new ArrayList<>();
+            
+            try {
+                String sql = "SELECT * FROM admin";
+                PreparedStatement stmt =conect.prepareStatement(sql);
+                rs = stmt.executeQuery();
+                
+                while (rs.next()) {                    
+                    ModelAdmin admin =  new ModelAdmin();
+                    admin.setNome(rs.getString("nome"));
+                    admin.setCpf(rs.getString("cpf"));
+                    admins.add(admin);
+                }
+                        
+            } catch (SQLException e) {
+                System.out.println("Erro:"+e.getMessage());
+            }finally{
+                conect.close();
+            }
+      
+            return admins;
+        }
 }

@@ -21,14 +21,14 @@ public class Admin extends Application{
     public void start(Stage stage) throws Exception {
         
         stage.setTitle("Cadastro de Administradores");
-        Parent root = FXMLLoader.load(getClass().getResource("/View/Admin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/View/AdminPage.fxml"));
         
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
         stage.show();
     }
-    
+ 
     /**
      * @param args the command line arguments
      */

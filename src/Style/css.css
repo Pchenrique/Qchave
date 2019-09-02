@@ -1,10 +1,16 @@
 .form{
-    -fx-background-color: #ddd;
-    -fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(three-pass-box, rgb(0, 0, 0), 10, 0, 0, 0);
 }
 .login-header{
-    -fx-background-color: #ABA7AE;
+    -fx-background-color: #00c444;
 }
 .key-buttom{
     -fx-background-color: #00c444;
+}
+.btn-emprestar{
+    -fx-background-color: #00ae3c;
+}
+.btn-emprestar:hover{
+    -fx-background-color:  #00832e;
 }

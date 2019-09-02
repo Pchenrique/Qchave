@@ -21,7 +21,7 @@ public class Key extends Application{
     public void start(Stage stage) throws Exception {
         
         stage.setTitle("Cadastro de Chaves - Qchave");
-        Parent root = FXMLLoader.load(getClass().getResource("/View/Key.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/View/KeyPage.fxml"));
         
         Scene scene = new Scene(root);
       

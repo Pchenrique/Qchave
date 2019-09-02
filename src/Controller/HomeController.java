@@ -6,9 +6,10 @@
 package Controller;
 
 import Classe.Admin;
-
 import Classe.Key;
 import Classe.User;
+
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -38,17 +39,18 @@ public class HomeController implements Initializable {
     
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //
     }    
-
     
-    //Métodos dos botões da home
+    //Métodos dos botoes da home
     
     @FXML
-    private void registerKey(javafx.event.ActionEvent event) throws Exception {
+    private void keyPage(javafx.event.ActionEvent event) throws Exception {
        Key chave = new Key();
        
        try {
@@ -60,7 +62,7 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    private void registerAdmin(javafx.event.ActionEvent event) {
+    private void AdminPage(javafx.event.ActionEvent event) {
         Admin admin = new Admin();
         try {
             admin.start(new Stage());
@@ -70,7 +72,7 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    private void registerUser(javafx.event.ActionEvent event) {
+    private void UserPage(javafx.event.ActionEvent event) {
         User user = new User();
         try {
             user.start(new Stage());
@@ -78,11 +80,5 @@ public class HomeController implements Initializable {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
-    
-    
-    
-    
     
 }

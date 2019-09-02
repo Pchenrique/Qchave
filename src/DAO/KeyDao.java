@@ -4,15 +4,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import beans.Key;
+import Model.ModelKey;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class KeyDao {
 
-Conexao qq = new Conexao();
+        Conexao qq = new Conexao();
 	
 	Connection conect = (Connection) qq.conectar();
 	
-	public void inserirKey(Key chave) throws SQLException {
+	public void inserirKey(ModelKey chave) throws SQLException {
 		
 		String sql = "insert into chave (nome_sala,codigo_chave,bloco,status)values (?,?,?,?)";
 		PreparedStatement stmt =conect.prepareStatement(sql);
@@ -26,4 +29,33 @@ Conexao qq = new Conexao();
 		stmt.close();
 		conect.close();
 	}
+        
+        public List<ModelKey> listar() throws SQLException{
+            
+            ResultSet rs = null;
+            
+            List<ModelKey> keys = new ArrayList<>();
+            
+            try {
+                String sql = "SELECT * FROM chave";
+                PreparedStatement stmt =conect.prepareStatement(sql);
+                rs = stmt.executeQuery();
+                
+                while (rs.next()) {                    
+                    ModelKey key =  new ModelKey();
+                    key.setNome_sala(rs.getString("nome_sala"));
+                    key.setBloco(rs.getString("bloco"));
+                    key.setCodigo_chave(rs.getInt("codigo_chave"));
+                    key.setStatus(rs.getBoolean("status"));
+                    keys.add(key);
+                }
+                        
+            } catch (SQLException e) {
+                System.out.println("Erro:"+e.getMessage());
+            }finally{
+                conect.close();
+            }
+      
+            return keys;
+        }
 }

@@ -5,17 +5,25 @@
  */
 package Controller;
 
+import Classe.RegisterKey;
 import DAO.KeyDao;
-import beans.Key;
+import Model.ModelKey;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -25,15 +33,15 @@ import javafx.scene.control.TextField;
 public class KeyController implements Initializable {
 
     @FXML
-    private TextField codigo_chave;
+    private TableColumn<ModelKey, Integer> codigo_chave;
     @FXML
-    private TextField nome_sala;
+    private TableColumn<ModelKey, String> bloco;
     @FXML
-    private TextField bloco;
+    private TableColumn<ModelKey, String> nome;
     @FXML
-    private Button btn_cadastrar_chave;
+    private TableColumn<ModelKey, Boolean> status;
     @FXML
-    private Button btn_come_back;
+    private TableView<ModelKey> table_chaves;
     
 
     /**
@@ -41,25 +49,30 @@ public class KeyController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        try {
+            initTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
+
+    @FXML
+    private void cadastrarChave(javafx.event.ActionEvent event) throws Exception {
+        RegisterKey key = new RegisterKey();
+        
+        key.start(new Stage());
+    }
     
-    @FXML
-    void come_back(ActionEvent event) {
-        //
+     public void initTable() throws SQLException{
+        nome.setCellValueFactory(new PropertyValueFactory("nome_sala"));
+        codigo_chave.setCellValueFactory(new PropertyValueFactory("codigo_chave"));
+        bloco.setCellValueFactory(new PropertyValueFactory("bloco"));
+        status.setCellValueFactory(new PropertyValueFactory("status"));
+        table_chaves.setItems(atualizaTable());
     }
-    @FXML
-    void register_key(javafx.event.ActionEvent event) throws SQLException {
-    	String nome_sala = this.nome_sala.getText();
-    	int number = Integer.parseInt(codigo_chave.getText());
-    	String bloco = this.bloco.getText();
-    	Boolean status_chave = true;
-    	
-		Key chave = new Key(nome_sala, number, bloco, status_chave);
-    	
-    	KeyDao keydao = new KeyDao();
-    	
-    	keydao.inserirKey(chave);
-    }
+    public  ObservableList<Model.ModelKey> atualizaTable() throws SQLException{
+        KeyDao keydao =  new KeyDao();
+        return FXCollections.observableArrayList(keydao.listar());
+    }   
 
 }
