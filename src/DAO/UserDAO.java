@@ -27,6 +27,30 @@ Conexao qq = new Conexao();
 		conect.close();
 	}
         
+          
+        public void editar(ModelUser user) throws SQLException{
+		
+		String sql="update user set nome=?, email=?, matricula=?, tipo_user=? where matricula=?";
+		PreparedStatement stmt = conect.prepareStatement(sql);
+		stmt.setString(1, user.getNome());
+		stmt.setString(2, user.getEmail());
+		stmt.setLong(3, user.getMatricula());
+                stmt.setString(4, user.getTipo_user());
+                
+		stmt.setLong(5, user.getMatricula());
+		stmt.executeUpdate();
+        }
+        
+         public void excluir(ModelUser usuario) throws SQLException {
+		String sql = "DELETE FROM user where matricula = ?";
+		PreparedStatement stmt =conect.prepareStatement(sql);
+		
+		stmt.setLong(1, usuario.getMatricula());
+		stmt.execute();
+		stmt.close();
+		conect.close();
+	}
+        
         public List<ModelUser> listar() throws SQLException{
             
             ResultSet rs = null;
@@ -34,7 +58,7 @@ Conexao qq = new Conexao();
             List<ModelUser> users = new ArrayList<>();
             
             try {
-                String sql = "SELECT * FROM user";
+                String sql = "SELECT * FROM user ORDER BY nome ASC";
                 PreparedStatement stmt =conect.prepareStatement(sql);
                 rs = stmt.executeQuery();
                 

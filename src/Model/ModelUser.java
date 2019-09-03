@@ -57,6 +57,12 @@ public class ModelUser {
 	public void setTipo_user(String tipo_user) {
 		this.tipo_user = tipo_user;
 	}
+
+    @Override
+    public String toString() {
+        return ""+matricula;
+    }
 	
-	
+        
+        
 }

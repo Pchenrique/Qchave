@@ -59,7 +59,7 @@ public class EditKeyController implements Initializable {
     	KeyDao keydao = new KeyDao();
     	
     	keydao.editar(chave);
-        JOptionPane.showMessageDialog(null,"Cadastrado com Sucesso!");
+        JOptionPane.showMessageDialog(null,"Dados Alterados com Sucesso!");
         openKey();
     }
     

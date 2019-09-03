@@ -27,7 +27,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -95,27 +94,7 @@ public class KeyController implements Initializable {
         }
     }
     
-    @FXML
-    private void excluirChave(ActionEvent event) throws SQLException {
-        if (selected != null) {
-            KeyDao deletar =  new KeyDao();
-            try {
-                deletar.excluir(selected);
-            } catch (Exception ex) {
-                Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }else{
-            Alert alerta = new Alert(Alert.AlertType.WARNING);
-            alerta.setHeaderText("Selecione uma chave.");
-            alerta.show();
-        }
-        
-        
-        
-       
-    }
-
-     public void initTable() throws SQLException{
+    public void initTable() throws SQLException{
         nome.setCellValueFactory(new PropertyValueFactory("nome_sala"));
         codigo_chave.setCellValueFactory(new PropertyValueFactory("codigo_chave"));
         bloco.setCellValueFactory(new PropertyValueFactory("bloco"));

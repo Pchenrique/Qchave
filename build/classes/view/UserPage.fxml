@@ -98,7 +98,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #4b4a54;" text="Atualizar Lista" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#editarUsuario" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #4b4a54;" text="Editar Usuário" textFill="WHITE">
                <HBox.margin>
                   <Insets left="70.0" top="12.0" />
                </HBox.margin>
@@ -109,7 +109,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #4b4a54;" text="Voltar" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#excluirUsuario" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #4b4a54;" text="Excluir Usuário" textFill="WHITE">
                <HBox.margin>
                   <Insets left="65.0" top="12.0" />
                </HBox.margin>
