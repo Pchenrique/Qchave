@@ -5,6 +5,8 @@
  */
 package Controller;
 
+import Classe.EditKey;
+import Classe.Key;
 import Classe.RegisterKey;
 import DAO.KeyDao;
 import Model.ModelKey;
@@ -14,11 +16,15 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -42,6 +48,10 @@ public class KeyController implements Initializable {
     private TableColumn<ModelKey, Boolean> status;
     @FXML
     private TableView<ModelKey> table_chaves;
+    @FXML
+    private Button keyEdit;
+    
+    private ModelKey selected;
     
 
     /**
@@ -54,6 +64,12 @@ public class KeyController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        table_chaves.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                selected = (ModelKey) newValue;
+            }
+        });
     }    
 
     @FXML
@@ -63,6 +79,42 @@ public class KeyController implements Initializable {
         key.start(new Stage());
     }
     
+    @FXML
+    private void editarChave(javafx.event.ActionEvent event) throws Exception {
+        if (selected != null) {
+            EditKey edit =  new EditKey(selected);
+            try {
+                edit.start(new Stage());
+            } catch (Exception ex) {
+                Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            Alert alerta = new Alert(Alert.AlertType.WARNING);
+            alerta.setHeaderText("Selecione uma chave.");
+            alerta.show();
+        }
+    }
+    
+    @FXML
+    private void excluirChave(ActionEvent event) throws SQLException {
+        if (selected != null) {
+            KeyDao deletar =  new KeyDao();
+            try {
+                deletar.excluir(selected);
+            } catch (Exception ex) {
+                Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            Alert alerta = new Alert(Alert.AlertType.WARNING);
+            alerta.setHeaderText("Selecione uma chave.");
+            alerta.show();
+        }
+        
+        
+        
+       
+    }
+
      public void initTable() throws SQLException{
         nome.setCellValueFactory(new PropertyValueFactory("nome_sala"));
         codigo_chave.setCellValueFactory(new PropertyValueFactory("codigo_chave"));
@@ -74,5 +126,8 @@ public class KeyController implements Initializable {
         KeyDao keydao =  new KeyDao();
         return FXCollections.observableArrayList(keydao.listar());
     }   
+
+   
+   
 
 }

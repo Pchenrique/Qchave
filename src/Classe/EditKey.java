@@ -5,6 +5,7 @@
  */
 package Classe;
 
+import Controller.EditKeyController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,27 +16,32 @@ import javafx.stage.Stage;
  *
  * @author Samuel Lima
  */
-public class Key extends Application{
+public class EditKey extends Application{
+
+    public EditKey(Model.ModelKey key1) {
+        EditKeyController.setKey2(key1);
+    }
+
+   
+    
 
     @Override
     public void start(Stage stage) throws Exception {
-        
-        stage.setTitle("Cadastro de Chaves - Qchave");
-        Parent root = FXMLLoader.load(getClass().getResource("/View/KeyPage.fxml"));
-        
+        stage.setTitle("Editar Chave");
+        Parent root = FXMLLoader.load(getClass().getResource("/View/EditKey.fxml"));
         Scene scene = new Scene(root);
-      
+        
         stage.setScene(scene);
         stage.show();
+
     }
     
-    /**
+    
+     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
     }
-
-    
     
 }

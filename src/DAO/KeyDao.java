@@ -30,6 +30,30 @@ public class KeyDao {
 		conect.close();
 	}
         
+        public void editar(ModelKey chave) throws SQLException{
+		
+		String sql="update chave set nome_sala=?, codigo_chave=?, bloco=? where codigo_chave=?";
+		PreparedStatement stmt = conect.prepareStatement(sql);
+		stmt.setString(1, chave.getNome_sala());
+		stmt.setInt(2, chave.getCodigo_chave());
+		stmt.setString(3, chave.getBloco());
+                
+                stmt.setInt(4, chave.getCodigo_chave());
+		
+		stmt.executeUpdate();
+        }
+        
+        public void excluir(ModelKey chave) throws SQLException {
+		String sql = "DELETE FROM chave where chave.codigo_chave = ?";
+		PreparedStatement stmt =conect.prepareStatement(sql);
+		
+		stmt.setInt(1, chave.getCodigo_chave());
+		stmt.execute();
+		stmt.close();
+		conect.close();
+	}
+	
+        
         public List<ModelKey> listar() throws SQLException{
             
             ResultSet rs = null;
