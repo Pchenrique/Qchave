@@ -5,10 +5,10 @@
  */
 package Controller;
 
+//Importação das classes admin, user e key.
 import Classe.Admin;
 import Classe.Key;
 import Classe.User;
-
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,6 +26,7 @@ import javafx.stage.Stage;
  */
 public class HomeController implements Initializable {
 
+    //Ids dos botões do menu.
     @FXML
     private Button cadastrar_admin;
     @FXML
@@ -36,31 +37,33 @@ public class HomeController implements Initializable {
     private Button devolver_chave;
     @FXML
     private Button emprestar_chave;
-    
+
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //
-    }    
-    
-    //Métodos dos botoes da home
-    
-    @FXML
-    private void keyPage(javafx.event.ActionEvent event) throws Exception {
-       Key chave = new Key();
-       
-       try {
-    	   chave.start(new Stage());
-       } catch (Exception ex) {
-    	   Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-       }
-       
     }
 
+    //Métodos dos botões da home.
+    //Chama a tela do keyPage.
+    @FXML
+    private void keyPage(javafx.event.ActionEvent event) throws Exception {
+        Key chave = new Key();
+
+        try {
+            chave.start(new Stage());
+        } catch (Exception ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    //Chama a tela do adminPage.
     @FXML
     private void AdminPage(javafx.event.ActionEvent event) {
         Admin admin = new Admin();
@@ -71,6 +74,7 @@ public class HomeController implements Initializable {
         }
     }
 
+    //Chama a tela do userPage.
     @FXML
     private void UserPage(javafx.event.ActionEvent event) {
         User user = new User();
@@ -80,5 +84,5 @@ public class HomeController implements Initializable {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }

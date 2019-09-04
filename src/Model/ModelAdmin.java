@@ -1,34 +1,38 @@
 package Model;
 
-public class ModelAdmin {	
-	private String nome;
-	private String cpf;
-	
-	public ModelAdmin(String nome, String cpf) {
-		this.nome = nome;
-                this.cpf = cpf;
-	}
-        
-        public ModelAdmin(){
-            
-        }
+public class ModelAdmin {
 
-	public String getNome() {
-		return nome;
-	}
+    private String nome;
+    private String cpf;
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public ModelAdmin(String nome, String cpf) {
+        this.nome = nome;
+        this.cpf = cpf;
+    }
 
-	public String getCpf() {
-		return cpf;
-	}
+    public ModelAdmin() {
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-	
-	
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    @Override
+    public String toString() {
+        return "" + cpf;
+    }
+
 }
-

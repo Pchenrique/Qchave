@@ -15,20 +15,18 @@ import javafx.stage.Stage;
  *
  * @author Samuel Lima
  */
-public class Admin extends Application{
+public class Admin extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        
-        stage.setTitle("Cadastro de Administradores");
+
+        stage.setTitle("Qchave - Página de Administradores");
         Parent root = FXMLLoader.load(getClass().getResource("/View/AdminPage.fxml"));
-        
         Scene scene = new Scene(root);
-        
         stage.setScene(scene);
         stage.show();
     }
- 
+
     /**
      * @param args the command line arguments
      */
@@ -36,6 +34,4 @@ public class Admin extends Application{
         // TODO code application logic here
     }
 
-    
-    
 }

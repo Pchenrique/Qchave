@@ -15,20 +15,18 @@ import javafx.stage.Stage;
  *
  * @author Samuel Lima
  */
-public class Key extends Application{
+public class Key extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        
-        stage.setTitle("Cadastro de Chaves - Qchave");
+
+        stage.setTitle("Qchave - Página de Chaves");
         Parent root = FXMLLoader.load(getClass().getResource("/View/KeyPage.fxml"));
-        
         Scene scene = new Scene(root);
-      
         stage.setScene(scene);
         stage.show();
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -36,6 +34,4 @@ public class Key extends Application{
         // TODO code application logic here
     }
 
-    
-    
 }

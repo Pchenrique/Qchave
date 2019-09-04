@@ -11,75 +11,69 @@ import java.util.List;
 
 public class KeyDao {
 
-        Conexao qq = new Conexao();
-	
-	Connection conect = (Connection) qq.conectar();
-	
-	public void inserirKey(ModelKey chave) throws SQLException {
-		
-		String sql = "insert into chave (nome_sala,codigo_chave,bloco,status)values (?,?,?,?)";
-		PreparedStatement stmt =conect.prepareStatement(sql);
-		stmt.setString(1, chave.getNome_sala());
-		stmt.setInt(2, chave.getCodigo_chave());
-		stmt.setString(3, chave.getBloco());
-		stmt.setBoolean(4, chave.getStatus());
-	
-		
-		stmt.execute();
-		stmt.close();
-		conect.close();
-	}
-        
-        public void editar(ModelKey chave) throws SQLException{
-		
-		String sql="update chave set nome_sala=?, codigo_chave=?, bloco=? where codigo_chave=?";
-		PreparedStatement stmt = conect.prepareStatement(sql);
-		stmt.setString(1, chave.getNome_sala());
-		stmt.setInt(2, chave.getCodigo_chave());
-		stmt.setString(3, chave.getBloco());
-                
-                stmt.setInt(4, chave.getCodigo_chave());
-		
-		stmt.executeUpdate();
-        }
-        
-        public void excluir(ModelKey chave) throws SQLException {
-		String sql = "DELETE FROM chave where chave.codigo_chave = ?";
-		PreparedStatement stmt =conect.prepareStatement(sql);
-		
-		stmt.setInt(1, chave.getCodigo_chave());
-		stmt.execute();
-		stmt.close();
-		conect.close();
-	}
-	
-        
-        public List<ModelKey> listar() throws SQLException{
-            
-            ResultSet rs = null;
-            
-            List<ModelKey> keys = new ArrayList<>();
-            
-            try {
-                String sql = "SELECT * FROM chave";
-                PreparedStatement stmt =conect.prepareStatement(sql);
-                rs = stmt.executeQuery();
-                
-                while (rs.next()) {                    
-                    ModelKey key =  new ModelKey();
-                    key.setNome_sala(rs.getString("nome_sala"));
-                    key.setBloco(rs.getString("bloco"));
-                    key.setCodigo_chave(rs.getInt("codigo_chave"));
-                    key.setStatus(rs.getBoolean("status"));
-                    keys.add(key);
-                }
-                        
-            } catch (SQLException e) {
-                System.out.println("Erro:"+e.getMessage());
-            }finally{
-                conect.close();
+    Conexao qq = new Conexao();
+
+    Connection conect = (Connection) qq.conectar();
+
+    public void inserirKey(ModelKey chave) throws SQLException {
+
+        String sql = "insert into chave (nome_sala,codigo_chave,bloco,status)values (?,?,?,?)";
+        PreparedStatement stmt = conect.prepareStatement(sql);
+        stmt.setString(1, chave.getNome_sala());
+        stmt.setInt(2, chave.getCodigo_chave());
+        stmt.setString(3, chave.getBloco());
+        stmt.setBoolean(4, chave.getStatus());
+        stmt.execute();
+        stmt.close();
+        conect.close();
+    }
+
+    public void editar(ModelKey chave) throws SQLException {
+
+        String sql = "update chave set nome_sala=?, codigo_chave=?, bloco=? where codigo_chave=?";
+        PreparedStatement stmt = conect.prepareStatement(sql);
+        stmt.setString(1, chave.getNome_sala());
+        stmt.setInt(2, chave.getCodigo_chave());
+        stmt.setString(3, chave.getBloco());
+        stmt.setInt(4, chave.getCodigo_chave());
+        stmt.executeUpdate();
+    }
+
+    public void excluir(ModelKey chave) throws SQLException {
+        String sql = "DELETE FROM chave where chave.codigo_chave = ?";
+        PreparedStatement stmt = conect.prepareStatement(sql);
+        stmt.setInt(1, chave.getCodigo_chave());
+        stmt.execute();
+        stmt.close();
+        conect.close();
+    }
+
+    public List<ModelKey> listar() throws SQLException {
+
+        ResultSet rs = null;
+
+        List<ModelKey> keys = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM chave";
+            PreparedStatement stmt = conect.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                ModelKey key = new ModelKey();
+                key.setNome_sala(rs.getString("nome_sala"));
+                key.setBloco(rs.getString("bloco"));
+                key.setCodigo_chave(rs.getInt("codigo_chave"));
+                key.setStatus(rs.getBoolean("status"));
+                keys.add(key);
             }
-      
-            return keys;
+
+        } catch (SQLException e) {
+            System.out.println("Erro:" + e.getMessage());
+        } finally {
+            conect.close();
         }
+
+        return keys;
+    }
 }

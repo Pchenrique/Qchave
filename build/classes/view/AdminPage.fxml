@@ -85,13 +85,13 @@
          <children>
             <Button fx:id="btn_cadastrar_admin" mnemonicParsing="false" onAction="#cadastrarAdmin" prefHeight="29.0" prefWidth="152.0" style="-fx-background-color: #4b4a54;" text="Inserir Administrador" textFill="WHITE">
                <HBox.margin>
-                  <Insets left="32.0" top="12.0" />
+                  <Insets left="20.0" top="12.0" />
                </HBox.margin>
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #4b4a54;" text="Atualizar Lista" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#editarAdministrador" prefHeight="29.0" prefWidth="146.0" style="-fx-background-color: #4b4a54;" text="Editar Administrador" textFill="WHITE">
                <HBox.margin>
                   <Insets left="60.0" top="12.0" />
                </HBox.margin>
@@ -99,7 +99,7 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #4b4a54;" text="Voltar" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#excluirAdministrador" prefHeight="29.0" prefWidth="153.0" style="-fx-background-color: #4b4a54;" text="Excluir Administrador" textFill="WHITE">
                <HBox.margin>
                   <Insets left="65.0" top="12.0" />
                </HBox.margin>

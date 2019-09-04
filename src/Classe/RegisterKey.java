@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  *
  * @author Samuel Lima
  */
-public class RegisterKey extends Application{
+public class RegisterKey extends Application {
 
     /**
      * @param args the command line arguments
@@ -25,14 +25,13 @@ public class RegisterKey extends Application{
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Cadastro de Administradores");
+    public void start(Stage stage) throws Exception {
+
+        stage.setTitle("Qchave - Cadastro de Administradores");
         Parent root = FXMLLoader.load(getClass().getResource("/View/RegisterKey.fxml"));
-        
         Scene scene = new Scene(root);
-        
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        stage.setScene(scene);
+        stage.show();
     }
-    
+
 }
