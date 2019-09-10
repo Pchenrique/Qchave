@@ -2,12 +2,13 @@ package Model;
 
 public class ModelUser {
 
+    private int id;
     private String nome;
     private String email;
     private long matricula;
     private String tipo_user;
-
-    public ModelUser(String nome, String email, long matricula, String tipo_user) {
+    
+     public ModelUser(String nome, String email, long matricula, String tipo_user) {
         //super();
         this.nome = nome;
         this.email = email;
@@ -19,6 +20,14 @@ public class ModelUser {
 
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getNome() {
         return nome;
     }

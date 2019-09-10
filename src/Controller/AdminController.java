@@ -49,6 +49,8 @@ public class AdminController implements Initializable {
     private Button btn_cadastrar_admin;
 
     private ModelAdmin selected;
+    @FXML
+    private TableColumn<ModelAdmin, Integer> id;
 
     /**
      * Initializes the controller class.
@@ -120,6 +122,7 @@ public class AdminController implements Initializable {
 
     //Função para set os valores das colunas da tabela.
     public void initTable() throws SQLException {
+        id.setCellValueFactory(new PropertyValueFactory("id"));
         col_nome.setCellValueFactory(new PropertyValueFactory("nome"));
         col_cpf.setCellValueFactory(new PropertyValueFactory("cpf"));
         table_admins.setItems(atualizaTable());

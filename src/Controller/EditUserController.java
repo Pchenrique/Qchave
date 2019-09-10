@@ -38,6 +38,7 @@ public class EditUserController implements Initializable {
     private TextField matricula;
     @FXML
     private TextField tipoUsuario;
+    
 
     private static Model.ModelUser user2;
 
@@ -50,12 +51,13 @@ public class EditUserController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //inicialização dos campos do usuário preenchidos com seus respectivos valores.
-        initKey();
+        initUser();
     }
 
     //Método de alterar administrador.
     @FXML
     private void alterarUsuario(ActionEvent event) throws Exception {
+        int id = user2.getId();
         String nome = this.nomeCompleto.getText();
         String email = this.email.getText();
         Long matricula = Long.parseLong(this.matricula.getText());
@@ -66,16 +68,16 @@ public class EditUserController implements Initializable {
         UserDAO userdao = new UserDAO();
 
         try {
-            userdao.editar(usuario);
+            userdao.editar(usuario, id);
             JOptionPane.showMessageDialog(null, "Dados Alterados com Sucesso!");
-            openKey();
+            openUser();
         } catch (SQLException ex) {
             Logger.getLogger(EditUserController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     //Função para preencher os campos do form do usuário.
-    public void initKey() {
+    public void initUser() {
         nomeCompleto.setText(user2.getNome());
         email.setText(user2.getEmail());
         matricula.setText(user2.toString());
@@ -91,7 +93,7 @@ public class EditUserController implements Initializable {
     }
 
     //função para abrir a userPage após alterar os dados.
-    public void openKey() throws Exception {
+    public void openUser() throws Exception {
         User user = new User();
         user.start(new Stage());
     }

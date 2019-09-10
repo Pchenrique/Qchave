@@ -17,27 +17,28 @@ public class AdminDao {
 
     public void inserirAdmin(ModelAdmin admin) throws SQLException {
 
-        String sql = "insert into admin (nome,cpf)values (?,?)";
+        String sql = "insert into administradores (id,nome,cpf)values (?,?,?)";
         PreparedStatement stmt = conect.prepareStatement(sql);
-        stmt.setString(1, admin.getNome());
-        stmt.setString(2, admin.getCpf());
+        stmt.setInt(1, admin.getId());
+        stmt.setString(2, admin.getNome());
+        stmt.setString(3, admin.getCpf());
         stmt.execute();
         stmt.close();
         conect.close();
     }
 
-    public void editar(ModelAdmin admin) throws SQLException {
+    public void editar(ModelAdmin admin, int id) throws SQLException {
 
-        String sql = "update admin set nome=?, cpf=? where cpf=?";
+        String sql = "UPDATE administradores set nome=?, cpf=? where id=?";
         PreparedStatement stmt = conect.prepareStatement(sql);
         stmt.setString(1, admin.getNome());
         stmt.setString(2, admin.getCpf());
-        stmt.setString(3, admin.getCpf());
+        stmt.setInt(3, id);
         stmt.executeUpdate();
     }
 
     public void excluir(ModelAdmin admin) throws SQLException {
-        String sql = "DELETE FROM admin cpf=?";
+        String sql = "DELETE FROM administradores cpf=?";
         PreparedStatement stmt = conect.prepareStatement(sql);
         stmt.setString(1, admin.toString());
         stmt.execute();
@@ -52,12 +53,13 @@ public class AdminDao {
         List<ModelAdmin> admins = new ArrayList<>();
 
         try {
-            String sql = "SELECT * FROM admin";
+            String sql = "SELECT * FROM administradores";
             PreparedStatement stmt = conect.prepareStatement(sql);
             rs = stmt.executeQuery();
 
             while (rs.next()) {
                 ModelAdmin admin = new ModelAdmin();
+                admin.setId(rs.getInt("id"));
                 admin.setNome(rs.getString("nome"));
                 admin.setCpf(rs.getString("cpf"));
                 admins.add(admin);

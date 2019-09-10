@@ -51,7 +51,7 @@ public class RegisterUserController implements Initializable {
         String email = this.email.getText();
         long matricula = Long.parseLong(this.matricula.getText());
         String tipo_user = this.tipo_usuario.getText();
-
+       
         ModelUser user = new ModelUser(nome, email, matricula, tipo_user);
         UserDAO userdao = new UserDAO();
         userdao.inserirUser(user);

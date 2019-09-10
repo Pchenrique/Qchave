@@ -39,7 +39,7 @@ public class KeyController implements Initializable {
 
     //Ids das colunas da tabela.
     @FXML
-    private TableColumn<ModelKey, Integer> codigo_chave;
+    private TableColumn<ModelKey, Integer> id;
     @FXML
     private TableColumn<ModelKey, String> bloco;
     @FXML
@@ -52,6 +52,7 @@ public class KeyController implements Initializable {
     private Button keyEdit;
 
     private ModelKey selected;
+   
 
     /**
      * Initializes the controller class.
@@ -121,8 +122,8 @@ public class KeyController implements Initializable {
 
     //Função para set os valores das colunas da tabela.
     public void initTable() throws SQLException {
+        id.setCellValueFactory(new PropertyValueFactory("id"));
         nome.setCellValueFactory(new PropertyValueFactory("nome_sala"));
-        codigo_chave.setCellValueFactory(new PropertyValueFactory("codigo_chave"));
         bloco.setCellValueFactory(new PropertyValueFactory("bloco"));
         status.setCellValueFactory(new PropertyValueFactory("status"));
         table_chaves.setItems(atualizaTable());

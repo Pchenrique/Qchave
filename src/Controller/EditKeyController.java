@@ -33,8 +33,8 @@ public class EditKeyController implements Initializable {
     private TextField nomeSala;
     @FXML
     private TextField blocoSala;
-    @FXML
-    private TextField codigoChave;
+    /*@FXML
+    private TextField codigoChave;*/
     @FXML
     private Button btnAlterar;
 
@@ -55,16 +55,17 @@ public class EditKeyController implements Initializable {
     //Método de alterar administrador.
     @FXML
     private void alterarChave(ActionEvent event) throws SQLException, Exception {
+        int id = key2.getId();
         String nome_sala = this.nomeSala.getText();
-        int number = Integer.parseInt(this.codigoChave.getText());
+        //int number = Integer.parseInt(this.codigoChave.getText());
         String bloco = this.blocoSala.getText();
         Boolean status_chave = true;
 
-        ModelKey chave = new ModelKey(nome_sala, number, bloco, status_chave);
+        ModelKey chave = new ModelKey(nome_sala, bloco, status_chave);
 
         KeyDao keydao = new KeyDao();
 
-        keydao.editar(chave);
+        keydao.editar(chave, id);
         JOptionPane.showMessageDialog(null, "Dados Alterados com Sucesso!");
         openKey();
     }
@@ -73,7 +74,7 @@ public class EditKeyController implements Initializable {
     public void initKey() {
         nomeSala.setText(key2.getNome_sala());
         blocoSala.setText(key2.getBloco());
-        codigoChave.setText(key2.toString());
+        //codigoChave.setText(key2.toString());
     }
 
     public static ModelKey getKey2() {

@@ -90,7 +90,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="keyEdit" mnemonicParsing="false" onAction="#editarChave" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #4b4a54;" text="Editar" textFill="WHITE">
+            <Button fx:id="keyEdit" mnemonicParsing="false" onAction="#editarChave" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #4b4a54;" text="Editar Chave" textFill="WHITE">
                <HBox.margin>
                   <Insets left="70.0" top="12.0" />
                </HBox.margin>
@@ -101,7 +101,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button mnemonicParsing="false" onAction="#excluirChave" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #4b4a54;" text="Excluir" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#excluirChave" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #4b4a54;" text="Excluir Chave" textFill="WHITE">
                <HBox.margin>
                   <Insets left="65.0" top="12.0" />
                </HBox.margin>
@@ -116,7 +116,7 @@
       </HBox>
       <TableView fx:id="table_chaves" layoutX="281.0" layoutY="60.0" prefHeight="389.0" prefWidth="619.0">
         <columns>
-          <TableColumn fx:id="codigo_chave" prefWidth="107.0" text="Código da Chave" />
+          <TableColumn fx:id="id" prefWidth="107.0" text="Id" />
           <TableColumn fx:id="nome" prefWidth="130.0" text="Nome da Sala" />
             <TableColumn fx:id="bloco" prefWidth="104.0" text="Bloco" />
             <TableColumn fx:id="status" prefWidth="90.0" text="Status" />

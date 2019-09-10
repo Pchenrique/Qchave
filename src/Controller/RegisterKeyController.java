@@ -28,8 +28,8 @@ public class RegisterKeyController implements Initializable {
     //Ids dos campos de textfield e botão de cadastrar chave.
     @FXML
     private TextField nome_sala;
-    @FXML
-    private TextField codigo_chave;
+    /*@FXML
+    private TextField codigo_chave;*/
     @FXML
     private TextField bloco;
     @FXML
@@ -44,11 +44,12 @@ public class RegisterKeyController implements Initializable {
     @FXML
     private void registrarChave(ActionEvent event) throws SQLException {
         String nome_sala = this.nome_sala.getText();
-        int number = Integer.parseInt(codigo_chave.getText());
+        //int number = Integer.parseInt(codigo_chave.getText());
         String bloco = this.bloco.getText();
         Boolean status_chave = true;
+        
 
-        ModelKey chave = new ModelKey(nome_sala, number, bloco, status_chave);
+        ModelKey chave = new ModelKey(nome_sala, bloco, status_chave);
         KeyDao keydao = new KeyDao();
         keydao.inserirKey(chave);
 

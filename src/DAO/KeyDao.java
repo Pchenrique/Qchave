@@ -17,32 +17,30 @@ public class KeyDao {
 
     public void inserirKey(ModelKey chave) throws SQLException {
 
-        String sql = "insert into chave (nome_sala,codigo_chave,bloco,status)values (?,?,?,?)";
+        String sql = "insert into chaves (nome_sala,bloco,status)values (?,?,?)";
         PreparedStatement stmt = conect.prepareStatement(sql);
         stmt.setString(1, chave.getNome_sala());
-        stmt.setInt(2, chave.getCodigo_chave());
-        stmt.setString(3, chave.getBloco());
-        stmt.setBoolean(4, chave.getStatus());
+        stmt.setString(2, chave.getBloco());
+        stmt.setBoolean(3, chave.getStatus());
         stmt.execute();
         stmt.close();
         conect.close();
     }
 
-    public void editar(ModelKey chave) throws SQLException {
+    public void editar(ModelKey chave, int id) throws SQLException {
 
-        String sql = "update chave set nome_sala=?, codigo_chave=?, bloco=? where codigo_chave=?";
+        String sql = "update chaves set nome_sala=?, bloco=? where id=?";
         PreparedStatement stmt = conect.prepareStatement(sql);
         stmt.setString(1, chave.getNome_sala());
-        stmt.setInt(2, chave.getCodigo_chave());
-        stmt.setString(3, chave.getBloco());
-        stmt.setInt(4, chave.getCodigo_chave());
+        stmt.setString(2, chave.getBloco());
+        stmt.setInt(3, id);
         stmt.executeUpdate();
     }
 
     public void excluir(ModelKey chave) throws SQLException {
-        String sql = "DELETE FROM chave where chave.codigo_chave = ?";
+        String sql = "DELETE FROM chaves where id = ?";
         PreparedStatement stmt = conect.prepareStatement(sql);
-        stmt.setInt(1, chave.getCodigo_chave());
+        stmt.setInt(1, chave.getId());
         stmt.execute();
         stmt.close();
         conect.close();
@@ -55,15 +53,15 @@ public class KeyDao {
         List<ModelKey> keys = new ArrayList<>();
 
         try {
-            String sql = "SELECT * FROM chave";
+            String sql = "SELECT * FROM chaves";
             PreparedStatement stmt = conect.prepareStatement(sql);
             rs = stmt.executeQuery();
 
             while (rs.next()) {
                 ModelKey key = new ModelKey();
+                key.setId(rs.getInt("id"));
                 key.setNome_sala(rs.getString("nome_sala"));
                 key.setBloco(rs.getString("bloco"));
-                key.setCodigo_chave(rs.getInt("codigo_chave"));
                 key.setStatus(rs.getBoolean("status"));
                 keys.add(key);
             }

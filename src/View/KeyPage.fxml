@@ -116,7 +116,7 @@
       </HBox>
       <TableView fx:id="table_chaves" layoutX="281.0" layoutY="60.0" prefHeight="389.0" prefWidth="619.0">
         <columns>
-          <TableColumn fx:id="codigo_chave" prefWidth="107.0" text="Código da Chave" />
+          <TableColumn fx:id="id" prefWidth="107.0" text="Id" />
           <TableColumn fx:id="nome" prefWidth="130.0" text="Nome da Sala" />
             <TableColumn fx:id="bloco" prefWidth="104.0" text="Bloco" />
             <TableColumn fx:id="status" prefWidth="90.0" text="Status" />

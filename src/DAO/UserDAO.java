@@ -17,33 +17,34 @@ public class UserDAO {
 
     public void inserirUser(ModelUser user) throws SQLException {
 
-        String sql = "insert into user (nome,email,matricula,tipo_user)values (?,?,?,?)";
+        String sql = "insert into usuarios (id, nome,email,matricula,tipo_usuario)values (?,?,?,?,?)";
         PreparedStatement stmt = conect.prepareStatement(sql);
-        stmt.setString(1, user.getNome());
-        stmt.setString(2, user.getEmail());
-        stmt.setLong(3, user.getMatricula());
-        stmt.setString(4, user.getTipo_user());
+        stmt.setInt(1, user.getId());
+        stmt.setString(2, user.getNome());
+        stmt.setString(3, user.getEmail());
+        stmt.setLong(4, user.getMatricula());
+        stmt.setString(5, user.getTipo_user());
         stmt.execute();
         stmt.close();
         conect.close();
     }
 
-    public void editar(ModelUser user) throws SQLException {
+    public void editar(ModelUser user, int id) throws SQLException {
 
-        String sql = "update user set nome=?, email=?, matricula=?, tipo_user=? where matricula=?";
+        String sql = "UPDATE usuarios set nome=?, email=?, matricula=?, tipo_usuario=? where id=?";
         PreparedStatement stmt = conect.prepareStatement(sql);
         stmt.setString(1, user.getNome());
         stmt.setString(2, user.getEmail());
         stmt.setLong(3, user.getMatricula());
         stmt.setString(4, user.getTipo_user());
-        stmt.setLong(5, user.getMatricula());
+        stmt.setLong(5, id);
         stmt.executeUpdate();
     }
 
     public void excluir(ModelUser usuario) throws SQLException {
-        String sql = "DELETE FROM user where matricula = ?";
+        String sql = "DELETE FROM usuarios where id = ?";
         PreparedStatement stmt = conect.prepareStatement(sql);
-        stmt.setLong(1, usuario.getMatricula());
+        stmt.setLong(1, usuario.getId());
         stmt.execute();
         stmt.close();
         conect.close();
@@ -56,16 +57,17 @@ public class UserDAO {
         List<ModelUser> users = new ArrayList<>();
 
         try {
-            String sql = "SELECT * FROM user ORDER BY nome ASC";
+            String sql = "SELECT * FROM usuarios ORDER BY nome ASC";
             PreparedStatement stmt = conect.prepareStatement(sql);
             rs = stmt.executeQuery();
 
             while (rs.next()) {
                 ModelUser user = new ModelUser();
+                user.setId(rs.getInt("id"));
                 user.setNome(rs.getString("nome"));
                 user.setEmail(rs.getString("email"));
                 user.setMatricula(rs.getLong("matricula"));
-                user.setTipo_user(rs.getString("tipo_user"));
+                user.setTipo_user(rs.getString("tipo_usuario"));
                 users.add(user);
             }
 

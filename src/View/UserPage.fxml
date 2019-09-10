@@ -79,10 +79,11 @@
       </HBox>
       <TableView fx:id="table_users" layoutX="281.0" layoutY="60.0" prefHeight="392.0" prefWidth="619.0">
         <columns>
-          <TableColumn fx:id="col_nome" prefWidth="190.0" text="Nome" />
-            <TableColumn fx:id="col_email" prefWidth="170.0" text="Email" />
-          <TableColumn fx:id="col_matricula" minWidth="0.0" prefWidth="140.0" text="Matricula" />
-            <TableColumn fx:id="col_tipo_usuario" prefWidth="118.0" text="Tipo de Usuário" />
+            <TableColumn fx:id="id" prefWidth="46.0" text="Id" />
+          <TableColumn fx:id="col_nome" minWidth="0.0" prefWidth="181.0" text="Nome" />
+            <TableColumn fx:id="col_email" prefWidth="149.0" text="Email" />
+          <TableColumn fx:id="col_matricula" minWidth="0.0" prefWidth="101.0" text="Matricula" />
+            <TableColumn fx:id="col_tipo_usuario" prefWidth="176.0" text="Tipo de Usuário" />
         </columns>
       </TableView>
       <HBox layoutX="281.0" layoutY="450.0" prefHeight="50.0" prefWidth="619.0">

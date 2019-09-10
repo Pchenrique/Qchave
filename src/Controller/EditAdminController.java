@@ -53,6 +53,9 @@ public class EditAdminController implements Initializable {
     //Método de alterar administrador.
     @FXML
     private void alterarAdministrador(ActionEvent event) throws SQLException, Exception {
+        
+        int id = admin2.getId();
+        
         String nome_completo = this.nomeCompleto.getText();
         String cpf = this.cpf.getText();
 
@@ -60,7 +63,7 @@ public class EditAdminController implements Initializable {
 
         AdminDao admindao = new AdminDao();
 
-        admindao.editar(admin);
+        admindao.editar(admin, id);
         JOptionPane.showMessageDialog(null, "Dados Alterados com Sucesso!");
         openAdmin();
     }

@@ -48,6 +48,8 @@ public class UserController implements Initializable {
     private TableColumn<Model.ModelUser, String> col_email;
 
     private Model.ModelUser selected;
+    @FXML
+    private TableColumn<Model.ModelUser, Integer> id;
 
     /**
      * Initializes the controller class.
@@ -118,6 +120,7 @@ public class UserController implements Initializable {
 
     //Função para set os valores das colunas da tabela.
     public void initTable() throws SQLException {
+        id.setCellValueFactory((new PropertyValueFactory("id")));
         col_nome.setCellValueFactory(new PropertyValueFactory("nome"));
         col_email.setCellValueFactory(new PropertyValueFactory("email"));
         col_matricula.setCellValueFactory(new PropertyValueFactory("matricula"));

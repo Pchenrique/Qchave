@@ -50,6 +50,7 @@ public class RegisterAdminController implements Initializable {
     private void registrarAdmin(ActionEvent event) throws SQLException {
         String name = this.nome_completo.getText();
         String cpf = this.cpf.getText();
+        int id = 0;
 
         ModelAdmin admin = new ModelAdmin(name, cpf);
         AdminDao admindao = new AdminDao();

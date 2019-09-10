@@ -2,10 +2,12 @@ package Model;
 
 public class ModelAdmin {
 
+    private int id;
     private String nome;
     private String cpf;
-
-    public ModelAdmin(String nome, String cpf) {
+    
+      public ModelAdmin(String nome, String cpf) {
+        this.id = id;
         this.nome = nome;
         this.cpf = cpf;
     }
@@ -14,6 +16,14 @@ public class ModelAdmin {
 
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getNome() {
         return nome;
     }
