@@ -5,6 +5,7 @@
  */
 package Classe;
 
+import static Classe.Home.setStage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,6 +17,15 @@ import javafx.stage.Stage;
  * @author Samuel Lima
  */
 public class Key extends Application {
+    private static Stage stage;
+
+    public static Stage getStage() {
+        return stage;
+    }
+
+    public static void setStage(Stage stage) {
+        Key.stage = stage;
+    }
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -25,6 +35,7 @@ public class Key extends Application {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        setStage(stage);
     }
 
     /**

@@ -5,6 +5,7 @@
  */
 package Classe;
 
+import static Classe.Home.setStage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +17,27 @@ import javafx.stage.Stage;
  * @author Samuel Lima
  */
 public class RegisterKey extends Application {
+    private static Stage stage;
 
+    public static Stage getStage() {
+        return stage;
+    }
+
+    public static void setStage(Stage stage) {
+        RegisterKey.stage = stage;
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+
+        stage.setTitle("Qchave - Cadastro de Chaves");
+        Parent root = FXMLLoader.load(getClass().getResource("/View/RegisterKey.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        setStage(stage);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -24,14 +45,5 @@ public class RegisterKey extends Application {
         // TODO code application logic here
     }
 
-    @Override
-    public void start(Stage stage) throws Exception {
-
-        stage.setTitle("Qchave - Cadastro de Administradores");
-        Parent root = FXMLLoader.load(getClass().getResource("/View/RegisterKey.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 
 }

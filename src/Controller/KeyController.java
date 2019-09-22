@@ -7,6 +7,9 @@ package Controller;
 
 //Importação das classes EditKey, RegisterKey, do Key DAO e do Model Key.
 import Classe.EditKey;
+import Classe.Home;
+import Classe.Key;
+import Classe.KeyLoan;
 import Classe.RegisterKey;
 import DAO.KeyDao;
 import Model.ModelKey;
@@ -74,16 +77,34 @@ public class KeyController implements Initializable {
         });
     }
 
-    //Método de cadastrar chave.
+    //Método para chamar a view de cadastrar chave.
     @FXML
     private void cadastrarChave(javafx.event.ActionEvent event) {
         RegisterKey key = new RegisterKey();
 
         try {
             key.start(new Stage());
+            Key.getStage().close();
         } catch (Exception ex) {
             Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    //Método para chamar a view de emprestar chave.
+    @FXML
+    private void emprestarChave(javafx.event.ActionEvent event) {
+        KeyLoan keyloan = new KeyLoan();
+        
+        try {
+            keyloan.start(new Stage());
+        } catch (Exception ex) {
+            Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+     //Método para chamar a view de devolver chave.
+    @FXML
+    private void devolverChave(ActionEvent event) {
     }
 
     //Método de editar chave.
@@ -93,29 +114,34 @@ public class KeyController implements Initializable {
             EditKey edit = new EditKey(selected);
             try {
                 edit.start(new Stage());
+                Key.getStage().close();
             } catch (Exception ex) {
                 Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             Alert alerta = new Alert(Alert.AlertType.WARNING);
-            alerta.setHeaderText("Selecione uma chave.");
+            alerta.setHeaderText("Selecione uma chave clicando sobre a mesma para edita-lá.");
             alerta.show();
         }
     }
 
     //Método de excluir chave.
     @FXML
-    private void excluirChave(ActionEvent event) {
+    private void excluirChave(ActionEvent event) throws Exception {
         if (selected != null) {
             KeyDao deletar = new KeyDao();
             try {
                 deletar.excluir(selected);
+                Key.getStage().close();
+                
+                Key newFrame = new Key();
+                newFrame.start(new Stage());
             } catch (SQLException ex) {
                 Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-            alerta.setHeaderText("Selecione um administrador clicando sobre o mesmo para exclui-lo!");
+            alerta.setHeaderText("Selecione uma chave clicando sobre a mesma para exclui-lá.");
             alerta.show();
         }
     }
@@ -133,5 +159,13 @@ public class KeyController implements Initializable {
     public ObservableList<Model.ModelKey> atualizaTable() throws SQLException {
         KeyDao keydao = new KeyDao();
         return FXCollections.observableArrayList(keydao.listar());
+    }
+
+    @FXML
+    private void backPage(ActionEvent event) throws Exception {
+        Key.getStage().close();
+        
+        Home newFrame = new Home();
+        newFrame.start(new Stage());
     }
 }

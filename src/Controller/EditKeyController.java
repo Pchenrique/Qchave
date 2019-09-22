@@ -6,6 +6,7 @@
 package Controller;
 
 //Importação da classe key, do DAO key e do model key.
+import Classe.EditKey;
 import Classe.Key;
 import DAO.KeyDao;
 import Model.ModelKey;
@@ -67,6 +68,7 @@ public class EditKeyController implements Initializable {
 
         keydao.editar(chave, id);
         JOptionPane.showMessageDialog(null, "Dados Alterados com Sucesso!");
+        EditKey.getStage().close();
         openKey();
     }
 
@@ -91,4 +93,11 @@ public class EditKeyController implements Initializable {
         key.start(new Stage());
     }
 
+    @FXML
+    private void backPage(ActionEvent event) throws Exception {
+        EditKey.getStage().close();
+        
+        Key newFrame = new Key();
+        newFrame.start(new Stage());
+    }
 }

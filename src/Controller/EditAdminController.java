@@ -7,6 +7,9 @@ package Controller;
 
 //Importação da classe admin, do DAO admin e do model admin.
 import Classe.Admin;
+import Classe.EditAdmin;
+import Classe.EditKey;
+import Classe.Key;
 import DAO.AdminDao;
 import Model.ModelAdmin;
 
@@ -65,6 +68,7 @@ public class EditAdminController implements Initializable {
 
         admindao.editar(admin, id);
         JOptionPane.showMessageDialog(null, "Dados Alterados com Sucesso!");
+        EditAdmin.getStage().close();
         openAdmin();
     }
 
@@ -88,4 +92,11 @@ public class EditAdminController implements Initializable {
         admin.start(new Stage());
     }
 
+    @FXML
+    private void backPage(ActionEvent event) throws Exception {
+        EditAdmin.getStage().close();
+        
+        Admin newFrame = new Admin();
+        newFrame.start(new Stage());
+    }
 }

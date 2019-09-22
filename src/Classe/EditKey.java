@@ -16,7 +16,16 @@ import javafx.stage.Stage;
  *
  * @author Samuel Lima
  */
-public class EditKey extends Application {
+public class EditKey extends Application {    
+    private static Stage stage;
+
+    public static Stage getStage() {
+        return stage;
+    }
+
+    public static void setStage(Stage stage) {
+        EditKey.stage = stage;
+    }
 
     public EditKey(Model.ModelKey key1) {
         EditKeyController.setKey2(key1);
@@ -30,6 +39,7 @@ public class EditKey extends Application {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        setStage(stage);
     }
 
     /**

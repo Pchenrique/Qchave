@@ -16,15 +16,24 @@ import javafx.stage.Stage;
  * @author Samuel Lima
  */
 public class RegisterUser extends Application {
+    private static Stage stage;
 
+    public static Stage getStage() {
+        return stage;
+    }
+
+    public static void setStage(Stage stage) {
+        RegisterUser.stage = stage;
+    }
     @Override
     public void start(Stage stage) throws Exception {
 
-        stage.setTitle("Qchave - Cadastro de Administradores");
+        stage.setTitle("Qchave - Cadastro de Usuário");
         Parent root = FXMLLoader.load(getClass().getResource("/View/RegisterUser.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        setStage(stage);
     }
 
     /**

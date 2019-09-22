@@ -6,6 +6,7 @@
 package Controller;
 
 //Importação da classe user, do DAO user e do model user.
+import Classe.EditUser;
 import Classe.User;
 import DAO.UserDAO;
 import Model.ModelUser;
@@ -70,6 +71,7 @@ public class EditUserController implements Initializable {
         try {
             userdao.editar(usuario, id);
             JOptionPane.showMessageDialog(null, "Dados Alterados com Sucesso!");
+            EditUser.getStage().close();
             openUser();
         } catch (SQLException ex) {
             Logger.getLogger(EditUserController.class.getName()).log(Level.SEVERE, null, ex);
@@ -98,4 +100,11 @@ public class EditUserController implements Initializable {
         user.start(new Stage());
     }
 
+    @FXML
+    private void backPage(ActionEvent event) throws Exception {
+        EditUser.getStage().close();
+        
+        User newFrame = new User();
+        newFrame.start(new Stage());
+    }
 }

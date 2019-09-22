@@ -7,7 +7,9 @@ package Controller;
 
 //Importação das classes EditUser, RegisterUser e do Model User e do DAO User.
 import Classe.EditUser;
+import Classe.Home;
 import Classe.RegisterUser;
+import Classe.User;
 import DAO.UserDAO;
 
 import java.net.URL;
@@ -77,10 +79,15 @@ public class UserController implements Initializable {
 
     //Método de cadastrar usuário.
     @FXML
-    void cadastrarUsuario(javafx.event.ActionEvent event) throws Exception {
+    void cadastrarUsuario(javafx.event.ActionEvent event)  {
         RegisterUser user = new RegisterUser();
 
-        user.start(new Stage());
+        try {
+            user.start(new Stage());
+            User.getStage().close();
+        } catch (Exception ex) {
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
@@ -91,23 +98,28 @@ public class UserController implements Initializable {
             EditUser edit = new EditUser(selected);
             try {
                 edit.start(new Stage());
+                User.getStage().close();
             } catch (Exception ex) {
                 Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-            alerta.setHeaderText("Selecione um usuário clicando sobre o mesmo!");
+            alerta.setHeaderText("Selecione um usuário clicando sobre o mesmo para edita-lo.");
             alerta.show();
         }
     }
 
     //Método de excluir usuário.
     @FXML
-    private void excluirUsuario(ActionEvent event) throws SQLException {
+    private void excluirUsuario(ActionEvent event) throws SQLException, Exception {
         if (selected != null) {
             UserDAO deletar = new UserDAO();
             try {
                 deletar.excluir(selected);
+                User.getStage().close();
+                
+                User newFrame = new User();
+                newFrame.start(new Stage());
             } catch (SQLException ex) {
                 Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -132,5 +144,13 @@ public class UserController implements Initializable {
     public ObservableList<Model.ModelUser> atualizaTable() throws SQLException {
         UserDAO userdao = new UserDAO();
         return FXCollections.observableArrayList(userdao.listar());
+    }
+
+    @FXML
+    private void backPage(ActionEvent event) throws Exception {
+        User.getStage().close();
+        
+        Home newframe = new Home();
+        newframe.start(new Stage());
     }
 }

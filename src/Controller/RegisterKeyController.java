@@ -6,6 +6,8 @@
 package Controller;
 
 //Importação do Key DAO e do Model Key.
+import Classe.Key;
+import Classe.RegisterKey;
 import DAO.KeyDao;
 import Model.ModelKey;
 
@@ -17,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 /**
@@ -34,6 +37,8 @@ public class RegisterKeyController implements Initializable {
     private TextField bloco;
     @FXML
     private Button btn_cadastrar_chave;
+    @FXML
+    private TextField codigo_chave;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -42,7 +47,7 @@ public class RegisterKeyController implements Initializable {
 
     //Método de registrar administrador.
     @FXML
-    private void registrarChave(ActionEvent event) throws SQLException {
+    private void registrarChave(ActionEvent event) throws SQLException, Exception {
         String nome_sala = this.nome_sala.getText();
         //int number = Integer.parseInt(codigo_chave.getText());
         String bloco = this.bloco.getText();
@@ -53,7 +58,19 @@ public class RegisterKeyController implements Initializable {
         KeyDao keydao = new KeyDao();
         keydao.inserirKey(chave);
 
-        JOptionPane.showMessageDialog(null, "Cadastrado com Sucesso!");
+        JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!");
+        
+        RegisterKey.getStage().close();
+        
+        Key newFrame = new Key();
+        newFrame.start(new Stage());
     }
 
+    @FXML
+    private void backPage(ActionEvent event) throws Exception {
+        RegisterKey.getStage().close();
+        
+        Key newFrame = new Key();
+        newFrame.start(new Stage());
+    }
 }

@@ -38,9 +38,9 @@ public class AdminDao {
     }
 
     public void excluir(ModelAdmin admin) throws SQLException {
-        String sql = "DELETE FROM administradores cpf=?";
+        String sql = "DELETE FROM administradores where id=?";
         PreparedStatement stmt = conect.prepareStatement(sql);
-        stmt.setString(1, admin.toString());
+        stmt.setInt(1, admin.getId());
         stmt.execute();
         stmt.close();
         conect.close();

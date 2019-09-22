@@ -6,7 +6,9 @@
 package Controller;
 
 //Importação das classes EditAdmin, RegisterAdmin e do Model Admin e do DAO Admin.
+import Classe.Admin;
 import Classe.EditAdmin;
+import Classe.Home;
 import Classe.RegisterAdmin;
 import Model.ModelAdmin;
 import DAO.AdminDao;
@@ -26,6 +28,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.SortEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -81,6 +84,7 @@ public class AdminController implements Initializable {
         RegisterAdmin admin = new RegisterAdmin();
         try {
             admin.start(new Stage());
+            Admin.getStage().close();
         } catch (Exception ex) {
             Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -93,23 +97,29 @@ public class AdminController implements Initializable {
             EditAdmin edit = new EditAdmin(selected);
             try {
                 edit.start(new Stage());
+                Admin.getStage().close();
+               
             } catch (Exception ex) {
                 Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-            alerta.setHeaderText("Selecione um administrador clicando sobre o mesmo.");
+            alerta.setHeaderText("Selecione um administrador clicando sobre o mesmo para edita-lo.");
             alerta.show();
         }
     }
 
     //Método de Excluir administrador.
     @FXML
-    private void excluirAdministrador(ActionEvent event) {
+    private void excluirAdministrador(ActionEvent event) throws Exception {
         if (selected != null) {
             AdminDao deletar = new AdminDao();
             try {
                 deletar.excluir(selected);
+                Admin.getStage().close();
+                
+                Admin newFrame = new Admin();
+                newFrame.start(new Stage());
             } catch (SQLException ex) {
                 Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -134,4 +144,11 @@ public class AdminController implements Initializable {
         return FXCollections.observableArrayList(admindao.listar());
     }
 
+    @FXML
+    private void backPage(ActionEvent event) throws Exception {
+        Admin.getStage().close();
+        
+        Home newFrame = new Home();
+        newFrame.start(new Stage());
+    }
 }

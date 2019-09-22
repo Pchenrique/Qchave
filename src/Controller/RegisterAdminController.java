@@ -6,6 +6,8 @@
 package Controller;
 
 //Importação do Admin DAO e do Model Admin.
+import Classe.Admin;
+import Classe.RegisterAdmin;
 import DAO.AdminDao;
 import Model.ModelAdmin;
 
@@ -17,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 /**
@@ -47,7 +50,7 @@ public class RegisterAdminController implements Initializable {
 
     //Método de registrar administrador.
     @FXML
-    private void registrarAdmin(ActionEvent event) throws SQLException {
+    private void registrarAdmin(ActionEvent event) throws SQLException, Exception {
         String name = this.nome_completo.getText();
         String cpf = this.cpf.getText();
         int id = 0;
@@ -56,7 +59,19 @@ public class RegisterAdminController implements Initializable {
         AdminDao admindao = new AdminDao();
         admindao.inserirAdmin(admin);
 
-        JOptionPane.showMessageDialog(null, "Cadastrado com Sucesso!");
+        JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!");
+        
+        RegisterAdmin.getStage().close();
+        
+        Admin newFrame = new Admin();
+        newFrame.start(new Stage());
     }
 
+    @FXML
+    private void backPage(ActionEvent event) throws Exception {
+        RegisterAdmin.getStage().close();
+        
+        Admin newFrame = new Admin();
+        newFrame.start(new Stage());
+    }
 }

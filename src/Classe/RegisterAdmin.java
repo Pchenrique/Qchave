@@ -16,12 +16,14 @@ import javafx.stage.Stage;
  * @author Samuel Lima
  */
 public class RegisterAdmin extends Application {
+    private static Stage stage;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static Stage getStage() {
+        return stage;
+    }
+
+    public static void setStage(Stage stage) {
+        RegisterAdmin.stage = stage;
     }
 
     @Override
@@ -31,6 +33,13 @@ public class RegisterAdmin extends Application {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        setStage(stage);
     }
-
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+    }
 }

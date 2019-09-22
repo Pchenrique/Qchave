@@ -16,7 +16,17 @@ import javafx.stage.Stage;
  * @author Samuel Lima
  */
 public class Home extends Application {
+    
+    private static Stage stage;
 
+    public static Stage getStage() {
+        return stage;
+    }
+
+    public static void setStage(Stage stage) {
+        Home.stage = stage;
+    }
+    
     @Override
     public void start(Stage stage) throws Exception {
 
@@ -25,6 +35,7 @@ public class Home extends Application {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        setStage(stage);
     }
 
     /**

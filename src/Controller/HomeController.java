@@ -7,6 +7,7 @@ package Controller;
 
 //Importação das classes admin, user e key.
 import Classe.Admin;
+import Classe.Home;
 import Classe.Key;
 import Classe.User;
 
@@ -16,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -54,9 +56,10 @@ public class HomeController implements Initializable {
     @FXML
     private void keyPage(javafx.event.ActionEvent event) throws Exception {
         Key chave = new Key();
-
+        
         try {
             chave.start(new Stage());
+            Home.getStage().close();
         } catch (Exception ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -69,6 +72,7 @@ public class HomeController implements Initializable {
         Admin admin = new Admin();
         try {
             admin.start(new Stage());
+            Home.getStage().close();
         } catch (Exception ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -80,6 +84,7 @@ public class HomeController implements Initializable {
         User user = new User();
         try {
             user.start(new Stage());
+            Home.getStage().close();
         } catch (Exception ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }

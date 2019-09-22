@@ -6,6 +6,8 @@
 package Controller;
 
 //Importação do User DAO e do Model User.
+import Classe.RegisterUser;
+import Classe.User;
 import DAO.UserDAO;
 import Model.ModelUser;
 
@@ -17,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 /**
@@ -37,7 +40,6 @@ public class RegisterUserController implements Initializable {
     @FXML
     private Button btn_cadastrar_usuario;
 
-    @FXML
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -46,7 +48,7 @@ public class RegisterUserController implements Initializable {
 
     //Método de registrar usuário.
     @FXML
-    private void registrarUsuario(ActionEvent event) throws SQLException {
+    private void registrarUsuario(ActionEvent event) throws SQLException, Exception {
         String nome = this.nome_completo.getText();
         String email = this.email.getText();
         long matricula = Long.parseLong(this.matricula.getText());
@@ -56,7 +58,19 @@ public class RegisterUserController implements Initializable {
         UserDAO userdao = new UserDAO();
         userdao.inserirUser(user);
 
-        JOptionPane.showMessageDialog(null, "Cadastrado com Sucesso!");
+        JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!");
+        
+        RegisterUser.getStage().close();
+        
+        User newFrame = new User();
+        newFrame.start(new Stage());
+    }
 
+    @FXML
+    private void backPage(ActionEvent event) throws Exception {
+        RegisterUser.getStage().close();
+        
+        User newFrame = new User();
+        newFrame.start(new Stage());
     }
 }

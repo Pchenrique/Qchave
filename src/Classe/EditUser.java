@@ -17,7 +17,16 @@ import javafx.stage.Stage;
  * @author Samuel Lima
  */
 public class EditUser extends Application {
+    private static Stage stage;
 
+    public static Stage getStage() {
+        return stage;
+    }
+
+    public static void setStage(Stage stage) {
+        EditUser.stage = stage;
+    }
+   
     public EditUser(Model.ModelUser user1) {
         EditUserController.setUser2(user1);
     }
@@ -30,6 +39,7 @@ public class EditUser extends Application {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        setStage(stage);
     }
 
     /**
