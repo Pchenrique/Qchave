@@ -5,6 +5,7 @@
  */
 package Classe;
 
+import Controller.KeyLoanController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +17,11 @@ import javafx.stage.Stage;
  * @author Samuel Lima
  */
 public class KeyLoan extends Application {
-
+    
+    public KeyLoan(Model.ModelKey selected) {
+        KeyLoanController.setSelected(selected);
+    }
+    
     @Override
     public void start(Stage stage) throws Exception {
 

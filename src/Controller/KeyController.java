@@ -32,7 +32,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -101,7 +100,7 @@ public class KeyController implements Initializable {
                 alerta.setHeaderText("A chave "+selected.getNome_sala()+" já está emprestada!");
                 alerta.show();
             }else{
-                KeyLoan keyloan = new KeyLoan();
+                KeyLoan keyloan = new KeyLoan(selected);
             
                 try {
                     keyloan.start(new Stage());
