@@ -73,4 +73,28 @@ public class AdminDao {
 
         return admins;
     }
+    
+    public ModelAdmin buscarAdmin(String cpf) throws SQLException{
+        ResultSet result = null;
+        ModelAdmin admin = new ModelAdmin();
+        
+        try{
+            String sql = "SELECT * FROM administradores where cpf='"+cpf+"'";
+            PreparedStatement stmt = conect.prepareStatement(sql);
+            result = stmt.executeQuery();
+
+             if(result != null && result.next()){
+                admin.setId(result.getInt("id"));
+                admin.setNome(result.getString("nome"));
+                admin.setCpf(result.getString("cpf"));
+             }
+         
+        } catch (SQLException e) {
+            System.out.println("Erro:" + e.getMessage());
+        } finally {
+            conect.close();
+        }
+ 
+        return admin;
+    }
 }

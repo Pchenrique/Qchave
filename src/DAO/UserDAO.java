@@ -79,4 +79,27 @@ public class UserDAO {
 
         return users;
     }
+    
+    public ModelUser buscarUser(long matricula) throws SQLException{
+        ResultSet result;
+        ModelUser user = new ModelUser();
+        try { 
+            String sql = "SELECT * FROM usuarios WHERE matricula='"+matricula+"'";
+            PreparedStatement stmt = conect.prepareStatement(sql);
+            result = stmt.executeQuery();
+            
+            if(result != null && result.next()){
+                user.setId(result.getInt("id"));
+                user.setNome(result.getString("nome"));
+                user.setEmail(result.getString("email"));
+                user.setMatricula(result.getLong("matricula"));
+                user.setTipo_user(result.getString("tipo_usuario"));
+            }
+        }catch(Exception e){
+            System.out.println("Erro:" + e.getMessage());
+        }finally{
+            conect.close();
+        }
+        return user;
+    }
 }

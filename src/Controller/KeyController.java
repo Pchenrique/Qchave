@@ -32,6 +32,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -93,12 +94,21 @@ public class KeyController implements Initializable {
     //Método para chamar a view de emprestar chave.
     @FXML
     private void emprestarChave(javafx.event.ActionEvent event) {
-        KeyLoan keyloan = new KeyLoan();
-        
-        try {
-            keyloan.start(new Stage());
-        } catch (Exception ex) {
-            Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
+        if (selected != null) {
+            if(selected.getStatus() == false){
+                Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                alerta.setTitle("Aviso Chave Emprestada");
+                alerta.setHeaderText("A chave "+selected.getNome_sala()+" já está emprestada!");
+                alerta.show();
+            }else{
+                KeyLoan keyloan = new KeyLoan();
+            
+                try {
+                    keyloan.start(new Stage());
+                } catch (Exception ex) {
+                    Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
     }
 
