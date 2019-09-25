@@ -2,6 +2,19 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Samuel%20Lima/Desktop/Qchave/src/Controller/KeyReturnController.java</file>
+            <file>file:/C:/Users/Samuel%20Lima/Desktop/Qchave/src/Classe/Loan.java</file>
+            <file>file:/C:/Users/Samuel%20Lima/Desktop/Qchave/src/Classe/Home.java</file>
+            <file>file:/C:/Users/Samuel%20Lima/Desktop/Qchave/src/View/KeyLoanPage.fxml</file>
+            <file>file:/C:/Users/Samuel%20Lima/Desktop/Qchave/src/Controller/KeyController.java</file>
+            <file>file:/C:/Users/Samuel%20Lima/Desktop/Qchave/src/Controller/HomeController.java</file>
+            <file>file:/C:/Users/Samuel%20Lima/Desktop/Qchave/src/DAO/EmprestarDAO.java</file>
+            <file>file:/C:/Users/Samuel%20Lima/Desktop/Qchave/src/Classe/KeyLoan.java</file>
+            <file>file:/C:/Users/Samuel%20Lima/Desktop/Qchave/src/Model/ModelEmprestimo.java</file>
+            <file>file:/C:/Users/Samuel%20Lima/Desktop/Qchave/src/Controller/LoanController.java</file>
+            <file>file:/C:/Users/Samuel%20Lima/Desktop/Qchave/src/Controller/KeyLoanController.java</file>
+            <file>file:/C:/Users/Samuel%20Lima/Desktop/Qchave/src/Classe/KeyReturn.java</file>
+        </group>
     </open-files>
 </project-private>

@@ -6,9 +6,13 @@
 package DAO;
 
 import Model.ModelEmprestimo;
+import Model.ModelKey;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -31,5 +35,33 @@ public class EmprestarDAO {
         stmt.execute();
         stmt.close();
         conect.close();
+    }
+    
+    public List<ModelEmprestimo> listar() throws SQLException {
+
+        ResultSet rs = null;
+
+        List<ModelEmprestimo> emprestimos = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM emprestimos";
+            PreparedStatement stmt = conect.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                ModelEmprestimo emprestimo = new ModelEmprestimo();
+                emprestimo.setId_chave(rs.getInt("id_chave"));
+                emprestimo.setId_user(rs.getInt("id_usuario"));
+                emprestimo.setId_admin(rs.getInt("id_administrador"));
+                emprestimos.add(emprestimo);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro:" + e.getMessage());
+        } finally {
+            conect.close();
+        }
+
+        return emprestimos;
     }
 }

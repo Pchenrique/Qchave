@@ -9,12 +9,14 @@ package Controller;
 import Classe.Admin;
 import Classe.Home;
 import Classe.Key;
+import Classe.Loan;
 import Classe.User;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -28,13 +30,6 @@ import javafx.stage.Stage;
  */
 public class HomeController implements Initializable {
 
-    //Ids dos botões do menu.
-    @FXML
-    private Button cadastrar_admin;
-    @FXML
-    private Button cadastrar_usuario;
-    @FXML
-    private Button cadastrar_chave;
     @FXML
     private Button devolver_chave;
     @FXML
@@ -85,6 +80,17 @@ public class HomeController implements Initializable {
         try {
             user.start(new Stage());
             Home.getStage().close();
+        } catch (Exception ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void EmprestimosPage(ActionEvent event) {
+        Loan loan = new Loan();
+        
+        try {
+            loan.start(new Stage());
         } catch (Exception ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }

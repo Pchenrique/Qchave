@@ -16,6 +16,10 @@ public class ModelEmprestimo{
         this.id_admin = id_admin;
         this.data_emprestimo = new Date(System.currentTimeMillis());
     }
+    
+    public ModelEmprestimo(){
+        
+    }
 
     public int getId_user() {
         return id_user;
@@ -47,6 +51,6 @@ public class ModelEmprestimo{
 
     public void setData_emprestimo(Date data_emprestimo) {
         this.data_emprestimo = data_emprestimo;
-    } 
+    }
 
 }

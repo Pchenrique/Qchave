@@ -5,8 +5,6 @@
  */
 package Classe;
 
-import Controller.KeyLoanController;
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,8 +14,7 @@ import javafx.stage.Stage;
  *
  * @author Samuel Lima
  */
-public class KeyLoan extends Application {
-    
+public class Loan {
     private static Stage stage;
 
     public static Stage getStage() {
@@ -25,18 +22,14 @@ public class KeyLoan extends Application {
     }
 
     public static void setStage(Stage stage) {
-        KeyLoan.stage = stage;
+        Loan.stage = stage;
     }
     
-    public KeyLoan(Model.ModelKey selected) {
-        KeyLoanController.setSelected(selected);
-    }
     
-    @Override
     public void start(Stage stage) throws Exception {
 
-        stage.setTitle("Qchave - Empréstimo de Chaves");
-        Parent root = FXMLLoader.load(getClass().getResource("/View/KeyLoan.fxml"));
+        stage.setTitle("Qchave - Emprestimos");
+        Parent root = FXMLLoader.load(getClass().getResource("/View/KeyLoanPage.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -49,5 +42,5 @@ public class KeyLoan extends Application {
     public static void main(String[] args) {
         // TODO code application logic here
     }
-
+    
 }

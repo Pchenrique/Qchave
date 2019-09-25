@@ -16,12 +16,34 @@
    <children>
       <VBox prefHeight="500.0" prefWidth="281.0" style="-fx-background-color: #00ae3c;">
          <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#backPage" style="-fx-background-color: #00ae3c;" text="Voltar" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/back-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="90.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
             <ImageView fitHeight="96.0" fitWidth="212.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/Logo_qchaves05.png" />
                </image>
                <VBox.margin>
-                  <Insets left="35.0" top="160.0" />
+                  <Insets left="35.0" top="85.0" />
                </VBox.margin>
             </ImageView>
             <Label text="Sistema de Gerenciamento de Chaves do IFCE" textFill="WHITE">
@@ -56,8 +78,8 @@
                   </Label>
                </children>
             </HBox>
-            <TextField fx:id="cpf_administrador" layoutX="110.0" layoutY="169.0" prefHeight="30.0" prefWidth="271.0" promptText="Ex: 111.222.333-44" />
-            <Button fx:id="btn_emprestar_chave" layoutX="110.0" layoutY="224.0" mnemonicParsing="false" onAction="#confirmEmprestimo" prefHeight="30.0" prefWidth="271.0" styleClass="key-buttom" stylesheets="@../Style/css.css" text="Confirmar Empréstimo" textFill="WHITE">
+            <TextField fx:id="cpf_administrador" layoutX="110.0" layoutY="198.0" prefHeight="30.0" prefWidth="271.0" promptText="Ex: 111.222.333-44" />
+            <Button fx:id="btn_emprestar_chave" layoutX="110.0" layoutY="253.0" mnemonicParsing="false" onAction="#confirmDevolucao" prefHeight="30.0" prefWidth="271.0" styleClass="key-buttom" stylesheets="@../Style/css.css" text="Confirmar Devolução" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -65,17 +87,23 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <TextField fx:id="nome_usuario" layoutX="109.0" layoutY="103.0" prefHeight="30.0" prefWidth="271.0" promptText="Ex: Paulo Cesar" styleClass="input-key" stylesheets="@../Style/css.css" />
-            <Label layoutX="110.0" layoutY="78.0" text="Nome do Usuário">
+            <Label layoutX="110.0" layoutY="78.0" text="Responsável da Chave">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="111.0" layoutY="145.0" text="CPF do Administrador">
+            <Label layoutX="110.0" layoutY="177.0" text="CPF do Administrador">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
+            <Label fx:id="label_Nome_Responsavel" layoutX="110.0" layoutY="100.0" text="Paulo Cesar Henrique da Silva" />
+            <Label layoutX="110.0" layoutY="123.0" text="Chave">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="label_Nome_Chave" layoutX="110.0" layoutY="145.0" text="Chave do Gabinete" />
          </children>
       </Pane>
    </children>

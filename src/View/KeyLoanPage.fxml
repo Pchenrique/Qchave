@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.KeyController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoanController">
    <children>
       <VBox prefHeight="500.0" prefWidth="281.0" style="-fx-background-color: #00ae3c;">
          <children>
@@ -73,7 +73,7 @@
       </VBox>
       <HBox layoutX="281.0" prefHeight="60.0" prefWidth="619.0">
          <children>
-            <Label text="Lista de Chaves" textFill="WHITE">
+            <Label prefHeight="25.0" prefWidth="329.0" text="Lista de Chaves Emprestadas" textFill="WHITE">
                <font>
                   <Font name="Candara Bold" size="20.0" />
                </font>
@@ -83,7 +83,7 @@
             </Label>
             <TextField prefHeight="30.0" prefWidth="190.0" promptText="Buscar Chave">
                <HBox.margin>
-                  <Insets left="195.0" top="15.0" />
+                  <Insets left="10.0" top="15.0" />
                </HBox.margin>
             </TextField>
             <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="58.0" style="-fx-background-color: #00ae3c;" textFill="WHITE">
@@ -108,61 +108,7 @@
       </HBox>
       <HBox layoutX="281.0" layoutY="450.0" prefHeight="50.0" prefWidth="619.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#cadastrarChave" prefHeight="29.0" prefWidth="106.0" style="-fx-background-color: #4b4a54;" text="Inserir " textFill="WHITE">
-               <HBox.margin>
-                  <Insets left="85.0" top="12.0" />
-               </HBox.margin>
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Images/insert-icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="keyEdit" mnemonicParsing="false" onAction="#editarChave" prefHeight="30.0" prefWidth="105.0" style="-fx-background-color: #4b4a54;" text="Editar " textFill="WHITE">
-               <HBox.margin>
-                  <Insets left="10.0" top="12.0" />
-               </HBox.margin>
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Images/edit-icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#excluirChave" prefHeight="30.0" prefWidth="107.0" style="-fx-background-color: #4b4a54;" text="Excluir " textFill="WHITE">
-               <HBox.margin>
-                  <Insets left="10.0" top="12.0" />
-               </HBox.margin>
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Images/delete-icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#emprestarChave" prefHeight="30.0" prefWidth="106.0" style="-fx-background-color: #4b4a54;" text="Emprestar" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#devolverChave" prefHeight="29.0" prefWidth="105.0" style="-fx-background-color: #4b4a54;" text="Devolver" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -170,24 +116,23 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <HBox.margin>
-                  <Insets left="10.0" top="12.0" />
+                  <Insets left="250.0" top="12.0" />
                </HBox.margin>
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Images/menu-icon-emprestar.png" />
+                        <Image url="@../Images/menu-icon-devolver.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
          </children>
       </HBox>
-      <TableView fx:id="table_chaves" layoutX="281.0" layoutY="60.0" prefHeight="389.0" prefWidth="619.0">
+      <TableView fx:id="table_chaves_emprestadas" layoutX="281.0" layoutY="60.0" prefHeight="389.0" prefWidth="619.0">
         <columns>
           <TableColumn fx:id="id" prefWidth="86.0" text="Id" />
-          <TableColumn fx:id="nome" prefWidth="197.0" text="Nome da Sala" />
-            <TableColumn fx:id="bloco" prefWidth="203.0" text="Bloco" />
-            <TableColumn fx:id="status" prefWidth="132.0" text="Status" />
+          <TableColumn fx:id="nome_responsavel" prefWidth="263.0" text="Nome do Resposável" />
+            <TableColumn fx:id="nome_admin" prefWidth="269.0" text="Nome do Administrador" />
         </columns>
       </TableView>
    </children>

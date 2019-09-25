@@ -10,6 +10,7 @@ import Classe.EditKey;
 import Classe.Home;
 import Classe.Key;
 import Classe.KeyLoan;
+import Classe.KeyReturn;
 import Classe.RegisterKey;
 import DAO.KeyDao;
 import Model.ModelKey;
@@ -100,6 +101,7 @@ public class KeyController implements Initializable {
                 alerta.setHeaderText("A chave "+selected.getNome_sala()+" já está emprestada!");
                 alerta.show();
             }else{
+                Key.getStage().close();
                 KeyLoan keyloan = new KeyLoan(selected);
             
                 try {
@@ -113,7 +115,10 @@ public class KeyController implements Initializable {
 
      //Método para chamar a view de devolver chave.
     @FXML
-    private void devolverChave(ActionEvent event) {
+    private void devolverChave(ActionEvent event) throws Exception {
+        Key.getStage().close();
+        KeyReturn keyreturn = new KeyReturn();
+        keyreturn.start(new Stage()); 
     }
 
     //Método de editar chave.

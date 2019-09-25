@@ -5,6 +5,9 @@
  */
 package Controller;
 
+import Classe.Key;
+import Classe.KeyLoan;
+import Classe.KeyReturn;
 import DAO.AdminDao;
 import DAO.EmprestarDAO;
 import DAO.KeyDao;
@@ -16,11 +19,22 @@ import Model.ModelUser;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,43 +47,47 @@ public class KeyLoanController implements Initializable {
     @FXML
     private TextField cpf_administrador;
     @FXML
+    private TextField nome_usuario;
+
+    private static Model.ModelKey selected;
+    @FXML
     private Button btn_emprestar_chave;
     @FXML
-    private TextField nome_usuario;
-    
-    private static Model.ModelKey selected;
+    private Label Label_Id_Chave;
+
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-
+        //TODO
+    }
+    
     @FXML
-    private void confirmEmprestimo(ActionEvent event) throws SQLException, Exception {
-        
+    private void confirmEmprestimo(ActionEvent event) throws SQLException {
         EmprestarDAO banco = new EmprestarDAO();
         UserDAO banco_userdao = new UserDAO();
         AdminDao banco_admindao = new AdminDao();
         KeyDao banco_key = new KeyDao();
-        
+
         long matricula_user = Long.parseLong(this.nome_usuario.getText());
         String cpf_administrador = this.cpf_administrador.getText();
-        
+
         ModelUser usuario = banco_userdao.buscarUser(matricula_user);
         ModelAdmin admin = banco_admindao.buscarAdmin(cpf_administrador);
-        
+
         ModelEmprestimo emprestimo = new ModelEmprestimo(usuario.getId(), selected.getId(), admin.getId());
-        
         banco.inserirEmprestimo(emprestimo);
-        
+
         selected.setStatus(false);
         banco_key.editar(selected, selected.getId());
-        
+
         JOptionPane.showMessageDialog(null, "Chave Emprestada com sucesso!");
     }
-    
+   
+
     public static ModelKey getSelected() {
         return selected;
     }
@@ -77,5 +95,12 @@ public class KeyLoanController implements Initializable {
     public static void setSelected(ModelKey selected) {
         KeyLoanController.selected = selected;
     }
-    
+
+    @FXML
+    private void backPage(ActionEvent event) throws Exception {
+        KeyLoan.getStage().close();
+
+        Key newFrame = new Key();
+        newFrame.start(new Stage());
+    }
 }
