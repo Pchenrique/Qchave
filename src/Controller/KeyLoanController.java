@@ -7,7 +7,6 @@ package Controller;
 
 import Classe.Key;
 import Classe.KeyLoan;
-import Classe.KeyReturn;
 import DAO.AdminDao;
 import DAO.EmprestarDAO;
 import DAO.KeyDao;
@@ -19,21 +18,12 @@ import Model.ModelUser;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -54,7 +44,7 @@ public class KeyLoanController implements Initializable {
     private Button btn_emprestar_chave;
     @FXML
     private Label Label_Id_Chave;
-
+    
     /**
      * Initializes the controller class.
      * @param url
@@ -86,14 +76,13 @@ public class KeyLoanController implements Initializable {
 
         JOptionPane.showMessageDialog(null, "Chave Emprestada com sucesso!");
     }
-   
 
     public static ModelKey getSelected() {
         return selected;
     }
 
     public static void setSelected(ModelKey selected) {
-        KeyLoanController.selected = selected;
+       KeyLoanController.selected = selected;
     }
 
     @FXML

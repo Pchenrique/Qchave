@@ -5,7 +5,6 @@
  */
 package Controller;
 
-import Classe.KeyLoan;
 import Classe.KeyReturn;
 import Classe.Loan;
 import DAO.EmprestarDAO;
@@ -69,7 +68,7 @@ public class LoanController implements Initializable{
     }
     
      public void initTable() throws SQLException {
-        id.setCellValueFactory((new PropertyValueFactory("id_chave")));
+        id.setCellValueFactory(new PropertyValueFactory("id_chave"));
         nome_responsavel.setCellValueFactory(new PropertyValueFactory("id_usuario"));
         nome_admin.setCellValueFactory(new PropertyValueFactory("id_administrador"));
 

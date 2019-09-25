@@ -29,11 +29,12 @@ public class KeyDao {
 
     public void editar(ModelKey chave, int id) throws SQLException {
 
-        String sql = "update chaves set nome_sala=?, bloco=? where id=?";
+        String sql = "update chaves set nome_sala=?, bloco=?, status=? where id=?";
         PreparedStatement stmt = conect.prepareStatement(sql);
         stmt.setString(1, chave.getNome_sala());
         stmt.setString(2, chave.getBloco());
-        stmt.setInt(3, id);
+        stmt.setBoolean(3, chave.getStatus());
+        stmt.setInt(4, id);
         stmt.executeUpdate();
     }
 
