@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoanController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoanController">
    <children>
       <VBox prefHeight="500.0" prefWidth="281.0" style="-fx-background-color: #00ae3c;">
          <children>
@@ -130,9 +130,11 @@
       </HBox>
       <TableView fx:id="table_chaves_emprestadas" layoutX="281.0" layoutY="60.0" prefHeight="389.0" prefWidth="619.0">
         <columns>
-          <TableColumn fx:id="id" prefWidth="86.0" text="Id" />
-          <TableColumn fx:id="nome_responsavel" prefWidth="263.0" text="Nome do Resposável" />
-            <TableColumn fx:id="nome_admin" prefWidth="269.0" text="Nome do Administrador" />
+          <TableColumn fx:id="id" prefWidth="52.0" text="Id" />
+            <TableColumn fx:id="nome_chave" prefWidth="128.0" text="Chave" />
+          <TableColumn fx:id="nome_responsavel" prefWidth="179.0" text="Nome do Resposável" />
+            <TableColumn fx:id="nome_admin" prefWidth="176.0" text="Nome do Administrador" />
+            <TableColumn fx:id="status" prefWidth="83.0" text="Status" />
         </columns>
       </TableView>
    </children>

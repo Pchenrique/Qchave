@@ -57,7 +57,7 @@ public class EmprestarDAO {
         List<ModelEmprestimo> emprestimos = new ArrayList<>();
 
         try {
-            String sql = "SELECT * FROM emprestimos";
+            String sql = "SELECT * FROM emprestimos WHERE status='Emprestada' ORDER BY id DESC";
             PreparedStatement stmt = conect.prepareStatement(sql);
             rs = stmt.executeQuery();
 
