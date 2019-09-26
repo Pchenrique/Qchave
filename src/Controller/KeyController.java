@@ -10,7 +10,6 @@ import Classe.EditKey;
 import Classe.Home;
 import Classe.Key;
 import Classe.KeyLoan;
-import Classe.KeyReturn;
 import Classe.RegisterKey;
 import DAO.KeyDao;
 import Model.ModelKey;
@@ -110,16 +109,14 @@ public class KeyController implements Initializable {
                     Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+        }else{
+            Alert alerta = new Alert(Alert.AlertType.WARNING);
+            alerta.setHeaderText("Selecione uma chave clicando para emprestar.");
+            alerta.show();
         }
     }
 
      //Método para chamar a view de devolver chave.
-    @FXML
-    private void devolverChave(ActionEvent event) throws Exception {
-        Key.getStage().close();
-        KeyReturn keyreturn = new KeyReturn();
-        keyreturn.start(new Stage()); 
-    }
 
     //Método de editar chave.
     @FXML

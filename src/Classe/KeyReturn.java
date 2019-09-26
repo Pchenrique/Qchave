@@ -5,7 +5,7 @@
  */
 package Classe;
 
-import Controller.KeyLoanController;
+import Controller.KeyReturnController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -26,6 +26,9 @@ public class KeyReturn {
         KeyReturn.stage = stage;
     }
     
+    public KeyReturn(Model.ModelEmprestimo selected) {
+        KeyReturnController.setSelected(selected);
+    }
     
     public void start(Stage stage) throws Exception {
 

@@ -3,17 +3,19 @@ package Model;
 import java.sql.Date;
 
 public class ModelEmprestimo{
-
+    private int id;
     private int id_user;
     private int id_admin;
     private int id_chave;
     private Date data_emprestimo;
+    private String status;
     
     @SuppressWarnings("empty-statement")
      public ModelEmprestimo(int id_user, int id_chave, int id_admin) {
         this.id_user = id_user;
         this.id_chave = id_chave;
         this.id_admin = id_admin;
+        this.status = "Emprestada";
         this.data_emprestimo = new Date(System.currentTimeMillis());
     }
     
@@ -53,4 +55,20 @@ public class ModelEmprestimo{
         this.data_emprestimo = data_emprestimo;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+   
 }

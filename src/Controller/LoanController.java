@@ -21,6 +21,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -41,15 +42,7 @@ public class LoanController implements Initializable{
     @FXML
     private TableColumn<ModelEmprestimo, String> nome_admin;
 
-     private static ModelEmprestimo selected;
-
-    public static ModelEmprestimo getSelected() {
-        return selected;
-    }
-
-    public static void setSelected(ModelEmprestimo selected) {
-        LoanController.selected = selected;
-    }
+    private ModelEmprestimo selected;
      
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -83,13 +76,26 @@ public class LoanController implements Initializable{
     
     @FXML
     private void devolverChave(ActionEvent event) {
-        KeyReturn keyreturn = new KeyReturn();
-        
-        try {
-            keyreturn.start(new Stage());
-        } catch (Exception ex) {
-            Logger.getLogger(KeyLoanController.class.getName()).log(Level.SEVERE, null, ex);
+        if(selected != null){
+            if(selected.getStatus().equals("Encerrado")){
+                Alert alerta = new Alert(Alert.AlertType.WARNING);
+                alerta.setHeaderText("Devolução Já foi efetuada!.");
+                alerta.show(); 
+            }else{
+                KeyReturn keyreturn = new KeyReturn(selected);
+
+                try {
+                    keyreturn.start(new Stage());
+                } catch (Exception ex) {
+                    Logger.getLogger(KeyLoanController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }else{
+            Alert alerta = new Alert(Alert.AlertType.WARNING);
+            alerta.setHeaderText("Selecione uma chave clicando para Devolvela.");
+            alerta.show();
         }
+  
     }
 
     @FXML
@@ -103,8 +109,5 @@ public class LoanController implements Initializable{
             Logger.getLogger(LoanController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-  
-
-    
+   
 }

@@ -75,4 +75,29 @@ public class KeyDao {
 
         return keys;
     }
+    
+    public ModelKey buscarKey(int id) throws SQLException{
+        ResultSet result = null;
+        ModelKey key = new ModelKey();
+        
+        try{
+            String sql = "SELECT * FROM chaves where id='"+id+"'";
+            PreparedStatement stmt = conect.prepareStatement(sql);
+            result = stmt.executeQuery();
+
+             if(result != null && result.next()){
+                key.setId(result.getInt("id"));
+                key.setNome_sala(result.getString("nome_sala"));
+                key.setBloco(result.getString("bloco"));
+                key.setStatus(result.getBoolean("status"));
+             }
+         
+        } catch (SQLException e) {
+            System.out.println("Erro:" + e.getMessage());
+        } finally {
+            conect.close();
+        }
+ 
+        return key;
+    }
 }
