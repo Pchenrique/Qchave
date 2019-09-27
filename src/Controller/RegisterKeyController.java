@@ -51,7 +51,7 @@ public class RegisterKeyController implements Initializable {
         String nome_sala = this.nome_sala.getText();
         //int number = Integer.parseInt(codigo_chave.getText());
         String bloco = this.bloco.getText();
-        Boolean status_chave = true;
+        String status_chave = "Dsiponivel";
         
 
         ModelKey chave = new ModelKey(nome_sala, bloco, status_chave);

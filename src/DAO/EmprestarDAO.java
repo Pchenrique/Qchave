@@ -24,14 +24,17 @@ public class EmprestarDAO {
     
     public void inserirEmprestimo(ModelEmprestimo emprestimo) throws SQLException {
 
-        String sql = "insert into emprestimos (id_chave,id_usuario,id_administrador,data_emprestimo,status)values (?,?,?,?,?)";
+        String sql = "insert into emprestimos (id_chave,nome_chave,id_usuario,nome_usuario,id_administrador,nome_admin,data_emprestimo,status)values (?,?,?,?,?,?,?,?)";
         PreparedStatement stmt = conect.prepareStatement(sql);
    
         stmt.setInt(1, emprestimo.getId_chave());
-        stmt.setInt(2, emprestimo.getId_user());
-        stmt.setInt(3, emprestimo.getId_admin());
-        stmt.setDate(4, emprestimo.getData_emprestimo());
-        stmt.setString(5, emprestimo.getStatus());
+        stmt.setString(2, emprestimo.getNome_chave());
+        stmt.setInt(3, emprestimo.getId_user());
+        stmt.setString(4, emprestimo.getNome_usuario());
+        stmt.setInt(5, emprestimo.getId_admin());
+        stmt.setString(6, emprestimo.getNome_admin());
+        stmt.setDate(7, emprestimo.getData_emprestimo());
+        stmt.setString(8, emprestimo.getStatus());
         stmt.execute();
         stmt.close();
         conect.close();
@@ -39,14 +42,18 @@ public class EmprestarDAO {
     
     public void editar(ModelEmprestimo emprestimo, int id) throws SQLException {
 
-        String sql = "update emprestimos set data_emprestimo=?, id_chave=?, id_usuario=?, id_administrador=?, status=? where id=?";
+        String sql = "update emprestimos set id_chave=?,nome_chave=?,id_usuario=?,nome_usuario=?,id_administrador=?,nome_admin=?,data_emprestimo=?,status=? where id=?";
         PreparedStatement stmt = conect.prepareStatement(sql);
-        stmt.setDate(1, emprestimo.getData_emprestimo());
-        stmt.setInt(2, emprestimo.getId_chave());
+        
+        stmt.setInt(1, emprestimo.getId_chave());
+        stmt.setString(2, emprestimo.getNome_chave());
         stmt.setInt(3, emprestimo.getId_user());
-        stmt.setInt(4, emprestimo.getId_admin());
-        stmt.setString(5, emprestimo.getStatus());
-        stmt.setInt(6, id);
+        stmt.setString(4, emprestimo.getNome_usuario());
+        stmt.setInt(5, emprestimo.getId_admin());
+        stmt.setString(6, emprestimo.getNome_admin());
+        stmt.setDate(7, emprestimo.getData_emprestimo());
+        stmt.setString(8, emprestimo.getStatus());
+        stmt.setInt(9, id);
         stmt.executeUpdate();
     }
     
@@ -69,6 +76,9 @@ public class EmprestarDAO {
                 emprestimo.setId_admin(rs.getInt("id_administrador"));
                 emprestimo.setData_emprestimo(rs.getDate("data_emprestimo"));
                 emprestimo.setStatus(rs.getString("status"));
+                emprestimo.setNome_usuario(rs.getString("nome_usuario"));
+                emprestimo.setNome_chave(rs.getString("nome_chave"));
+                emprestimo.setNome_admin(rs.getString("nome_admin"));
                 emprestimos.add(emprestimo);
             }
 
@@ -102,4 +112,5 @@ public class EmprestarDAO {
         }
         return emprestimo;
     }
+    
 }

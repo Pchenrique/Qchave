@@ -62,7 +62,7 @@ public class ModelUser {
 
     @Override
     public String toString() {
-        return "" + matricula;
+        return nome;
     }
 
 }

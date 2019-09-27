@@ -41,12 +41,12 @@ public class LoanController implements Initializable{
     private TableColumn<ModelEmprestimo, String> nome_responsavel;
     @FXML
     private TableColumn<ModelEmprestimo, String> nome_admin;
-
-    private ModelEmprestimo selected;
     @FXML
     private TableColumn<ModelEmprestimo, String> nome_chave;
     @FXML
-    private TableColumn<ModelEmprestimo, String> status;
+    private TableColumn<ModelEmprestimo, String> data;
+    
+    private ModelEmprestimo selected;
      
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -66,10 +66,10 @@ public class LoanController implements Initializable{
     
      public void initTable() throws SQLException {
         id.setCellValueFactory(new PropertyValueFactory("id"));
-        nome_chave.setCellValueFactory(new PropertyValueFactory("id_chave"));
-        nome_responsavel.setCellValueFactory(new PropertyValueFactory("id_user"));
-        nome_admin.setCellValueFactory(new PropertyValueFactory("id_admin"));
-        status.setCellValueFactory(new PropertyValueFactory("status"));
+        nome_chave.setCellValueFactory(new PropertyValueFactory("nome_chave"));
+        nome_responsavel.setCellValueFactory(new PropertyValueFactory("nome_usuario"));
+        nome_admin.setCellValueFactory(new PropertyValueFactory("nome_admin"));
+        data.setCellValueFactory(new PropertyValueFactory("data_emprestimo"));
 
         table_chaves_emprestadas.setItems(atualizaTable());
     }

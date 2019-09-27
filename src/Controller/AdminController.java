@@ -31,7 +31,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.SortEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import static javafx.scene.input.KeyCode.C;
 import javafx.stage.Stage;
 
 /**
@@ -50,11 +53,17 @@ public class AdminController implements Initializable {
     private TableColumn<Model.ModelAdmin, String> col_cpf;
     @FXML
     private Button btn_cadastrar_admin;
-
-    private ModelAdmin selected;
     @FXML
     private TableColumn<ModelAdmin, Integer> id;
+    @FXML
+    private TextField buscar_admin;
+    @FXML
+    private ImageView btn_buscar;
 
+    private ModelAdmin selected;
+    
+     private ObservableList<ModelAdmin> admins = FXCollections.observableArrayList();
+   
     /**
      * Initializes the controller class.
      *
@@ -69,6 +78,14 @@ public class AdminController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        buscar_admin.setOnKeyReleased((KeyEvent)->{
+            table_admins.setItems(buscar());
+        });
+        
+        btn_buscar.setOnMouseClicked((MouseEvent)->{
+            table_admins.setItems(buscar());
+        });
         //Função para verificar a linha selecionada na tabela.
         table_admins.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
@@ -141,7 +158,19 @@ public class AdminController implements Initializable {
     //Função ObservableList para listar os campos da tabela.
     public ObservableList<Model.ModelAdmin> atualizaTable() throws SQLException {
         AdminDao admindao = new AdminDao();
-        return FXCollections.observableArrayList(admindao.listar());
+        admins = FXCollections.observableArrayList(admindao.listar());
+        return admins;
+    }
+    
+     public ObservableList<ModelAdmin> buscar(){
+        ObservableList<ModelAdmin> adminsFiltrada = FXCollections.observableArrayList();
+        
+        for(int i=0; i<admins.size();i++){
+            if(admins.get(i).getNome().toLowerCase().contains(buscar_admin.getText().toLowerCase()) || admins.get(i).getCpf().contains(buscar_admin.getText())){
+                adminsFiltrada.add(admins.get(i));
+            }
+        }
+        return adminsFiltrada;
     }
 
     @FXML
@@ -151,4 +180,5 @@ public class AdminController implements Initializable {
         Home newFrame = new Home();
         newFrame.start(new Stage());
     }
+
 }

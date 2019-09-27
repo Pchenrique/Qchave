@@ -11,6 +11,7 @@ import Classe.Home;
 import Classe.RegisterUser;
 import Classe.User;
 import DAO.UserDAO;
+import Model.ModelUser;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -27,7 +28,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -39,19 +42,25 @@ public class UserController implements Initializable {
 
     //Ids das colunas da tabela.
     @FXML
-    private TableView<Model.ModelUser> table_users;
+    private TableView<ModelUser> table_users;
     @FXML
-    private TableColumn<Model.ModelUser, String> col_nome;
+    private TableColumn<ModelUser, Integer> id;
     @FXML
-    private TableColumn<Model.ModelUser, Long> col_matricula;
+    private TableColumn<ModelUser, String> col_nome;
     @FXML
-    private TableColumn<Model.ModelUser, String> col_tipo_usuario;
+    private TableColumn<ModelUser, Long> col_matricula;
     @FXML
-    private TableColumn<Model.ModelUser, String> col_email;
+    private TableColumn<ModelUser, String> col_tipo_usuario;
+    @FXML
+    private TableColumn<ModelUser, String> col_email;
+    @FXML
+    private TextField buscar_user;
+    @FXML
+    private ImageView btn_buscar;
 
     private Model.ModelUser selected;
-    @FXML
-    private TableColumn<Model.ModelUser, Integer> id;
+    
+    private ObservableList<ModelUser> usuarios = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
@@ -67,6 +76,14 @@ public class UserController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        buscar_user.setOnKeyReleased((KeyEvent)->{
+            table_users.setItems(buscar());
+        });
+        
+        btn_buscar.setOnMouseClicked((MouseEvent)->{
+            table_users.setItems(buscar());
+        });
 
         //Função para verificar a linha selecionada na tabela.
         table_users.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
@@ -143,7 +160,20 @@ public class UserController implements Initializable {
     //Função ObservableList para listar os campos da tabela.
     public ObservableList<Model.ModelUser> atualizaTable() throws SQLException {
         UserDAO userdao = new UserDAO();
-        return FXCollections.observableArrayList(userdao.listar());
+        usuarios = FXCollections.observableArrayList(userdao.listar());
+        return usuarios;
+    }
+    
+    public ObservableList<ModelUser> buscar(){
+        ObservableList<ModelUser> userFiltrada = FXCollections.observableArrayList();
+        
+        for(int i=0; i<usuarios.size();i++){
+            String matricula = Long.toString(usuarios.get(i).getMatricula());
+            if(usuarios.get(i).getNome().toLowerCase().contains(buscar_user.getText().toLowerCase()) || matricula.contains(buscar_user.getText())){
+                 userFiltrada.add(usuarios.get(i));
+            }
+        }
+        return userFiltrada;
     }
 
     @FXML

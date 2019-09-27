@@ -58,9 +58,8 @@ public class EditKeyController implements Initializable {
     private void alterarChave(ActionEvent event) throws SQLException, Exception {
         int id = key2.getId();
         String nome_sala = this.nomeSala.getText();
-        //int number = Integer.parseInt(this.codigoChave.getText());
         String bloco = this.blocoSala.getText();
-        Boolean status_chave = true;
+        String status_chave = key2.getStatus();
 
         ModelKey chave = new ModelKey(nome_sala, bloco, status_chave);
 

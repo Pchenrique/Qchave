@@ -130,11 +130,11 @@
       </HBox>
       <TableView fx:id="table_chaves_emprestadas" layoutX="281.0" layoutY="60.0" prefHeight="389.0" prefWidth="619.0">
         <columns>
-          <TableColumn fx:id="id" prefWidth="52.0" text="Id" />
-            <TableColumn fx:id="nome_chave" prefWidth="128.0" text="Chave" />
-          <TableColumn fx:id="nome_responsavel" prefWidth="179.0" text="Nome do Resposável" />
-            <TableColumn fx:id="nome_admin" prefWidth="176.0" text="Nome do Administrador" />
-            <TableColumn fx:id="status" prefWidth="83.0" text="Status" />
+          <TableColumn fx:id="id" prefWidth="46.0" text="Id" />
+            <TableColumn fx:id="nome_chave" prefWidth="129.0" text="Chave" />
+          <TableColumn fx:id="nome_responsavel" prefWidth="184.0" text="Nome do Resposável" />
+            <TableColumn fx:id="nome_admin" prefWidth="158.0" text="Emprestada Por" />
+            <TableColumn fx:id="data" prefWidth="101.0" text="Data" />
         </columns>
       </TableView>
    </children>

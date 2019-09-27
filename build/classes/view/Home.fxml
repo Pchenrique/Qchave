@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeController">
    <children>
       <VBox prefHeight="500.0" prefWidth="281.0" style="-fx-background-color: #00ae3c;">
          <children>
@@ -141,7 +141,7 @@
             </Pane>
             <Pane prefHeight="53.0" prefWidth="281.0">
                <children>
-                  <Label layoutX="72.0" layoutY="17.0" text="IFCE - Campus Cedro" textFill="WHITE">
+                  <Label layoutX="46.0" layoutY="17.0" text="IFCE - Campus Cedro - BETA" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -174,7 +174,7 @@
                         <Font name="Arial Black" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="11.0" layoutY="18.0" text="20" textFill="WHITE">
+                  <Label fx:id="info_emprestimos" layoutX="11.0" layoutY="18.0" prefHeight="44.0" prefWidth="166.0" text="20" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="30.0" />
                      </font>
@@ -198,7 +198,7 @@
                         <Font name="Arial Black" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="11.0" layoutY="18.0" text="50" textFill="WHITE">
+                  <Label fx:id="info_chaves" layoutX="11.0" layoutY="18.0" text="50" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="30.0" />
                      </font>
@@ -222,7 +222,7 @@
                         <Font name="Arial Black" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="10.0" layoutY="18.0" text="80" textFill="WHITE">
+                  <Label fx:id="info_usuarios" layoutX="10.0" layoutY="18.0" text="80" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="30.0" />
                      </font>
@@ -256,7 +256,7 @@
                         <Font name="Arial Black" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="11.0" layoutY="18.0" text="10" textFill="WHITE">
+                  <Label fx:id="info_devolucoes" layoutX="11.0" layoutY="18.0" text="10" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="30.0" />
                      </font>
@@ -280,7 +280,7 @@
                         <Font name="Arial Black" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="11.0" layoutY="18.0" text="5" textFill="WHITE">
+                  <Label fx:id="info_reservas" layoutX="11.0" layoutY="18.0" text="5" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="30.0" />
                      </font>

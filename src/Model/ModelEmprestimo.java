@@ -9,14 +9,20 @@ public class ModelEmprestimo{
     private int id_chave;
     private Date data_emprestimo;
     private String status;
+    private String nome_usuario;
+    private String nome_chave;
+    private String nome_admin;
     
     @SuppressWarnings("empty-statement")
-     public ModelEmprestimo(int id_user, int id_chave, int id_admin) {
+     public ModelEmprestimo(int id_user, String nome_usuario, int id_chave, String nome_chave ,int id_admin, String nome_admin) {
         this.id_user = id_user;
         this.id_chave = id_chave;
         this.id_admin = id_admin;
         this.status = "Emprestada";
         this.data_emprestimo = new Date(System.currentTimeMillis());
+        this.nome_usuario = nome_usuario;
+        this.nome_chave = nome_chave;
+        this.nome_admin = nome_admin;
     }
     
     public ModelEmprestimo(){
@@ -69,6 +75,30 @@ public class ModelEmprestimo{
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getNome_usuario() {
+        return nome_usuario;
+    }
+
+    public void setNome_usuario(String nome_usuario) {
+        this.nome_usuario = nome_usuario;
+    }
+
+    public String getNome_chave() {
+        return nome_chave;
+    }
+
+    public void setNome_chave(String nome_chave) {
+        this.nome_chave = nome_chave;
+    }
+
+    public String getNome_admin() {
+        return nome_admin;
+    }
+
+    public void setNome_admin(String nome_admin) {
+        this.nome_admin = nome_admin;
     }
    
 }

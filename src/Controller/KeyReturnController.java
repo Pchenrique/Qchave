@@ -86,7 +86,7 @@ public class KeyReturnController implements Initializable {
         
         KeyDao banco_keydao = new KeyDao();
         ModelKey key = banco_keydao.buscarKey(selected.getId_chave());
-        key.setStatus(true);
+        key.setStatus("Disponivel");
         
         KeyDao banco_keydao2 = new KeyDao();
         banco_keydao2.editar(key, key.getId());

@@ -5,9 +5,9 @@ public class ModelKey {
     private String nome_sala;
     private int id;
     private String bloco;
-    private boolean status;
+    private String status;
     
-     public ModelKey(String nome_sala, String bloco, boolean status) {
+     public ModelKey(String nome_sala, String bloco, String status) {
         this.nome_sala = nome_sala;
         this.bloco = bloco;
         this.status = status;
@@ -41,11 +41,11 @@ public class ModelKey {
         this.bloco = bloco;
     }
 
-    public boolean getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

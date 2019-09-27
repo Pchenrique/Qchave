@@ -21,7 +21,7 @@ public class KeyDao {
         PreparedStatement stmt = conect.prepareStatement(sql);
         stmt.setString(1, chave.getNome_sala());
         stmt.setString(2, chave.getBloco());
-        stmt.setBoolean(3, chave.getStatus());
+        stmt.setString(3, chave.getStatus());
         stmt.execute();
         stmt.close();
         conect.close();
@@ -33,7 +33,7 @@ public class KeyDao {
         PreparedStatement stmt = conect.prepareStatement(sql);
         stmt.setString(1, chave.getNome_sala());
         stmt.setString(2, chave.getBloco());
-        stmt.setBoolean(3, chave.getStatus());
+        stmt.setString(3, chave.getStatus());
         stmt.setInt(4, id);
         stmt.executeUpdate();
     }
@@ -63,7 +63,33 @@ public class KeyDao {
                 key.setId(rs.getInt("id"));
                 key.setNome_sala(rs.getString("nome_sala"));
                 key.setBloco(rs.getString("bloco"));
-                key.setStatus(rs.getBoolean("status"));
+                key.setStatus(rs.getString("status"));
+                keys.add(key);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro:" + e.getMessage());
+        } finally {
+            conect.close();
+        }
+
+        return keys;
+    }
+    
+    public List<ModelKey> chavesDisponivel() throws SQLException {
+
+        ResultSet rs = null;
+
+        List<ModelKey> keys = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM chaves where status = 'Disponivel'";
+            PreparedStatement stmt = conect.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                ModelKey key = new ModelKey();
+                key.setId(rs.getInt("id"));
                 keys.add(key);
             }
 
@@ -89,7 +115,7 @@ public class KeyDao {
                 key.setId(result.getInt("id"));
                 key.setNome_sala(result.getString("nome_sala"));
                 key.setBloco(result.getString("bloco"));
-                key.setStatus(result.getBoolean("status"));
+                key.setStatus(result.getString("status"));
              }
          
         } catch (SQLException e) {

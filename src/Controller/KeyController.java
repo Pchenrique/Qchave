@@ -30,7 +30,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -53,8 +55,15 @@ public class KeyController implements Initializable {
     private TableView<ModelKey> table_chaves;
     @FXML
     private Button keyEdit;
+    @FXML
+    private TextField buscar_chave;
+    @FXML
+    private ImageView btn_buscar;
 
     private ModelKey selected;
+    
+    private ObservableList<ModelKey> chaves = FXCollections.observableArrayList();
+   
    
 
     /**
@@ -68,6 +77,15 @@ public class KeyController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        buscar_chave.setOnKeyReleased((KeyEvent)->{
+            table_chaves.setItems(buscar());
+        });
+        
+        btn_buscar.setOnMouseClicked((MouseEvent)->{
+            table_chaves.setItems(buscar());
+        });
+        
         //Função para verificar a linha selecionada na tabela.
         table_chaves.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
@@ -94,7 +112,7 @@ public class KeyController implements Initializable {
     @FXML
     private void emprestarChave(javafx.event.ActionEvent event) {
         if (selected != null) {
-            if(selected.getStatus() == false){
+            if(selected.getStatus().equals("Emprestada")){
                 Alert alerta = new Alert(Alert.AlertType.INFORMATION);
                 alerta.setTitle("Aviso Chave Emprestada");
                 alerta.setHeaderText("A chave "+selected.getNome_sala()+" já está emprestada!");
@@ -167,9 +185,22 @@ public class KeyController implements Initializable {
     }
 
     //Função ObservableList para listar os campos da tabela.
-    public ObservableList<Model.ModelKey> atualizaTable() throws SQLException {
+    public ObservableList<ModelKey> atualizaTable() throws SQLException {
         KeyDao keydao = new KeyDao();
-        return FXCollections.observableArrayList(keydao.listar());
+        chaves = FXCollections.observableArrayList(keydao.listar());
+        return chaves;
+    }
+    
+    public ObservableList<ModelKey> buscar(){
+        ObservableList<ModelKey> chaveFiltrada = FXCollections.observableArrayList();
+        
+        for(int i=0; i<chaves.size();i++){
+            String id_sala = Integer.toString(chaves.get(i).getId());
+            if(chaves.get(i).getNome_sala().toLowerCase().contains(buscar_chave.getText().toLowerCase()) || id_sala.contains(buscar_chave.getText())){
+                 chaveFiltrada.add(chaves.get(i));
+            }
+        }
+        return chaveFiltrada;
     }
 
     @FXML

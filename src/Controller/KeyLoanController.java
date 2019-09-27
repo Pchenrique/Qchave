@@ -68,10 +68,10 @@ public class KeyLoanController implements Initializable {
         ModelUser usuario = banco_userdao.buscarUser(matricula_user);
         ModelAdmin admin = banco_admindao.buscarAdmin(cpf_administrador);
 
-        ModelEmprestimo emprestimo = new ModelEmprestimo(usuario.getId(), selected.getId(), admin.getId());
+        ModelEmprestimo emprestimo = new ModelEmprestimo(usuario.getId(), usuario.getNome(), selected.getId(), selected.getNome_sala(), admin.getId(), admin.getNome());
         banco.inserirEmprestimo(emprestimo);
 
-        selected.setStatus(false);
+        selected.setStatus("Emprestada");
         banco_key.editar(selected, selected.getId());
 
         JOptionPane.showMessageDialog(null, "Chave Emprestada com sucesso!");

@@ -3,7 +3,10 @@ package DAO;
 import Model.ModelDevolucao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -26,4 +29,29 @@ public class DevolucaoDao {
         conect.close();
     }
     
+     public List<ModelDevolucao> listar() throws SQLException {
+
+        ResultSet rs = null;
+
+        List<ModelDevolucao> devolucoes = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM devolucoes";
+            PreparedStatement stmt = conect.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                ModelDevolucao dev = new ModelDevolucao(rs.getInt("id_administrador"), rs.getInt("id_emprestimo"));
+                dev.setId(rs.getInt("id"));
+                devolucoes.add(dev);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro:" + e.getMessage());
+        } finally {
+            conect.close();
+        }
+
+        return devolucoes;
+    }
 }
