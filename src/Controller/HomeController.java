@@ -160,6 +160,7 @@ public class HomeController implements Initializable {
         
         try {
             loan.start(new Stage());
+            Home.getStage().close();
         } catch (Exception ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -8,6 +8,7 @@ package Controller;
 //Importação das classes EditUser, RegisterUser e do Model User e do DAO User.
 import Classe.EditUser;
 import Classe.Home;
+import Classe.KeyPermission;
 import Classe.RegisterUser;
 import Classe.User;
 import DAO.UserDAO;
@@ -143,6 +144,24 @@ public class UserController implements Initializable {
         } else {
             Alert alerta = new Alert(Alert.AlertType.INFORMATION);
             alerta.setHeaderText("Selecione um usuário clicando sobre o mesmo!");
+            alerta.show();
+        }
+    }
+    
+    
+    @FXML
+    private void permitirChave(ActionEvent event) {
+        if(selected != null) {
+            KeyPermission permission = new KeyPermission(selected);
+            try {
+                User.getStage().close();
+                permission.start(new Stage());
+            } catch (Exception ex) {
+                Logger.getLogger(KeyPermissionController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setHeaderText("Selecione um usuário clicando sobre o mesmo para dá permissão para pegar uma chave.");
             alerta.show();
         }
     }

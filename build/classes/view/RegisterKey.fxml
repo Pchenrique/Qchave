@@ -78,8 +78,7 @@
                   </Label>
                </children>
             </HBox>
-            <TextField fx:id="codigo_chave" layoutX="253.0" layoutY="169.0" prefHeight="30.0" prefWidth="127.0" promptText="Ex: 1112" />
-            <TextField fx:id="bloco" layoutX="110.0" layoutY="169.0" prefHeight="30.0" prefWidth="127.0" promptText="Ex: Bloco 01" />
+            <TextField fx:id="bloco" layoutX="110.0" layoutY="169.0" prefHeight="30.0" prefWidth="271.0" promptText="Ex: Bloco 01" />
             <Button fx:id="btn_cadastrar_chave" layoutX="110.0" layoutY="224.0" mnemonicParsing="false" onAction="#registrarChave" prefHeight="30.0" prefWidth="271.0" styleClass="key-buttom" stylesheets="@../Style/css.css" text="Cadastrar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
@@ -95,11 +94,6 @@
                </font>
             </Label>
             <Label layoutX="111.0" layoutY="145.0" text="Bloco da Sala">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="253.0" layoutY="145.0" text="Código da Chave">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

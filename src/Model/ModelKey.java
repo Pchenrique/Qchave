@@ -49,5 +49,12 @@ public class ModelKey {
         this.status = status;
     }
 
+    @Override
+    public String toString() {
+        return getNome_sala();
+    }
+    
+    
+
 
 }

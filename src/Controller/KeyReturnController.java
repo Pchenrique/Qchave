@@ -5,6 +5,8 @@
  */
 package Controller;
 
+import Classe.KeyReturn;
+import Classe.Loan;
 import DAO.AdminDao;
 import DAO.DevolucaoDao;
 import DAO.EmprestarDAO;
@@ -26,6 +28,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 /**
@@ -92,6 +95,14 @@ public class KeyReturnController implements Initializable {
         banco_keydao2.editar(key, key.getId());
         
         JOptionPane.showMessageDialog(null, "Chave Devolvida com Sucesso!");
+        
+        KeyReturn.getStage().close();
+        Loan newFrame = new Loan();
+        try {
+            newFrame.start(new Stage());
+        } catch (Exception ex) {
+            Logger.getLogger(KeyReturnController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public static ModelEmprestimo getSelected() {

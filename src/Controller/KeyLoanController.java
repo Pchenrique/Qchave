@@ -7,6 +7,7 @@ package Controller;
 
 import Classe.Key;
 import Classe.KeyLoan;
+import Classe.Loan;
 import DAO.AdminDao;
 import DAO.EmprestarDAO;
 import DAO.KeyDao;
@@ -18,6 +19,8 @@ import Model.ModelUser;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,6 +43,7 @@ public class KeyLoanController implements Initializable {
     private TextField nome_usuario;
 
     private static Model.ModelKey selected;
+    
     @FXML
     private Button btn_emprestar_chave;
     @FXML
@@ -75,6 +79,14 @@ public class KeyLoanController implements Initializable {
         banco_key.editar(selected, selected.getId());
 
         JOptionPane.showMessageDialog(null, "Chave Emprestada com sucesso!");
+        
+        KeyLoan.getStage().close();
+        Key newFrame = new Key();
+        try {
+            newFrame.start(new Stage());
+        } catch (Exception ex) {
+            Logger.getLogger(KeyLoanController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public static ModelKey getSelected() {

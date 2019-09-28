@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Classe.Home;
 import Classe.KeyReturn;
 import Classe.Loan;
 import DAO.EmprestarDAO;
@@ -91,6 +92,7 @@ public class LoanController implements Initializable{
                 KeyReturn keyreturn = new KeyReturn(selected);
 
                 try {
+                    Loan.getStage().close();
                     keyreturn.start(new Stage());
                 } catch (Exception ex) {
                     Logger.getLogger(KeyLoanController.class.getName()).log(Level.SEVERE, null, ex);
@@ -106,9 +108,9 @@ public class LoanController implements Initializable{
 
     @FXML
     private void backPage(ActionEvent event) {
-        KeyReturn.getStage().close();
+        Loan.getStage().close();
         
-        Loan newFrame = new Loan();
+        Home newFrame = new Home();
         try {
             newFrame.start(new Stage());
         } catch (Exception ex) {
