@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -64,7 +65,7 @@
             </Label>
          </children>
       </VBox>
-      <Pane layoutX="347.0" layoutY="73.0" prefHeight="354.0" prefWidth="491.0" styleClass="form" stylesheets="@../Style/css.css">
+      <Pane layoutX="345.0" layoutY="73.0" prefHeight="354.0" prefWidth="491.0" styleClass="form" stylesheets="@../Style/css.css">
          <children>
             <HBox prefHeight="38.0" prefWidth="491.0" styleClass="login-header">
                <children>
@@ -78,8 +79,8 @@
                   </Label>
                </children>
             </HBox>
-            <TextField fx:id="cpf_administrador" layoutX="110.0" layoutY="180.0" prefHeight="30.0" prefWidth="271.0" promptText="Ex: 111.222.333-44" />
-            <Button fx:id="btn_emprestar_chave" layoutX="113.0" layoutY="240.0" mnemonicParsing="false" onAction="#confirmEmprestimo" prefHeight="30.0" prefWidth="271.0" styleClass="key-buttom" stylesheets="@../Style/css.css" text="Confirmar Empréstimo" textFill="WHITE">
+            <TextField fx:id="cpf_administrador" layoutX="109.0" layoutY="217.0" prefHeight="30.0" prefWidth="271.0" promptText="Ex: 111.222.333-44" />
+            <Button fx:id="btn_emprestar_chave" layoutX="110.0" layoutY="274.0" mnemonicParsing="false" onAction="#confirmEmprestimo" prefHeight="30.0" prefWidth="271.0" styleClass="key-buttom" stylesheets="@../Style/css.css" text="Confirmar Empréstimo" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -87,27 +88,33 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <TextField fx:id="nome_usuario" layoutX="109.0" layoutY="114.0" prefHeight="30.0" prefWidth="271.0" promptText="Ex: Paulo Cesar" styleClass="input-key" stylesheets="@../Style/css.css" />
-            <Label layoutX="110.0" layoutY="89.0" text="Nome do Usuário">
+            <Label layoutX="109.0" layoutY="136.0" text="Nome do Usuário">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="111.0" layoutY="156.0" text="CPF do Administrador">
+            <Label layoutX="110.0" layoutY="195.0" text="CPF do Administrador">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="Label_Id_Chave" layoutX="214.0" layoutY="66.0" text="1">
+            <Label fx:id="Label_Id_Chave" layoutX="211.0" layoutY="68.0" text="1">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="110.0" layoutY="66.0" text="Código da Chave:">
+            <Label layoutX="109.0" layoutY="68.0" text="Código da Chave:">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
+            <Label layoutX="109.0" layoutY="91.0" text="Nome Chave">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="Label_nome_chave" layoutX="109.0" layoutY="110.0" text="Chave 01" />
+            <ComboBox fx:id="lista_usuarios" layoutX="109.0" layoutY="157.0" prefHeight="25.0" prefWidth="271.0" promptText="Selecione um Usuário" />
          </children>
       </Pane>
    </children>

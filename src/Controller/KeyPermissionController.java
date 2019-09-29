@@ -8,7 +8,9 @@ package Controller;
 import Classe.KeyPermission;
 import Classe.User;
 import DAO.KeyDao;
+import DAO.KeyPermissionDao;
 import Model.ModelKey;
+import Model.ModelKeyPermission;
 import Model.ModelUser;
 import java.net.URL;
 import java.sql.SQLException;
@@ -24,6 +26,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -59,8 +62,12 @@ public class KeyPermissionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Inicialização do ComboBox.
+        this.nome_usuario.setText(selected.getNome());
+        
+        this.matricula_usuario.setText(Long.toString(selected.getMatricula()));
+                
         try {
-            BuscarListaDeChaves();
+            BuscarListaDeChaves();   
         } catch (SQLException ex) {
             Logger.getLogger(KeyPermissionController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -80,8 +87,15 @@ public class KeyPermissionController implements Initializable {
     }
 
     @FXML
-    private void concederPermissao(ActionEvent event) {
-    
+    private void concederPermissao(ActionEvent event) throws SQLException {
+        KeyPermissionDao banco_permission = new KeyPermissionDao();
+        
+        ModelKey key = pegarChave();
+        ModelKeyPermission keyP = new ModelKeyPermission(selected.getId(), key.getId());
+        
+        banco_permission.inserirPermission(keyP);
+        
+        JOptionPane.showMessageDialog(null, "Chave "+key.getNome_sala().toUpperCase()+" Permitida para "+selected.getNome().toUpperCase()+"");
     }
     
     @FXML

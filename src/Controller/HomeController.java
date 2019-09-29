@@ -88,7 +88,7 @@ public class HomeController implements Initializable {
                 cont_chaves++;
             }
             String valor_chaves = Integer.toString(cont_chaves);
-            info_chaves.setText(valor_chaves);
+            this.info_chaves.setText(valor_chaves);
             
             //lista de usuarios
             UserDAO banco_user = new UserDAO();
@@ -98,7 +98,7 @@ public class HomeController implements Initializable {
                 cont_users++;
             }
             String valor_user = Integer.toString(cont_users);
-            info_usuarios.setText(valor_user);
+            this.info_usuarios.setText(valor_user);
             
             //lista de devolucoes
             DevolucaoDao banco_devolucao = new DevolucaoDao();
@@ -108,7 +108,7 @@ public class HomeController implements Initializable {
                 cont_devolucoes++;
             }
             String valor_devolucoes = Integer.toString(cont_devolucoes);
-            info_devolucoes.setText(valor_devolucoes);
+            this.info_devolucoes.setText(valor_devolucoes);
             
         } catch (SQLException ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);

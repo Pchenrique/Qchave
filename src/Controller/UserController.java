@@ -33,6 +33,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -152,12 +153,16 @@ public class UserController implements Initializable {
     @FXML
     private void permitirChave(ActionEvent event) {
         if(selected != null) {
-            KeyPermission permission = new KeyPermission(selected);
-            try {
-                User.getStage().close();
-                permission.start(new Stage());
-            } catch (Exception ex) {
-                Logger.getLogger(KeyPermissionController.class.getName()).log(Level.SEVERE, null, ex);
+            if(selected.getTipo_user().equals("Bolsista") || selected.getTipo_user().equals("Estagiario")){
+                KeyPermission permission = new KeyPermission(selected);
+                try {
+                    User.getStage().close();
+                    permission.start(new Stage());
+                } catch (Exception ex) {
+                    Logger.getLogger(KeyPermissionController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Usuario do tipo SERVIDOR tem acesso a qualquer chave!");
             }
         } else {
             Alert alerta = new Alert(Alert.AlertType.INFORMATION);

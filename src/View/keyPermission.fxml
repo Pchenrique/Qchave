@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.KeyPermissionController">
+<Pane prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.KeyPermissionController">
    <children>
       <VBox prefHeight="500.0" prefWidth="281.0" style="-fx-background-color: #00ae3c;">
          <children>
@@ -98,7 +98,7 @@
             </Label>
             <Label fx:id="nome_usuario" layoutX="113.0" layoutY="86.0" text="Samuel Lima" />
             <Label fx:id="matricula_usuario" layoutX="113.0" layoutY="130.0" text="20162035000045" />
-            <ComboBox fx:id="CbChavePermitida" layoutX="111.0" layoutY="179.0" prefWidth="150.0" promptText="Selecionar" />
+            <ComboBox fx:id="CbChavePermitida" layoutX="111.0" layoutY="179.0" prefWidth="150.0" promptText="Selecione a Chave" />
             <Label layoutX="110.0" layoutY="151.0" text="Selecionar Chave para Permissão">
                <font>
                   <Font name="System Bold" size="12.0" />

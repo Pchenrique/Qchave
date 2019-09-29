@@ -115,7 +115,7 @@ public class KeyController implements Initializable {
             if(selected.getStatus().equals("Emprestada")){
                 Alert alerta = new Alert(Alert.AlertType.INFORMATION);
                 alerta.setTitle("Aviso Chave Emprestada");
-                alerta.setHeaderText("A chave "+selected.getNome_sala()+" já está emprestada!");
+                alerta.setHeaderText("A chave "+selected.getNome_sala().toUpperCase()+" já está emprestada!");
                 alerta.show();
             }else{
                 Key.getStage().close();
