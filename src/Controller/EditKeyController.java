@@ -14,6 +14,8 @@ import Model.ModelKey;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -61,14 +63,26 @@ public class EditKeyController implements Initializable {
         String bloco = this.blocoSala.getText();
         String status_chave = key2.getStatus();
 
-        ModelKey chave = new ModelKey(nome_sala, bloco, status_chave);
+        if (nome_sala.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo nome está vazio!por favor, preencha os campos.");
+        } else if (bloco.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo bloco está vazio!por favor, preencha os campos.");
 
-        KeyDao keydao = new KeyDao();
+        } else {
+            try {
+                ModelKey chave = new ModelKey(nome_sala, bloco, status_chave);
 
-        keydao.editar(chave, id);
-        JOptionPane.showMessageDialog(null, "Dados Alterados com Sucesso!");
-        EditKey.getStage().close();
-        openKey();
+                KeyDao keydao = new KeyDao();
+
+                keydao.editar(chave, id);
+                JOptionPane.showMessageDialog(null, "Dados Alterados com Sucesso!");
+                EditKey.getStage().close();
+                openKey();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Aconteceu algum erro com a base de dados!!!");
+                Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
     }
 
     //Função para preencher os campos do form da chave.
@@ -95,7 +109,7 @@ public class EditKeyController implements Initializable {
     @FXML
     private void backPage(ActionEvent event) throws Exception {
         EditKey.getStage().close();
-        
+
         Key newFrame = new Key();
         newFrame.start(new Stage());
     }

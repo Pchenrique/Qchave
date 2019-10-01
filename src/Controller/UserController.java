@@ -61,7 +61,7 @@ public class UserController implements Initializable {
     private ImageView btn_buscar;
 
     private Model.ModelUser selected;
-    
+
     private ObservableList<ModelUser> usuarios = FXCollections.observableArrayList();
 
     /**
@@ -78,12 +78,12 @@ public class UserController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        buscar_user.setOnKeyReleased((KeyEvent)->{
+
+        buscar_user.setOnKeyReleased((KeyEvent) -> {
             table_users.setItems(buscar());
         });
-        
-        btn_buscar.setOnMouseClicked((MouseEvent)->{
+
+        btn_buscar.setOnMouseClicked((MouseEvent) -> {
             table_users.setItems(buscar());
         });
 
@@ -98,7 +98,7 @@ public class UserController implements Initializable {
 
     //Método de cadastrar usuário.
     @FXML
-    void cadastrarUsuario(javafx.event.ActionEvent event)  {
+    void cadastrarUsuario(javafx.event.ActionEvent event) {
         RegisterUser user = new RegisterUser();
 
         try {
@@ -136,7 +136,7 @@ public class UserController implements Initializable {
             try {
                 deletar.excluir(selected);
                 User.getStage().close();
-                
+
                 User newFrame = new User();
                 newFrame.start(new Stage());
             } catch (SQLException ex) {
@@ -148,12 +148,11 @@ public class UserController implements Initializable {
             alerta.show();
         }
     }
-    
-    
+
     @FXML
     private void permitirChave(ActionEvent event) {
-        if(selected != null) {
-            if(selected.getTipo_user().equals("Bolsista") || selected.getTipo_user().equals("Estagiario")){
+        if (selected != null) {
+            if (selected.getTipo_user().equals("Bolsista") || selected.getTipo_user().equals("Estagiario")) {
                 KeyPermission permission = new KeyPermission(selected);
                 try {
                     User.getStage().close();
@@ -161,7 +160,7 @@ public class UserController implements Initializable {
                 } catch (Exception ex) {
                     Logger.getLogger(KeyPermissionController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Usuario do tipo SERVIDOR tem acesso a qualquer chave!");
             }
         } else {
@@ -187,14 +186,14 @@ public class UserController implements Initializable {
         usuarios = FXCollections.observableArrayList(userdao.listar());
         return usuarios;
     }
-    
-    public ObservableList<ModelUser> buscar(){
+
+    public ObservableList<ModelUser> buscar() {
         ObservableList<ModelUser> userFiltrada = FXCollections.observableArrayList();
-        
-        for(int i=0; i<usuarios.size();i++){
+
+        for (int i = 0; i < usuarios.size(); i++) {
             String matricula = Long.toString(usuarios.get(i).getMatricula());
-            if(usuarios.get(i).getNome().toLowerCase().contains(buscar_user.getText().toLowerCase()) || matricula.contains(buscar_user.getText())){
-                 userFiltrada.add(usuarios.get(i));
+            if (usuarios.get(i).getNome().toLowerCase().contains(buscar_user.getText().toLowerCase()) || matricula.contains(buscar_user.getText())) {
+                userFiltrada.add(usuarios.get(i));
             }
         }
         return userFiltrada;
@@ -203,7 +202,7 @@ public class UserController implements Initializable {
     @FXML
     private void backPage(ActionEvent event) throws Exception {
         User.getStage().close();
-        
+
         Home newframe = new Home();
         newframe.start(new Stage());
     }

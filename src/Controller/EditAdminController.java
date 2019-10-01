@@ -56,20 +56,27 @@ public class EditAdminController implements Initializable {
     //Método de alterar administrador.
     @FXML
     private void alterarAdministrador(ActionEvent event) throws SQLException, Exception {
-        
+
         int id = admin2.getId();
-        
+
         String nome_completo = this.nomeCompleto.getText();
         String cpf = this.cpf.getText();
 
-        ModelAdmin admin = new ModelAdmin(nome_completo, cpf);
+        if (nome_completo.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo nome está vazio! por favor, preencha o campo.");
+        } else if (cpf.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo cpf está vazio! por favor, preencha o campo.");
+        } else {
 
-        AdminDao admindao = new AdminDao();
+            ModelAdmin admin = new ModelAdmin(nome_completo, cpf);
 
-        admindao.editar(admin, id);
-        JOptionPane.showMessageDialog(null, "Dados Alterados com Sucesso!");
-        EditAdmin.getStage().close();
-        openAdmin();
+            AdminDao admindao = new AdminDao();
+
+            admindao.editar(admin, id);
+            JOptionPane.showMessageDialog(null, "Dados Alterados com Sucesso!");
+            EditAdmin.getStage().close();
+            openAdmin();
+        }
     }
 
     //Função para preencher os campos do form do admin.
@@ -95,7 +102,7 @@ public class EditAdminController implements Initializable {
     @FXML
     private void backPage(ActionEvent event) throws Exception {
         EditAdmin.getStage().close();
-        
+
         Admin newFrame = new Admin();
         newFrame.start(new Stage());
     }

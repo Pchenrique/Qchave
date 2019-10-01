@@ -32,6 +32,7 @@ public class Admin extends Application {
     public void start(Stage stage) throws Exception {
 
         stage.setTitle("Qchave - Página de Administradores");
+        stage.setResizable(false);
         Parent root = FXMLLoader.load(getClass().getResource("/View/AdminPage.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);

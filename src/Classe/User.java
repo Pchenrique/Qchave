@@ -31,6 +31,7 @@ public class User extends Application {
     public void start(Stage stage) throws Exception {
 
         stage.setTitle("Qchave - Pagina do Usuário");
+        stage.setResizable(false);
         Parent root = FXMLLoader.load(getClass().getResource("/View/UserPage.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);

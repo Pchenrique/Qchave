@@ -29,6 +29,7 @@ public class RegisterAdmin extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("Qchave - Cadastro de Administradores");
+        stage.setResizable(false);
         Parent root = FXMLLoader.load(getClass().getResource("/View/RegisterAdmin.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);

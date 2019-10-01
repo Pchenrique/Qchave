@@ -33,6 +33,7 @@ public class KeyReturn {
     public void start(Stage stage) throws Exception {
 
         stage.setTitle("Qchave - Devolução de Chaves");
+        stage.setResizable(false);
         Parent root = FXMLLoader.load(getClass().getResource("/View/KeyReturn.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);

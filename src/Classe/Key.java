@@ -31,6 +31,7 @@ public class Key extends Application {
     public void start(Stage stage) throws Exception {
 
         stage.setTitle("Qchave - Página de Chaves");
+        stage.setResizable(false);
         Parent root = FXMLLoader.load(getClass().getResource("/View/KeyPage.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);

@@ -29,6 +29,7 @@ public class RegisterUser extends Application {
     public void start(Stage stage) throws Exception {
 
         stage.setTitle("Qchave - Cadastro de Usuário");
+        stage.setResizable(false);
         Parent root = FXMLLoader.load(getClass().getResource("/View/RegisterUser.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);

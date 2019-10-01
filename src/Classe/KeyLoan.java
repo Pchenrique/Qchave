@@ -36,6 +36,7 @@ public class KeyLoan extends Application {
     public void start(Stage stage) throws Exception {
 
         stage.setTitle("Qchave - Empréstimo de Chaves");
+        stage.setResizable(false);
         Parent root = FXMLLoader.load(getClass().getResource("/View/KeyLoan.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);

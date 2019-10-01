@@ -39,7 +39,6 @@ public class EditUserController implements Initializable {
     private TextField matricula;
     @FXML
     private TextField tipoUsuario;
-    
 
     private static Model.ModelUser user2;
 
@@ -59,22 +58,29 @@ public class EditUserController implements Initializable {
     @FXML
     private void alterarUsuario(ActionEvent event) throws Exception {
         int id = user2.getId();
-        String nome = this.nomeCompleto.getText();
-        String email = this.email.getText();
-        Long matricula = Long.parseLong(this.matricula.getText());
-        String tipo_user = this.tipoUsuario.getText();
 
-        Model.ModelUser usuario = new ModelUser(nome, email, matricula, tipo_user);
+        if (this.nomeCompleto.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo nome está vázio!");
+        } else if (this.matricula.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo matricula está vázio!");
+        } else if (this.email.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo email está vázio!");
+        }else if(this.tipoUsuario.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "O campo tipo de usuário precisa ser preenchido!");
+        } 
+        else {
+            Long matricula = Long.parseLong(this.matricula.getText());
+            Model.ModelUser usuario = new ModelUser(this.nomeCompleto.getText(), this.email.getText(), matricula, this.tipoUsuario.getText());
+            UserDAO userdao = new UserDAO();
 
-        UserDAO userdao = new UserDAO();
-
-        try {
-            userdao.editar(usuario, id);
-            JOptionPane.showMessageDialog(null, "Dados Alterados com Sucesso!");
-            EditUser.getStage().close();
-            openUser();
-        } catch (SQLException ex) {
-            Logger.getLogger(EditUserController.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                userdao.editar(usuario, id);
+                JOptionPane.showMessageDialog(null, "Dados Alterados com Sucesso!");
+                EditUser.getStage().close();
+                openUser();
+            } catch (SQLException ex) {
+                Logger.getLogger(EditUserController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
@@ -103,7 +109,7 @@ public class EditUserController implements Initializable {
     @FXML
     private void backPage(ActionEvent event) throws Exception {
         EditUser.getStage().close();
-        
+
         User newFrame = new User();
         newFrame.start(new Stage());
     }

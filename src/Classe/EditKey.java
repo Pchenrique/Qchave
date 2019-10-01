@@ -35,6 +35,7 @@ public class EditKey extends Application {
     public void start(Stage stage) throws Exception {
 
         stage.setTitle("Qchave - Editar Chave");
+        stage.setResizable(false);
         Parent root = FXMLLoader.load(getClass().getResource("/View/EditKey.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);

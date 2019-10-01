@@ -31,6 +31,7 @@ public class Home extends Application {
     public void start(Stage stage) throws Exception {
 
         stage.setTitle("Home - Qchave");
+        stage.setResizable(false);
         Parent root = FXMLLoader.load(getClass().getResource("/View/Home.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);

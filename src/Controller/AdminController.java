@@ -28,13 +28,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.SortEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-import static javafx.scene.input.KeyCode.C;
 import javafx.stage.Stage;
 
 /**
@@ -61,9 +59,9 @@ public class AdminController implements Initializable {
     private ImageView btn_buscar;
 
     private ModelAdmin selected;
-    
-     private ObservableList<ModelAdmin> admins = FXCollections.observableArrayList();
-   
+
+    private ObservableList<ModelAdmin> admins = FXCollections.observableArrayList();
+
     /**
      * Initializes the controller class.
      *
@@ -78,12 +76,12 @@ public class AdminController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        buscar_admin.setOnKeyReleased((KeyEvent)->{
+
+        buscar_admin.setOnKeyReleased((KeyEvent) -> {
             table_admins.setItems(buscar());
         });
-        
-        btn_buscar.setOnMouseClicked((MouseEvent)->{
+
+        btn_buscar.setOnMouseClicked((MouseEvent) -> {
             table_admins.setItems(buscar());
         });
         //Função para verificar a linha selecionada na tabela.
@@ -115,7 +113,7 @@ public class AdminController implements Initializable {
             try {
                 edit.start(new Stage());
                 Admin.getStage().close();
-               
+
             } catch (Exception ex) {
                 Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -134,7 +132,7 @@ public class AdminController implements Initializable {
             try {
                 deletar.excluir(selected);
                 Admin.getStage().close();
-                
+
                 Admin newFrame = new Admin();
                 newFrame.start(new Stage());
             } catch (SQLException ex) {
@@ -161,12 +159,12 @@ public class AdminController implements Initializable {
         admins = FXCollections.observableArrayList(admindao.listar());
         return admins;
     }
-    
-     public ObservableList<ModelAdmin> buscar(){
+
+    public ObservableList<ModelAdmin> buscar() {
         ObservableList<ModelAdmin> adminsFiltrada = FXCollections.observableArrayList();
-        
-        for(int i=0; i<admins.size();i++){
-            if(admins.get(i).getNome().toLowerCase().contains(buscar_admin.getText().toLowerCase()) || admins.get(i).getCpf().contains(buscar_admin.getText())){
+
+        for (int i = 0; i < admins.size(); i++) {
+            if (admins.get(i).getNome().toLowerCase().contains(buscar_admin.getText().toLowerCase()) || admins.get(i).getCpf().contains(buscar_admin.getText())) {
                 adminsFiltrada.add(admins.get(i));
             }
         }
@@ -176,7 +174,7 @@ public class AdminController implements Initializable {
     @FXML
     private void backPage(ActionEvent event) throws Exception {
         Admin.getStage().close();
-        
+
         Home newFrame = new Home();
         newFrame.start(new Stage());
     }

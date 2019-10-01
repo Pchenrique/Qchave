@@ -43,7 +43,6 @@ public class RegisterUserController implements Initializable {
     @FXML
     private Button btn_cadastrar_usuario;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
@@ -52,41 +51,45 @@ public class RegisterUserController implements Initializable {
             System.out.println(e.getMessage());
         }
     }
-    
-    public void tiposDeUsuario(){
-        ObservableList<String> options = FXCollections.observableArrayList("Servidor","Bolsista","Estagiário");
+
+    public void tiposDeUsuario() {
+        ObservableList<String> options = FXCollections.observableArrayList("Servidor", "Bolsista", "Estagiário");
         tipo_usuario.setItems(options);
     }
     
-    public String pegarTipoUser(){
-        String tipo = tipo_usuario.getSelectionModel().getSelectedItem();
-        return tipo;
-    }
-
     //Método de registrar usuário.
     @FXML
     private void registrarUsuario(ActionEvent event) throws SQLException, Exception {
-        String nome = this.nome_completo.getText();
-        String email = this.email.getText();
-        long matricula = Long.parseLong(this.matricula.getText());
-       // String tipo_user = this.tipo_usuario.getText();
-       
-        ModelUser user = new ModelUser(nome, email, matricula, pegarTipoUser());
-        UserDAO userdao = new UserDAO();
-        userdao.inserirUser(user);
+        if (this.nome_completo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo nome está vázio!");
+        } else if (this.matricula.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo matricula está vázio!");
+        } else if (this.email.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo email está vázio!");
+        } else {
+            long matricula = Long.parseLong(this.matricula.getText());
+            ModelUser user = new ModelUser(this.nome_completo.getText(), this.email.getText(), matricula, tipo_usuario.getSelectionModel().getSelectedItem());
+            UserDAO userdao = new UserDAO();
+            try {
+                userdao.inserirUser(user);
+                JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!");
 
-        JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!");
-        
-        RegisterUser.getStage().close();
-        
-        User newFrame = new User();
-        newFrame.start(new Stage());
+                RegisterUser.getStage().close();
+
+                User newFrame = new User();
+                newFrame.start(new Stage());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "O tipo de usuário precisa ser selecionado!");
+            }
+
+        }
+
     }
 
     @FXML
     private void backPage(ActionEvent event) throws Exception {
         RegisterUser.getStage().close();
-        
+
         User newFrame = new User();
         newFrame.start(new Stage());
     }

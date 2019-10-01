@@ -55,22 +55,29 @@ public class RegisterAdminController implements Initializable {
         String cpf = this.cpf.getText();
         int id = 0;
 
-        ModelAdmin admin = new ModelAdmin(name, cpf);
-        AdminDao admindao = new AdminDao();
-        admindao.inserirAdmin(admin);
+        if (name.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo nome está vazio!");
+        } else if (cpf.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo cpf está vazio!");
+        } else {
+            ModelAdmin admin = new ModelAdmin(name, cpf);
+            AdminDao admindao = new AdminDao();
+            admindao.inserirAdmin(admin);
 
-        JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!");
-        
-        RegisterAdmin.getStage().close();
-        
-        Admin newFrame = new Admin();
-        newFrame.start(new Stage());
+            JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!");
+
+            RegisterAdmin.getStage().close();
+
+            Admin newFrame = new Admin();
+            newFrame.start(new Stage());
+        }
+
     }
 
     @FXML
     private void backPage(ActionEvent event) throws Exception {
         RegisterAdmin.getStage().close();
-        
+
         Admin newFrame = new Admin();
         newFrame.start(new Stage());
     }

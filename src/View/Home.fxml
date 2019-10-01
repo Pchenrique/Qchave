@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeController">
    <children>
       <VBox prefHeight="500.0" prefWidth="281.0" style="-fx-background-color: #00ae3c;">
          <children>
@@ -190,6 +190,9 @@
                      </font>
                   </Label>
                </children>
+               <padding>
+                  <Insets top="2.0" />
+               </padding>
             </Pane>
             <Pane layoutX="215.0" layoutY="110.0" prefHeight="100.0" prefWidth="190.0" style="-fx-background-color: #2FFF77;">
                <children>
@@ -214,6 +217,9 @@
                      </font>
                   </Label>
                </children>
+               <padding>
+                  <Insets top="2.0" />
+               </padding>
             </Pane>
             <Pane layoutX="419.0" layoutY="110.0" prefHeight="100.0" prefWidth="190.0" style="-fx-background-color: #8CF;">
                <children>
@@ -226,6 +232,9 @@
                      <font>
                         <Font name="Arial Black" size="30.0" />
                      </font>
+                     <padding>
+                        <Insets top="2.0" />
+                     </padding>
                   </Label>
                   <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="142.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -238,6 +247,9 @@
                      </font>
                   </Label>
                </children>
+               <padding>
+                  <Insets top="2.0" />
+               </padding>
             </Pane>
             <Label layoutX="39.0" layoutY="74.0" text="Informações">
                <font>
@@ -297,6 +309,7 @@
                   </Label>
                </children>
             </Pane>
+            <HBox layoutY="455.0" prefHeight="45.0" prefWidth="619.0" style="-fx-background-color: #3e3c4a;" />
          </children>
       </Pane>
    </children>

@@ -87,7 +87,7 @@ public class KeyPermissionController implements Initializable {
     }
 
     @FXML
-    private void concederPermissao(ActionEvent event) throws SQLException {
+    private void concederPermissao(ActionEvent event) throws SQLException, Exception {
         KeyPermissionDao banco_permission = new KeyPermissionDao();
         
         ModelKey key = pegarChave();
@@ -96,6 +96,11 @@ public class KeyPermissionController implements Initializable {
         banco_permission.inserirPermission(keyP);
         
         JOptionPane.showMessageDialog(null, "Chave "+key.getNome_sala().toUpperCase()+" Permitida para "+selected.getNome().toUpperCase()+"");
+        
+        KeyPermission.getStage().close();
+        
+        User newFrame = new User();
+        newFrame.start(new Stage());
     }
     
     @FXML
