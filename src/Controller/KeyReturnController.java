@@ -37,9 +37,9 @@ import javax.swing.JOptionPane;
  * @author Samuel Lima
  */
 public class KeyReturnController implements Initializable {
-
+    
     @FXML
-    private TextField cpf_administrador;
+    private TextField token_administrador;
     @FXML
     private Button btn_emprestar_chave;
     @FXML
@@ -48,7 +48,7 @@ public class KeyReturnController implements Initializable {
     private Label label_Nome_Chave;
     
     private static Model.ModelEmprestimo selected;
-
+    
     /**
      * Initializes the controller class.
      */
@@ -78,7 +78,7 @@ public class KeyReturnController implements Initializable {
         AdminDao banco_admindao = new AdminDao();
         EmprestarDAO banco_emprestar = new EmprestarDAO();
         
-        ModelAdmin admin = banco_admindao.buscarAdmin(this.cpf_administrador.getText());
+        ModelAdmin admin = banco_admindao.buscarAdmin(Integer.parseInt(this.token_administrador.getText()));
         
         ModelDevolucao devolucao = new ModelDevolucao(admin.getId(), selected.getId());
         banco.inserirDevolucao(devolucao);

@@ -57,7 +57,7 @@ public class UserDAO {
         List<ModelUser> users = new ArrayList<>();
 
         try {
-            String sql = "SELECT * FROM usuarios ORDER BY nome ASC";
+            String sql = "SELECT * FROM usuarios ORDER BY id ASC";
             PreparedStatement stmt = conect.prepareStatement(sql);
             rs = stmt.executeQuery();
 

@@ -56,9 +56,9 @@ public class RegisterKeyController implements Initializable {
         String status_chave = "Disponivel";
 
         if (nome_sala.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O campo nome está vazio! por favor, preencha o campo corretamente.");
+            JOptionPane.showMessageDialog(null, "O campo nome não pode está vazio!");
         } else if (bloco.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O campo bloco está vazio! por favor, preencha o campo corretamente.");
+            JOptionPane.showMessageDialog(null, "O campo bloco não pode está vazio!");
 
         } else {
             ModelKey chave = new ModelKey(nome_sala, bloco, status_chave);

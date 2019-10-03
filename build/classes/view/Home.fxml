@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeController">
    <children>
-      <VBox prefHeight="500.0" prefWidth="281.0" style="-fx-background-color: #00ae3c;">
+      <VBox prefHeight="500.0" prefWidth="281.0" style="-fx-background-color: #93FE95;">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009D37;">
+            <HBox prefHeight="126.0" prefWidth="281.0" style="-fx-background-color: #93FE95;">
                <children>
                   <ImageView fitHeight="96.0" fitWidth="212.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -28,17 +28,17 @@
                   </ImageView>
                </children>
             </HBox>
-            <Label prefHeight="19.0" prefWidth="285.0" text="Sistema de Gerenciamento de Chaves do IFCE" textFill="WHITE">
+            <Label prefHeight="37.0" prefWidth="268.0" text="Sistema de Gerenciamento de Chaves do IFCE">
                <font>
                   <Font name="Candara Bold" size="13.0" />
                </font>
                <VBox.margin>
-                  <Insets left="13.0" top="-19.0" />
+                  <Insets left="13.0" top="-10.0" />
                </VBox.margin>
             </Label>
-            <Pane prefHeight="347.0" prefWidth="251.0">
+            <Pane prefHeight="354.0" prefWidth="281.0">
                <children>
-                  <Button fx:id="emprestar_chave" layoutX="-4.0" layoutY="34.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="285.0" styleClass="btn-emprestar" stylesheets="@../Style/css.css" text="Reservar" textFill="WHITE">
+                  <Button fx:id="emprestar_chave" layoutX="6.0" layoutY="33.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="268.0" styleClass="btn-emprestar" stylesheets="@../Style/css.css" text="Reservar" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -49,7 +49,7 @@
                         <Insets left="-10.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="devolver_chave" layoutY="84.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="281.0" styleClass="btn-emprestar" stylesheets="@../Style/css.css" text="Gerar Relatório" textFill="WHITE">
+                  <Button fx:id="devolver_chave" layoutX="6.0" layoutY="84.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="268.0" styleClass="btn-emprestar" stylesheets="@../Style/css.css" text="Gerar Relatório" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -60,7 +60,7 @@
                         <Insets left="30.0" />
                      </padding>
                   </Button>
-                  <Button layoutY="131.0" mnemonicParsing="false" onAction="#keyPage" prefHeight="34.0" prefWidth="281.0" styleClass="btn-emprestar" stylesheets="@../Style/css.css" text="Chave" textFill="WHITE">
+                  <Button layoutX="6.0" layoutY="131.0" mnemonicParsing="false" onAction="#keyPage" prefHeight="34.0" prefWidth="268.0" styleClass="btn-emprestar" stylesheets="@../Style/css.css" text="Chave" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -71,7 +71,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button layoutX="-3.0" layoutY="178.0" mnemonicParsing="false" onAction="#UserPage" prefHeight="34.0" prefWidth="284.0" styleClass="btn-emprestar" stylesheets="@../Style/css.css" text="Usuário" textFill="WHITE">
+                  <Button layoutX="6.0" layoutY="178.0" mnemonicParsing="false" onAction="#UserPage" prefHeight="34.0" prefWidth="268.0" styleClass="btn-emprestar" stylesheets="@../Style/css.css" text="Usuário" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -82,7 +82,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button layoutY="226.0" mnemonicParsing="false" onAction="#AdminPage" prefHeight="34.0" prefWidth="281.0" styleClass="btn-emprestar" stylesheets="@../Style/css.css" text="Administrador" textFill="WHITE">
+                  <Button layoutX="7.0" layoutY="226.0" mnemonicParsing="false" onAction="#AdminPage" prefHeight="34.0" prefWidth="268.0" styleClass="btn-emprestar" stylesheets="@../Style/css.css" text="Administrador" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -118,7 +118,7 @@
                         <Image url="@../Images/ss.png" />
                      </image>
                   </ImageView>
-                  <Button layoutY="275.0" mnemonicParsing="false" onAction="#EmprestimosPage" prefHeight="34.0" prefWidth="281.0" styleClass="btn-emprestar" stylesheets="@../Style/css.css" text="Empréstimos" textFill="WHITE">
+                  <Button layoutX="7.0" layoutY="275.0" mnemonicParsing="false" onAction="#EmprestimosPage" prefHeight="34.0" prefWidth="268.0" styleClass="btn-emprestar" stylesheets="@../Style/css.css" text="Empréstimos" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -139,24 +139,23 @@
                   <Insets top="2.0" />
                </VBox.margin>
             </Pane>
-            <Pane prefHeight="53.0" prefWidth="281.0">
-               <children>
-                  <Label layoutX="46.0" layoutY="17.0" text="IFCE - Campus Cedro - BETA" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
+            <ImageView fitHeight="79.0" fitWidth="174.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/logoifce.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="54.0" />
+               </VBox.margin>
+            </ImageView>
          </children>
       </VBox>
       <Pane layoutX="281.0" prefHeight="500.0" prefWidth="619.0" style="-fx-background-color: #fff;">
          <children>
             <HBox prefHeight="60.0" prefWidth="619.0" style="-fx-background-color: #3e3c4a;">
                <children>
-                  <Label prefHeight="22.0" prefWidth="241.0" text="Home do Administrador" textFill="WHITE">
+                  <Label prefHeight="22.0" prefWidth="241.0" text="Dashboard" textFill="WHITE">
                      <font>
-                        <Font name="Arial Black" size="18.0" />
+                        <Font name="Arial Black" size="22.0" />
                      </font>
                      <padding>
                         <Insets top="-5.0" />
@@ -190,10 +189,13 @@
                      </font>
                   </Label>
                </children>
+               <padding>
+                  <Insets top="2.0" />
+               </padding>
             </Pane>
             <Pane layoutX="215.0" layoutY="110.0" prefHeight="100.0" prefWidth="190.0" style="-fx-background-color: #2FFF77;">
                <children>
-                  <Label layoutX="11.0" layoutY="55.0" prefHeight="27.0" prefWidth="192.0" text="Disponíveis" textFill="WHITE">
+                  <Label layoutX="11.0" layoutY="55.0" prefHeight="27.0" prefWidth="192.0" text="Chaves" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="15.0" />
                      </font>
@@ -208,12 +210,15 @@
                         <Image url="@../Images/menu-icon-chave.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="11.0" layoutY="78.0" text="Total de Chaves " textFill="WHITE">
+                  <Label layoutX="11.0" layoutY="78.0" text="Chaves Disponiveis" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="11.0" />
                      </font>
                   </Label>
                </children>
+               <padding>
+                  <Insets top="2.0" />
+               </padding>
             </Pane>
             <Pane layoutX="419.0" layoutY="110.0" prefHeight="100.0" prefWidth="190.0" style="-fx-background-color: #8CF;">
                <children>
@@ -226,6 +231,9 @@
                      <font>
                         <Font name="Arial Black" size="30.0" />
                      </font>
+                     <padding>
+                        <Insets top="2.0" />
+                     </padding>
                   </Label>
                   <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="142.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -238,6 +246,9 @@
                      </font>
                   </Label>
                </children>
+               <padding>
+                  <Insets top="2.0" />
+               </padding>
             </Pane>
             <Label layoutX="39.0" layoutY="74.0" text="Informações">
                <font>
@@ -297,26 +308,63 @@
                   </Label>
                </children>
             </Pane>
-            <HBox layoutY="440.0" prefHeight="60.0" prefWidth="619.0" style="-fx-background-color: #3e3c4a;">
+            <HBox layoutX="11.0" layoutY="450.0" prefHeight="40.0" prefWidth="600.0" style="-fx-background-color: #3e3c4a;">
                <children>
-                  <Label fx:id="data" text="Label" textFill="WHITE">
+                  <Label prefHeight="20.0" prefWidth="467.0" text="Developed by: Felipe Nogueira, Paulo Cesar, Samuel Lima e Tiago Dias" textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="15.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="300.0" top="20.0" />
+                        <Insets left="80.0" top="12.0" />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="hora" text="Label" textFill="WHITE">
+               </children></HBox>
+            <Pane layoutX="419.0" layoutY="227.0" prefHeight="100.0" prefWidth="190.0" style="-fx-background-color: #599FE4;">
+               <children>
+                  <Label layoutX="11.0" layoutY="55.0" prefHeight="27.0" prefWidth="192.0" text="Chaves" textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="15.0" />
+                        <Font name="Arial Black" size="15.0" />
                      </font>
-                     <HBox.margin>
-                        <Insets left="50.0" top="20.0" />
-                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="info_chaves_total" layoutX="11.0" layoutY="18.0" prefHeight="44.0" prefWidth="130.0" text="50" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="30.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="147.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/menu-icon-chave.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="11.0" layoutY="78.0" text="Total de Chaves " textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="11.0" />
+                     </font>
                   </Label>
                </children>
-            </HBox>
+               <padding>
+                  <Insets top="2.0" />
+               </padding>
+            </Pane>
+            <Pane layoutX="11.0" layoutY="344.0" prefHeight="93.0" prefWidth="600.0" style="-fx-background-color: #3e3c4a;" styleClass="box-home" stylesheets="@../Style/css.css">
+               <children>
+                  <ImageView fx:id="img_sol" fitHeight="50.0" fitWidth="50.0" layoutX="221.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/sunny.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="mensagem" layoutX="277.0" layoutY="33.0" text="Bom Dia!" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="8.0" layoutY="71.0" text="V. 0.0.1 - BETA" textFill="WHITE">
+                     <font>
+                        <Font name="Lato Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>

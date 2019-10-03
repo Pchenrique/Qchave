@@ -17,11 +17,11 @@ public class AdminDao {
 
     public void inserirAdmin(ModelAdmin admin) throws SQLException {
 
-        String sql = "insert into administradores (id,nome,cpf)values (?,?,?)";
+        String sql = "insert into administradores (nome,cpf,token)values (?,?,?)";
         PreparedStatement stmt = conect.prepareStatement(sql);
-        stmt.setInt(1, admin.getId());
-        stmt.setString(2, admin.getNome());
-        stmt.setString(3, admin.getCpf());
+        stmt.setString(1, admin.getNome());
+        stmt.setLong(2, admin.getCpf());
+        stmt.setInt(3, admin.getToken());
         stmt.execute();
         stmt.close();
         conect.close();
@@ -32,7 +32,7 @@ public class AdminDao {
         String sql = "UPDATE administradores set nome=?, cpf=? where id=?";
         PreparedStatement stmt = conect.prepareStatement(sql);
         stmt.setString(1, admin.getNome());
-        stmt.setString(2, admin.getCpf());
+        stmt.setLong(2, admin.getCpf());
         stmt.setInt(3, id);
         stmt.executeUpdate();
     }
@@ -61,7 +61,8 @@ public class AdminDao {
                 ModelAdmin admin = new ModelAdmin();
                 admin.setId(rs.getInt("id"));
                 admin.setNome(rs.getString("nome"));
-                admin.setCpf(rs.getString("cpf"));
+                admin.setCpf(rs.getLong("cpf"));
+                admin.setToken(rs.getInt("token"));
                 admins.add(admin);
             }
 
@@ -74,19 +75,19 @@ public class AdminDao {
         return admins;
     }
     
-    public ModelAdmin buscarAdmin(String cpf) throws SQLException{
+    public ModelAdmin buscarAdmin(int token) throws SQLException{
         ResultSet result = null;
         ModelAdmin admin = new ModelAdmin();
         
         try{
-            String sql = "SELECT * FROM administradores where cpf='"+cpf+"'";
+            String sql = "SELECT * FROM administradores where token='"+token+"'";
             PreparedStatement stmt = conect.prepareStatement(sql);
             result = stmt.executeQuery();
 
              if(result != null && result.next()){
                 admin.setId(result.getInt("id"));
                 admin.setNome(result.getString("nome"));
-                admin.setCpf(result.getString("cpf"));
+                admin.setCpf(result.getLong("cpf"));
              }
          
         } catch (SQLException e) {

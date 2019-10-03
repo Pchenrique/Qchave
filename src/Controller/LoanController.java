@@ -25,7 +25,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -46,9 +48,15 @@ public class LoanController implements Initializable{
     private TableColumn<ModelEmprestimo, String> nome_chave;
     @FXML
     private TableColumn<ModelEmprestimo, String> data;
-    
-    private ModelEmprestimo selected;
+    @FXML
+    private TextField buscar_emprestimo;
+    @FXML
+    private ImageView btn_emprestimo;
      
+    private ModelEmprestimo selected;
+    
+    private ObservableList<ModelEmprestimo> emprestimos = FXCollections.observableArrayList();
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
@@ -56,6 +64,15 @@ public class LoanController implements Initializable{
         } catch (SQLException ex) {
             Logger.getLogger(KeyLoanController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        buscar_emprestimo.setOnKeyReleased((KeyEvent)->{
+            table_chaves_emprestadas.setItems(buscar());
+        });
+        
+        btn_emprestimo.setOnMouseClicked((MouseEvent)->{
+            table_chaves_emprestadas.setItems(buscar());
+        });
+        
         //Função para verificar a linha selecionada na tabela.
         table_chaves_emprestadas.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
@@ -78,7 +95,19 @@ public class LoanController implements Initializable{
     //Função ObservableList para listar os campos da tabela.
     public ObservableList<ModelEmprestimo> atualizaTable() throws SQLException {
         EmprestarDAO emprestardao = new EmprestarDAO();
-        return FXCollections.observableArrayList(emprestardao.listar());
+        this.emprestimos = FXCollections.observableArrayList(emprestardao.listar());
+        return emprestimos;
+    }
+    
+    public ObservableList<ModelEmprestimo> buscar(){
+        ObservableList<ModelEmprestimo> emprestimoFiltrada = FXCollections.observableArrayList();
+        
+        for(int i=0; i<emprestimos.size();i++){
+            if(emprestimos.get(i).getNome_chave().toLowerCase().contains(buscar_emprestimo.getText().toLowerCase()) || emprestimos.get(i).getNome_usuario().contains(buscar_emprestimo.getText())){
+                 emprestimoFiltrada.add(emprestimos.get(i));
+            }
+        }
+        return emprestimoFiltrada;
     }
     
     @FXML
@@ -103,7 +132,6 @@ public class LoanController implements Initializable{
             alerta.setHeaderText("Selecione uma chave clicando para Devolvela.");
             alerta.show();
         }
-  
     }
 
     @FXML

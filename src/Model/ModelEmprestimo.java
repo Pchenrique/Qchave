@@ -1,13 +1,15 @@
 package Model;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class ModelEmprestimo{
     private int id;
     private int id_user;
     private int id_admin;
     private int id_chave;
-    private Date data_emprestimo;
+    private String horaFormatada;
     private String status;
     private String nome_usuario;
     private String nome_chave;
@@ -19,7 +21,9 @@ public class ModelEmprestimo{
         this.id_chave = id_chave;
         this.id_admin = id_admin;
         this.status = "Emprestada";
-        this.data_emprestimo = new Date(System.currentTimeMillis());
+        LocalDateTime agora = LocalDateTime.now();
+        DateTimeFormatter formatterHora = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
+        this.horaFormatada = formatterHora.format(agora);
         this.nome_usuario = nome_usuario;
         this.nome_chave = nome_chave;
         this.nome_admin = nome_admin;
@@ -53,12 +57,12 @@ public class ModelEmprestimo{
         this.id_chave = id_chave;
     }
 
-    public Date getData_emprestimo() {
-        return data_emprestimo;
+    public String getData_emprestimo() {
+        return horaFormatada;
     }
 
-    public void setData_emprestimo(Date data_emprestimo) {
-        this.data_emprestimo = data_emprestimo;
+    public void setData_emprestimo(String data_emprestimo) {
+        this.horaFormatada = data_emprestimo;
     }
 
     public String getStatus() {

@@ -34,6 +34,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -161,14 +162,23 @@ public class KeyController implements Initializable {
     private void excluirChave(ActionEvent event) throws Exception {
         if (selected != null) {
             KeyDao deletar = new KeyDao();
-            try {
-                deletar.excluir(selected);
-                Key.getStage().close();
-                
-                Key newFrame = new Key();
-                newFrame.start(new Stage());
-            } catch (SQLException ex) {
-                Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
+            int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir " + selected.getNome_sala() + "?","Excluir usuario?", JOptionPane.YES_NO_OPTION);
+          
+            if(resposta == JOptionPane.YES_OPTION){
+                try {
+                    deletar.excluir(selected);
+                    Key.getStage().close();
+
+                    Key newFrame = new Key();
+                    newFrame.start(new Stage());
+                } catch (SQLException ex) {
+                    Alert alerta = new Alert(Alert.AlertType.WARNING);
+                    alerta.setTitle("Cuidado!");
+                    alerta.setHeaderText("A chave que você tenta excluir pode esta emprestada ou devolvida.");
+                    alerta.setContentText("Consulte o Administrador do sistema para resolver isso!");
+                    alerta.show();
+                    Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         } else {
             Alert alerta = new Alert(Alert.AlertType.INFORMATION);

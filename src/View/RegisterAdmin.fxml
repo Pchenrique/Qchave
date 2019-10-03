@@ -13,42 +13,48 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterAdminController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterAdminController">
    <children>
       <Pane layoutX="379.0" layoutY="91.0" prefHeight="314.0" prefWidth="413.0" styleClass="form" stylesheets="@../Style/css.css">
          <children>
             <HBox prefHeight="38.0" prefWidth="413.0" styleClass="login-header" stylesheets="@../Style/css.css">
                <children>
-                  <Label stylesheets="@../Style/css.css" text="Cadastro de Administradores" textFill="WHITE">
+                  <Label prefHeight="31.0" prefWidth="416.0" stylesheets="@../Style/css.css" text="Cadastro de Administradores" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
-                     <padding>
-                        <Insets left="34.0" top="6.0" />
-                     </padding>
                      <HBox.margin>
-                        <Insets left="50.0" />
+                        <Insets />
                      </HBox.margin>
+                     <padding>
+                        <Insets left="100.0" top="6.0" />
+                     </padding>
                   </Label>
                </children>
             </HBox>
-            <TextField fx:id="nome_completo" layoutX="71.0" layoutY="100.0" prefHeight="30.0" prefWidth="271.0" promptText="Ex: Tiago Dias Moreira" />
-            <TextField fx:id="cpf" layoutX="71.0" layoutY="164.0" prefHeight="30.0" prefWidth="271.0" promptText="EX: 222.345.765-20" />
-            <Button fx:id="btn_cadastrar_admin" layoutX="71.0" layoutY="216.0" mnemonicParsing="false" onAction="#registrarAdmin" prefHeight="30.0" prefWidth="271.0" styleClass="key-buttom" stylesheets="@../style/css.css" text="Cadastrar" textFill="WHITE">
+            <TextField fx:id="nome_completo" layoutX="71.0" layoutY="83.0" prefHeight="30.0" prefWidth="271.0" promptText="Ex: Tiago Dias Moreira" />
+            <TextField fx:id="cpf" layoutX="70.0" layoutY="140.0" prefHeight="30.0" prefWidth="271.0" promptText="EX: 22234576520" />
+            <Button fx:id="btn_cadastrar_admin" layoutX="71.0" layoutY="251.0" mnemonicParsing="false" onAction="#registrarAdmin" prefHeight="30.0" prefWidth="271.0" styleClass="key-buttom" stylesheets="@../style/css.css" text="Cadastrar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Label layoutX="71.0" layoutY="74.0" text="Nome Completo">
+            <Label layoutX="71.0" layoutY="64.0" text="Nome Completo">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="71.0" layoutY="139.0" text="CPF">
+            <Label layoutX="71.0" layoutY="122.0" text="CPF">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
+            <Label layoutX="71.0" layoutY="176.0" text="Token">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="token" layoutX="71.0" layoutY="195.0" prefHeight="30.0" prefWidth="271.0" promptText="EX: 1234 ou 123456" />
          </children>
       </Pane>
       <VBox prefHeight="500.0" prefWidth="281.0" style="-fx-background-color: #00ae3c;">

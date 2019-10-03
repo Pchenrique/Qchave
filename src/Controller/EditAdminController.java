@@ -8,17 +8,18 @@ package Controller;
 //Importação da classe admin, do DAO admin e do model admin.
 import Classe.Admin;
 import Classe.EditAdmin;
-import Classe.EditKey;
-import Classe.Key;
 import DAO.AdminDao;
 import Model.ModelAdmin;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -59,23 +60,31 @@ public class EditAdminController implements Initializable {
 
         int id = admin2.getId();
 
-        String nome_completo = this.nomeCompleto.getText();
-        String cpf = this.cpf.getText();
-
-        if (nome_completo.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O campo nome está vazio! por favor, preencha o campo.");
-        } else if (cpf.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O campo cpf está vazio! por favor, preencha o campo.");
+        if (this.nomeCompleto.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo nome está vazio!");
+        } else if (this.cpf.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo cpf está vazio!");
         } else {
+            try{
+                String nome_completo = this.nomeCompleto.getText();
+                int cpf = Integer.parseInt(this.cpf.getText());
+                try{
+                    ModelAdmin admin = new ModelAdmin(nome_completo, cpf);
 
-            ModelAdmin admin = new ModelAdmin(nome_completo, cpf);
+                    AdminDao admindao = new AdminDao();
 
-            AdminDao admindao = new AdminDao();
-
-            admindao.editar(admin, id);
-            JOptionPane.showMessageDialog(null, "Dados Alterados com Sucesso!");
-            EditAdmin.getStage().close();
-            openAdmin();
+                    admindao.editar(admin, id);
+                    JOptionPane.showMessageDialog(null, "Dados Alterados com Sucesso!");
+                    EditAdmin.getStage().close();
+                    openAdmin();
+                }catch(SQLException e){
+                    JOptionPane.showMessageDialog(null, "O CPF já existe!");
+                    Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, e);
+                }
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "O CPF tem que ser número!");
+                Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, e);
+            }
         }
     }
 

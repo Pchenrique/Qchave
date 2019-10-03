@@ -90,17 +90,27 @@ public class KeyPermissionController implements Initializable {
     private void concederPermissao(ActionEvent event) throws SQLException, Exception {
         KeyPermissionDao banco_permission = new KeyPermissionDao();
         
-        ModelKey key = pegarChave();
-        ModelKeyPermission keyP = new ModelKeyPermission(selected.getId(), key.getId());
-        
-        banco_permission.inserirPermission(keyP);
-        
-        JOptionPane.showMessageDialog(null, "Chave "+key.getNome_sala().toUpperCase()+" Permitida para "+selected.getNome().toUpperCase()+"");
-        
-        KeyPermission.getStage().close();
-        
-        User newFrame = new User();
-        newFrame.start(new Stage());
+        try{
+            try{
+                ModelKey key = pegarChave();
+                ModelKeyPermission keyP = new ModelKeyPermission(selected.getId(), key.getId());
+
+                banco_permission.inserirPermission(keyP);
+
+                JOptionPane.showMessageDialog(null, "Chave "+key.getNome_sala().toUpperCase()+" Permitida para "+selected.getNome().toUpperCase()+"");
+
+                KeyPermission.getStage().close();
+
+                User newFrame = new User();
+                newFrame.start(new Stage());
+            }catch(SQLException e){
+                JOptionPane.showMessageDialog(null, "ERRO! Por favor consulte o admistrador");
+                Logger.getLogger(KeyPermissionController.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Selecione a chave para dar permissão!");
+            Logger.getLogger(KeyPermissionController.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
     
     @FXML

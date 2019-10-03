@@ -16,9 +16,12 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
@@ -38,8 +41,8 @@ public class EditUserController implements Initializable {
     @FXML
     private TextField matricula;
     @FXML
-    private TextField tipoUsuario;
-
+    private ComboBox<String> tipo_user;
+    
     private static Model.ModelUser user2;
 
     /**
@@ -56,7 +59,7 @@ public class EditUserController implements Initializable {
 
     //Método de alterar administrador.
     @FXML
-    private void alterarUsuario(ActionEvent event) throws Exception {
+    private void alterarUsuario(ActionEvent event) throws Exception,  NumberFormatException{
         int id = user2.getId();
 
         if (this.nomeCompleto.getText().isEmpty()) {
@@ -65,22 +68,25 @@ public class EditUserController implements Initializable {
             JOptionPane.showMessageDialog(null, "O campo matricula está vázio!");
         } else if (this.email.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo email está vázio!");
-        }else if(this.tipoUsuario.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "O campo tipo de usuário precisa ser preenchido!");
-        } 
-        else {
-            Long matricula = Long.parseLong(this.matricula.getText());
-            Model.ModelUser usuario = new ModelUser(this.nomeCompleto.getText(), this.email.getText(), matricula, this.tipoUsuario.getText());
-            UserDAO userdao = new UserDAO();
+        } else {
 
-            try {
-                userdao.editar(usuario, id);
-                JOptionPane.showMessageDialog(null, "Dados Alterados com Sucesso!");
-                EditUser.getStage().close();
-                openUser();
-            } catch (SQLException ex) {
-                Logger.getLogger(EditUserController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            try{
+                Long matricula = Long.parseLong(this.matricula.getText());
+                Model.ModelUser usuario = new ModelUser(this.nomeCompleto.getText(), this.email.getText(), matricula, tipo_user.getSelectionModel().getSelectedItem());
+                UserDAO userdao = new UserDAO();
+                try {
+                    userdao.editar(usuario, id);
+                    JOptionPane.showMessageDialog(null, "Dados Alterados com Sucesso!");
+                    EditUser.getStage().close();
+                    openUser();
+                } catch (SQLException ex) {
+                    Logger.getLogger(EditUserController.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, "A Matricula informada ja existe!");
+                }
+            }catch(NumberFormatException e){
+                    Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, e);
+                    JOptionPane.showMessageDialog(null, "A Matricula precisa ser so números!");
+            }   
         }
     }
 
@@ -88,8 +94,12 @@ public class EditUserController implements Initializable {
     public void initUser() {
         nomeCompleto.setText(user2.getNome());
         email.setText(user2.getEmail());
-        matricula.setText(user2.toString());
-        tipoUsuario.setText(user2.getTipo_user());
+        matricula.setText(String.valueOf(user2.getMatricula()));
+        
+        ObservableList<String> options = FXCollections.observableArrayList("Servidor", "Bolsista", "Estagiário");
+        tipo_user.setItems(options);
+        
+        tipo_user.getSelectionModel().select(user2.getTipo_user());
     }
 
     public static ModelUser getUser2() {

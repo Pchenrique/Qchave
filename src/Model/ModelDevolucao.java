@@ -1,6 +1,8 @@
 package Model;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -10,12 +12,14 @@ public class ModelDevolucao {
     private int id;
     private int id_admin;
     private int id_emprestimo;
-    private Date data_devolucao;
+    private String data_devolucao;
 
     public ModelDevolucao(int id_admin, int id_emprestimo) {
         this.id_admin = id_admin;
         this.id_emprestimo = id_emprestimo;
-        this.data_devolucao = new Date(System.currentTimeMillis());
+        LocalDateTime agora = LocalDateTime.now();
+        DateTimeFormatter formatterHora = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
+        this.data_devolucao = formatterHora.format(agora);
     }
 
     public int getId() {
@@ -42,11 +46,11 @@ public class ModelDevolucao {
         this.id_emprestimo = id_emprestimo;
     }
 
-    public Date getData_devolucao() {
+    public String getData_devolucao() {
         return data_devolucao;
     }
 
-    public void setData_devolucao(Date data_devolucao) {
+    public void setData_devolucao(String data_devolucao) {
         this.data_devolucao = data_devolucao;
     }
     

@@ -34,6 +34,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -129,14 +130,24 @@ public class AdminController implements Initializable {
     private void excluirAdministrador(ActionEvent event) throws Exception {
         if (selected != null) {
             AdminDao deletar = new AdminDao();
-            try {
-                deletar.excluir(selected);
-                Admin.getStage().close();
+            int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir " + selected.getNome() + "?","Excluir Administrador?", JOptionPane.YES_NO_OPTION);
+            
+            if(resposta == JOptionPane.YES_OPTION){
+                try {
+                    deletar.excluir(selected);
+                    Admin.getStage().close();
 
-                Admin newFrame = new Admin();
-                newFrame.start(new Stage());
-            } catch (SQLException ex) {
-                Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
+                    Admin newFrame = new Admin();
+                    newFrame.start(new Stage());
+                } catch (SQLException ex) {
+                    Alert alerta = new Alert(Alert.AlertType.WARNING);
+                    alerta.setTitle("Cuidado!");
+                    alerta.setHeaderText("O Administrador ja emprestou alguma chave.");
+                    alerta.setContentText("Por esse motivo ele não pode ser excluido!");
+                    alerta.show();
+                    
+                    Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         } else {
             Alert alerta = new Alert(Alert.AlertType.INFORMATION);
@@ -164,7 +175,7 @@ public class AdminController implements Initializable {
         ObservableList<ModelAdmin> adminsFiltrada = FXCollections.observableArrayList();
 
         for (int i = 0; i < admins.size(); i++) {
-            if (admins.get(i).getNome().toLowerCase().contains(buscar_admin.getText().toLowerCase()) || admins.get(i).getCpf().contains(buscar_admin.getText())) {
+            if (admins.get(i).getNome().toLowerCase().contains(buscar_admin.getText().toLowerCase())) {
                 adminsFiltrada.add(admins.get(i));
             }
         }

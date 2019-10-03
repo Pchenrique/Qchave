@@ -13,7 +13,11 @@ import Model.ModelUser;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -59,7 +63,8 @@ public class RegisterUserController implements Initializable {
     
     //Método de registrar usuário.
     @FXML
-    private void registrarUsuario(ActionEvent event) throws SQLException, Exception {
+    private void registrarUsuario(ActionEvent event) throws SQLException, Exception, NumberFormatException{
+
         if (this.nome_completo.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo nome está vázio!");
         } else if (this.matricula.getText().isEmpty()) {
@@ -67,23 +72,33 @@ public class RegisterUserController implements Initializable {
         } else if (this.email.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo email está vázio!");
         } else {
-            long matricula = Long.parseLong(this.matricula.getText());
-            ModelUser user = new ModelUser(this.nome_completo.getText(), this.email.getText(), matricula, tipo_usuario.getSelectionModel().getSelectedItem());
-            UserDAO userdao = new UserDAO();
-            try {
-                userdao.inserirUser(user);
-                JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!");
+            try{
+                try {
+                    long matricula = Long.parseLong(this.matricula.getText());
+                    ModelUser user = new ModelUser(this.nome_completo.getText(), this.email.getText(), matricula, tipo_usuario.getSelectionModel().getSelectedItem());
+                    UserDAO userdao = new UserDAO();
+                    try{
+                        userdao.inserirUser(user);
+                        JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!");
 
-                RegisterUser.getStage().close();
+                        RegisterUser.getStage().close();
 
-                User newFrame = new User();
-                newFrame.start(new Stage());
+                        User newFrame = new User();
+                        newFrame.start(new Stage());
+                    }catch(SQLException e){
+                        Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, e);
+                        JOptionPane.showMessageDialog(null, "A Matricula informada ja existe!");
+                    }
+                }catch(NumberFormatException e){
+                    Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, e);
+                    JOptionPane.showMessageDialog(null, "A Matricula precisa ser so números!");
+                }
             } catch (Exception e) {
+                Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, e);
                 JOptionPane.showMessageDialog(null, "O tipo de usuário precisa ser selecionado!");
             }
 
         }
-
     }
 
     @FXML

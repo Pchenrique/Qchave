@@ -28,7 +28,7 @@ public class KeyPermissionDao {
         PreparedStatement stmt = conect.prepareStatement(sql);
         stmt.setInt(1, key.getId_usuario());
         stmt.setInt(2, key.getId_chave());
-        stmt.setDate(3, key.getData_confirmacao());
+        stmt.setString(3, key.getData_confirmacao());
         stmt.execute();
         stmt.close();
         conect.close();
@@ -48,7 +48,7 @@ public class KeyPermissionDao {
             while (rs.next()) {
                 ModelKeyPermission key = new ModelKeyPermission(rs.getInt("id_usuario"), rs.getInt("id_chave"));
                 key.setId(rs.getInt("id"));
-                key.setData_confirmacao(rs.getDate("data_confirmacao"));
+                key.setData_confirmacao(rs.getString("data_confirmacao"));
                 
                 keys.add(key);
             }

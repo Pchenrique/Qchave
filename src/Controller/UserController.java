@@ -133,14 +133,24 @@ public class UserController implements Initializable {
     private void excluirUsuario(ActionEvent event) throws SQLException, Exception {
         if (selected != null) {
             UserDAO deletar = new UserDAO();
-            try {
-                deletar.excluir(selected);
-                User.getStage().close();
+            int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir " + selected.getNome() + "?","Deseja excluir a chave?", JOptionPane.YES_NO_OPTION);
+            
+            if(resposta == JOptionPane.YES_OPTION){
+                try {
+                    deletar.excluir(selected);
+                    User.getStage().close();
 
-                User newFrame = new User();
-                newFrame.start(new Stage());
-            } catch (SQLException ex) {
-                Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
+                    User newFrame = new User();
+                    newFrame.start(new Stage());
+                } catch (SQLException ex) {
+                    Alert alerta = new Alert(Alert.AlertType.WARNING);
+                    alerta.setTitle("Cuidado!");
+                    alerta.setHeaderText("O Usuario não pode ser excluido!.");
+                    alerta.setContentText("Consulte o Administrador do sistema para resolver isso!");
+                    alerta.show();
+                    
+                    Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         } else {
             Alert alerta = new Alert(Alert.AlertType.INFORMATION);

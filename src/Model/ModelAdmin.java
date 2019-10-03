@@ -4,10 +4,16 @@ public class ModelAdmin {
 
     private int id;
     private String nome;
-    private String cpf;
+    private long cpf;
+    private int token;
     
-      public ModelAdmin(String nome, String cpf) {
-        this.id = id;
+    public ModelAdmin(String nome, long cpf, int token) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.token = token;
+    }
+    
+    public ModelAdmin(String nome, long cpf) {
         this.nome = nome;
         this.cpf = cpf;
     }
@@ -32,13 +38,23 @@ public class ModelAdmin {
         this.nome = nome;
     }
 
-    public String getCpf() {
+    public long getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(long cpf) {
         this.cpf = cpf;
     }
+
+    public int getToken() {
+        return token;
+    }
+
+    public void setToken(int token) {
+        this.token = token;
+    }
+    
+    
 
     @Override
     public String toString() {

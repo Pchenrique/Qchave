@@ -64,10 +64,9 @@ public class EditKeyController implements Initializable {
         String status_chave = key2.getStatus();
 
         if (nome_sala.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O campo nome está vazio!por favor, preencha os campos.");
+            JOptionPane.showMessageDialog(null, "O campo nome não pode ser vazio!");
         } else if (bloco.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O campo bloco está vazio!por favor, preencha os campos.");
-
+            JOptionPane.showMessageDialog(null, "O campo bloco não pode ser vazio!");
         } else {
             try {
                 ModelKey chave = new ModelKey(nome_sala, bloco, status_chave);

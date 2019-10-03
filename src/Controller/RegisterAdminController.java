@@ -13,10 +13,15 @@ import Model.ModelAdmin;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -36,6 +41,8 @@ public class RegisterAdminController implements Initializable {
     private TextField cpf;
     @FXML
     private Button btn_cadastrar_admin;
+    @FXML
+    private TextField token;
 
     /**
      * Initializes the controller class.
@@ -51,25 +58,48 @@ public class RegisterAdminController implements Initializable {
     //Método de registrar administrador.
     @FXML
     private void registrarAdmin(ActionEvent event) throws SQLException, Exception {
-        String name = this.nome_completo.getText();
-        String cpf = this.cpf.getText();
-        int id = 0;
 
-        if (name.isEmpty()) {
+        if (this.nome_completo.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo nome está vazio!");
-        } else if (cpf.isEmpty()) {
+        } else if (this.cpf.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo cpf está vazio!");
-        } else {
-            ModelAdmin admin = new ModelAdmin(name, cpf);
-            AdminDao admindao = new AdminDao();
-            admindao.inserirAdmin(admin);
+        } else if(this.token.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "O campo token está vazio!");
+        }else {
+            try{
+                String name = this.nome_completo.getText();
+                long cpf = Long.parseLong(this.cpf.getText());
+                int token = Integer.parseInt(this.token.getText());
 
-            JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!");
+                try{
+                    ModelAdmin admin = new ModelAdmin(name, cpf, token);
+                    AdminDao admindao = new AdminDao();
+                    admindao.inserirAdmin(admin);
 
-            RegisterAdmin.getStage().close();
+                    JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!");
 
-            Admin newFrame = new Admin();
-            newFrame.start(new Stage());
+                    RegisterAdmin.getStage().close();
+
+                    Admin newFrame = new Admin();
+                    newFrame.start(new Stage());
+                }catch(SQLException e){
+                    AdminDao admindao = new AdminDao();
+                    List<ModelAdmin> lista = new ArrayList();
+                    lista = admindao.listar();
+                    for(int i=0;i<lista.size();i++){
+                        if(cpf == lista.get(i).getCpf()){
+                            JOptionPane.showMessageDialog(null, "CPF já está cadastrados!");
+                        }else if(token == lista.get(i).getToken()){
+                            JOptionPane.showMessageDialog(null, "TOKEN já está cadastrados!");
+                        }
+                    }
+                    Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, e);
+                }
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Os campos CPF e TOKEN tem que ser números!");
+                Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, e);
+            }
+                  
         }
 
     }

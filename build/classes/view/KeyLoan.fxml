@@ -79,7 +79,7 @@
                   </Label>
                </children>
             </HBox>
-            <TextField fx:id="cpf_administrador" layoutX="109.0" layoutY="217.0" prefHeight="30.0" prefWidth="271.0" promptText="Ex: 111.222.333-44" />
+            <TextField fx:id="token_administrador" layoutX="109.0" layoutY="217.0" prefHeight="30.0" prefWidth="271.0" promptText="Ex: 1111 ou 123456" />
             <Button fx:id="btn_emprestar_chave" layoutX="110.0" layoutY="274.0" mnemonicParsing="false" onAction="#confirmEmprestimo" prefHeight="30.0" prefWidth="271.0" styleClass="key-buttom" stylesheets="@../Style/css.css" text="Confirmar Empréstimo" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
@@ -93,7 +93,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="110.0" layoutY="195.0" text="CPF do Administrador">
+            <Label layoutX="110.0" layoutY="195.0" text="Token do Administrador">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

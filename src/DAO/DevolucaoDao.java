@@ -21,7 +21,7 @@ public class DevolucaoDao {
 
         String sql = "insert into devolucoes(data_devolucao,id_emprestimo,id_administrador) values(?,?,?)";
         PreparedStatement stmt = conect.prepareStatement(sql); 
-        stmt.setDate(1, devolucao.getData_devolucao());
+        stmt.setString(1, devolucao.getData_devolucao());
         stmt.setInt(2, devolucao.getId_emprestimo());
         stmt.setInt(3, devolucao.getId_admin());
         stmt.execute();

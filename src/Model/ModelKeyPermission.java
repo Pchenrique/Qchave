@@ -1,6 +1,8 @@
 package Model;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -11,12 +13,14 @@ public class ModelKeyPermission {
     private int id;
     private int id_usuario;
     private int id_chave;
-    private Date data_confirmacao;
+    private String data_confirmacao;
 
     public ModelKeyPermission(int id_usuario, int id_chave) {
         this.id_usuario = id_usuario;
         this.id_chave = id_chave;
-        this.data_confirmacao = new Date(System.currentTimeMillis());
+        LocalDateTime agora = LocalDateTime.now();
+        DateTimeFormatter formatterHora = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
+        this.data_confirmacao = formatterHora.format(agora);
     }
 
     public int getId() {
@@ -43,11 +47,11 @@ public class ModelKeyPermission {
         this.id_chave = id_chave;
     }
 
-    public Date getData_confirmacao() {
+    public String getData_confirmacao() {
         return data_confirmacao;
     }
 
-    public void setData_confirmacao(Date data_confirmacao) {
+    public void setData_confirmacao(String data_confirmacao) {
         this.data_confirmacao = data_confirmacao;
     }
     

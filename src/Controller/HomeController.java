@@ -22,13 +22,10 @@ import Model.ModelUser;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,6 +34,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -61,9 +60,11 @@ public class HomeController implements Initializable {
     @FXML
     private Label info_reservas;
     @FXML
-    private Label data;
+    private Label info_chaves_total;
     @FXML
-    private Label hora;
+    private ImageView img_sol;
+    @FXML
+    private Label mensagem;
 
     /**
      * Initializes the controller class.
@@ -73,8 +74,30 @@ public class HomeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Image noite = new Image("images/moon.png");
+        Image dia_tarde = new Image("images/sunny.png");
+        Image dia_manha = new Image("images/sunrise.png");
+        LocalDateTime agora = LocalDateTime.now();
+        
+        DateTimeFormatter formatterHora = DateTimeFormatter.ofPattern("HH");
+        String horaFormatada = formatterHora.format(agora);
+        int hora = Integer.parseInt(horaFormatada);
+        
+        if(hora >= 00 && hora < 12){
+            mensagem.setText("Bom Dia!");
+            img_sol.setImage(dia_manha);
+        }else if(hora >= 12 && hora < 18){
+            mensagem.setText("Boa Tarde!");
+            img_sol.setImage(dia_tarde);
+        }else if(hora >= 18 && hora <= 23){
+            mensagem.setText("Boa Noite!");
+            img_sol.setImage(noite);
+        }
+        
+        
         List<ModelEmprestimo> emprestimos = new ArrayList<>();
         List<ModelKey> chaves = new ArrayList<>();
+        List<ModelKey> chaves2 = new ArrayList<>();
         List<ModelUser> users = new ArrayList<>();
         List<ModelDevolucao> devolucoes = new ArrayList<>();
 
@@ -89,7 +112,7 @@ public class HomeController implements Initializable {
             String valor_emprestimos = Integer.toString(cont_emprestimos);
             this.info_emprestimos.setText(valor_emprestimos);
 
-            //lista de chaves
+            //lista de chaves disponiveis
             KeyDao banco_chaves = new KeyDao();
             chaves = banco_chaves.chavesDisponivel();
             int cont_chaves = 0;
@@ -99,6 +122,16 @@ public class HomeController implements Initializable {
             String valor_chaves = Integer.toString(cont_chaves);
             this.info_chaves.setText(valor_chaves);
 
+            //Lista de chaves totais
+            KeyDao banco_chaves2 = new KeyDao();
+            chaves2 = banco_chaves2.listar();
+            int cont_chaves_total = 0;
+            for (int i = 0; i < chaves2.size(); i++) {
+                cont_chaves_total++;
+            }
+            String valor_chaves2 = Integer.toString(cont_chaves_total);
+            this.info_chaves_total.setText(valor_chaves2);
+            
             //lista de usuarios
             UserDAO banco_user = new UserDAO();
             users = banco_user.listar();

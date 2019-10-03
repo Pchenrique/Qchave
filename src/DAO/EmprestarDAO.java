@@ -33,7 +33,7 @@ public class EmprestarDAO {
         stmt.setString(4, emprestimo.getNome_usuario());
         stmt.setInt(5, emprestimo.getId_admin());
         stmt.setString(6, emprestimo.getNome_admin());
-        stmt.setDate(7, emprestimo.getData_emprestimo());
+        stmt.setString(7, emprestimo.getData_emprestimo());
         stmt.setString(8, emprestimo.getStatus());
         stmt.execute();
         stmt.close();
@@ -51,7 +51,7 @@ public class EmprestarDAO {
         stmt.setString(4, emprestimo.getNome_usuario());
         stmt.setInt(5, emprestimo.getId_admin());
         stmt.setString(6, emprestimo.getNome_admin());
-        stmt.setDate(7, emprestimo.getData_emprestimo());
+        stmt.setString(7, emprestimo.getData_emprestimo());
         stmt.setString(8, emprestimo.getStatus());
         stmt.setInt(9, id);
         stmt.executeUpdate();
@@ -74,7 +74,7 @@ public class EmprestarDAO {
                 emprestimo.setId_chave(rs.getInt("id_chave"));
                 emprestimo.setId_user(rs.getInt("id_usuario"));
                 emprestimo.setId_admin(rs.getInt("id_administrador"));
-                emprestimo.setData_emprestimo(rs.getDate("data_emprestimo"));
+                emprestimo.setData_emprestimo(rs.getString("data_emprestimo"));
                 emprestimo.setStatus(rs.getString("status"));
                 emprestimo.setNome_usuario(rs.getString("nome_usuario"));
                 emprestimo.setNome_chave(rs.getString("nome_chave"));
