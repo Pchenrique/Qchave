@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminController">
    <children>
       <VBox prefHeight="500.0" prefWidth="281.0" style="-fx-background-color: #00ae3c;">
          <children>
@@ -114,7 +114,7 @@
          <children>
             <Button fx:id="btn_cadastrar_admin" mnemonicParsing="false" onAction="#cadastrarAdmin" prefHeight="30.0" prefWidth="129.0" style="-fx-background-color: #4b4a54;" text="Inserir " textFill="WHITE">
                <HBox.margin>
-                  <Insets left="106.0" top="12.0" />
+                  <Insets left="36.0" top="12.0" />
                </HBox.margin>
                <font>
                   <Font name="System Bold" size="13.0" />
@@ -165,6 +165,17 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#recuperarToken" prefHeight="30.0" prefWidth="129.0" style="-fx-background-color: #4b4a54;" text="Recuperar Token" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <HBox.margin>
+                  <Insets left="10.0" top="12.0" />
+               </HBox.margin>
             </Button>
          </children>
       </HBox>

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeController">
    <children>
       <VBox prefHeight="500.0" prefWidth="281.0" style="-fx-background-color: #93FE95;">
          <children>
@@ -49,7 +49,7 @@
                         <Insets left="-10.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="devolver_chave" layoutX="6.0" layoutY="84.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="268.0" styleClass="btn-emprestar" stylesheets="@../Style/css.css" text="Gerar Relatório" textFill="WHITE">
+                  <Button layoutX="6.0" layoutY="84.0" mnemonicParsing="false" onAction="#gerarRelatorio" prefHeight="34.0" prefWidth="268.0" styleClass="btn-emprestar" stylesheets="@../Style/css.css" text="Gerar Relatório" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoanReportController">
+   <children>
+      <VBox prefHeight="500.0" prefWidth="281.0" style="-fx-background-color: #00ae3c;">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#backPage" styleClass="btn-emprestar" stylesheets="@../Style/css.css" text="Voltar" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/back-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="90.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <ImageView fitHeight="150.0" fitWidth="212.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/Logo_qchaves05.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="30.0" top="85.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label text="Sistema de Gerenciamento de Chaves do IFCE" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="13.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="IFCE - Campus Cedro" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="70.0" top="205.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <Label layoutX="292.0" layoutY="17.0" text="Relatório de Empréstimos" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TableView layoutX="280.0" layoutY="55.0" prefHeight="445.0" prefWidth="624.0">
+        <columns>
+          <TableColumn fx:id="col_chave" prefWidth="91.0" text="Chave" />
+          <TableColumn fx:id="col_responsavel" prefWidth="159.0" text="Responsável" />
+            <TableColumn fx:id="col_emprestada_por" prefWidth="165.0" text="Emprestada Por" />
+            <TableColumn fx:id="col_status" prefWidth="108.0" text="Status" />
+            <TableColumn fx:id="col_data" prefWidth="100.0" text="Data" />
+        </columns>
+      </TableView>
+      <TextField fx:id="campoBuscar" layoutX="605.0" layoutY="13.0" prefHeight="30.0" prefWidth="190.0" promptText="Buscar" />
+      <Button fx:id="btnBuscar" layoutX="799.0" layoutY="13.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="58.0" style="-fx-background-color: #00ae3c;">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/search-icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>
