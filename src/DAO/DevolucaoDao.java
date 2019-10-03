@@ -19,11 +19,14 @@ public class DevolucaoDao {
     
     public void inserirDevolucao(ModelDevolucao devolucao) throws SQLException {
 
-        String sql = "insert into devolucoes(data_devolucao,id_emprestimo,id_administrador) values(?,?,?)";
+        String sql = "insert into devolucoes(data_devolucao,id_emprestimo,id_administrador,nome_chave,nome_usuario,nome_admin) values(?,?,?,?,?,?)";
         PreparedStatement stmt = conect.prepareStatement(sql); 
         stmt.setString(1, devolucao.getData_devolucao());
         stmt.setInt(2, devolucao.getId_emprestimo());
         stmt.setInt(3, devolucao.getId_admin());
+        stmt.setString(4, devolucao.getNome_chave());
+        stmt.setString(5, devolucao.getNome_usuario());
+        stmt.setString(6, devolucao.getNome_admin());
         stmt.execute();
         stmt.close();
         conect.close();
@@ -41,8 +44,14 @@ public class DevolucaoDao {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                ModelDevolucao dev = new ModelDevolucao(rs.getInt("id_administrador"), rs.getInt("id_emprestimo"));
+                ModelDevolucao dev = new ModelDevolucao(rs.getInt("id_administrador"), rs.getInt("id_emprestimo"), rs.getString("nome_usuario"), rs.getString("nome_chave"), rs.getString("nome_admin"));
                 dev.setId(rs.getInt("id"));
+                dev.setId_admin(rs.getInt("id_administrador"));
+                dev.setId_emprestimo(rs.getInt("id_emprestimo"));
+                dev.setNome_usuario(rs.getString("nome_usuario"));
+                dev.setNome_chave(rs.getString("nome_chave"));
+                dev.setNome_admin(rs.getString("nome_admin"));
+                dev.setData_devolucao(rs.getString("data_devolucao"));
                 devolucoes.add(dev);
             }
 

@@ -90,6 +90,41 @@ public class EmprestarDAO {
 
         return emprestimos;
     }
+    
+    public List<ModelEmprestimo> listarTudo() throws SQLException {
+
+        ResultSet rs = null;
+
+        List<ModelEmprestimo> emprestimos = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM emprestimos";
+            PreparedStatement stmt = conect.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                ModelEmprestimo emprestimo = new ModelEmprestimo();
+                emprestimo.setId(rs.getInt("id"));
+                emprestimo.setId_chave(rs.getInt("id_chave"));
+                emprestimo.setId_user(rs.getInt("id_usuario"));
+                emprestimo.setId_admin(rs.getInt("id_administrador"));
+                emprestimo.setData_emprestimo(rs.getString("data_emprestimo"));
+                emprestimo.setStatus(rs.getString("status"));
+                emprestimo.setNome_usuario(rs.getString("nome_usuario"));
+                emprestimo.setNome_chave(rs.getString("nome_chave"));
+                emprestimo.setNome_admin(rs.getString("nome_admin"));
+                emprestimos.add(emprestimo);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro:" + e.getMessage());
+        } finally {
+            conect.close();
+        }
+
+        return emprestimos;
+    }
+    
     public ModelEmprestimo buscarEmprestimo(int id) throws SQLException{
         ResultSet result;
         ModelEmprestimo emprestimo = new ModelEmprestimo();

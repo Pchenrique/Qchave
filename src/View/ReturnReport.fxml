@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReturnReportController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReturnReportController">
    <children>
       <VBox prefHeight="500.0" prefWidth="281.0" style="-fx-background-color: #00ae3c;">
          <children>
@@ -71,12 +71,12 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TableView layoutX="280.0" layoutY="55.0" prefHeight="445.0" prefWidth="624.0">
+      <TableView fx:id="table_lista_devolucoes" layoutX="280.0" layoutY="55.0" prefHeight="445.0" prefWidth="624.0">
         <columns>
           <TableColumn fx:id="col_chave" prefWidth="91.0" text="Chave" />
-          <TableColumn fx:id="col_responsavel" prefWidth="221.0" text="Responsável" />
-            <TableColumn fx:id="col_recebida_por" prefWidth="214.0" text="Recebida Por" />
-            <TableColumn fx:id="col_data" prefWidth="97.0" text="Data" />
+          <TableColumn fx:id="col_responsavel" prefWidth="209.0" text="Responsável" />
+            <TableColumn fx:id="col_recebida_por" prefWidth="189.0" text="Recebida Por" />
+            <TableColumn fx:id="col_data" prefWidth="134.0" text="Data" />
         </columns>
       </TableView>
       <TextField fx:id="campoBuscar" layoutX="605.0" layoutY="13.0" prefHeight="30.0" prefWidth="190.0" promptText="Buscar" />

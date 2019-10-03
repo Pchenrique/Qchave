@@ -80,7 +80,7 @@ public class KeyReturnController implements Initializable {
         
         ModelAdmin admin = banco_admindao.buscarAdmin(Integer.parseInt(this.token_administrador.getText()));
         
-        ModelDevolucao devolucao = new ModelDevolucao(admin.getId(), selected.getId());
+        ModelDevolucao devolucao = new ModelDevolucao(admin.getId(), selected.getId(), selected.getNome_usuario(), selected.getNome_chave(), selected.getNome_admin());
         banco.inserirDevolucao(devolucao);
         
       
