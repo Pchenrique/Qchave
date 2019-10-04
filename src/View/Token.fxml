@@ -1,11 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TokenController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="Controller.TokenController">
+   <children>
+      <HBox prefHeight="55.0" prefWidth="600.0" styleClass="btn-emprestar" stylesheets="@../Style/css.css">
+         <children>
+            <Label text="Recuperação de Token" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="200.0" top="15.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <Label layoutX="164.0" layoutY="95.0" text="Nome do Administrador">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="nome_administrador" layoutX="164.0" layoutY="117.0" text="Paulo">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="164.0" layoutY="143.0" text="CPF">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="cpf_administrador" layoutX="164.0" layoutY="169.0" prefHeight="36.0" prefWidth="260.0" promptText="CPF do Administrador" />
+      <Button layoutX="164.0" layoutY="223.0" mnemonicParsing="false" onAction="#recuperarToken" prefHeight="36.0" prefWidth="260.0" text="Recuperar Token">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Label layoutX="164.0" layoutY="328.0" text="Token:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="token" layoutX="209.0" layoutY="329.0" />
+      <Button layoutX="164.0" layoutY="265.0" mnemonicParsing="false" onAction="#recuperarToken" prefHeight="36.0" prefWidth="260.0" text="Cancelar">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>

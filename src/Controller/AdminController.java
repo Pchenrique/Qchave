@@ -10,6 +10,8 @@ import Classe.Admin;
 import Classe.EditAdmin;
 import Classe.Home;
 import Classe.RegisterAdmin;
+import Classe.Token;
+import Classe.TokenEdit;
 import Model.ModelAdmin;
 import DAO.AdminDao;
 
@@ -110,10 +112,10 @@ public class AdminController implements Initializable {
     //Método de editar administrador.
     @FXML
     private void editarAdministrador(ActionEvent event) {
-        if (selected != null) {
-            EditAdmin edit = new EditAdmin(selected);
+       if (selected != null) {
+            TokenEdit tokenedit = new TokenEdit();
             try {
-                edit.start(new Stage());
+                tokenedit.start(new Stage());
                 Admin.getStage().close();
 
             } catch (Exception ex) {
@@ -156,6 +158,23 @@ public class AdminController implements Initializable {
             alerta.show();
         }
     }
+    @FXML
+    private void recuperarToken(ActionEvent event) {
+         if (selected != null) {
+              Token token = new Token();
+        try {
+            token.start(new Stage());
+        } catch (Exception ex) {
+            Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           
+        } else {
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setHeaderText("Selecione um administrador clicando sobre o mesmo para recuperar o seu token.");
+            alerta.show();
+        }
+    }
+    
 
     //Função para set os valores das colunas da tabela.
     public void initTable() throws SQLException {
@@ -191,8 +210,6 @@ public class AdminController implements Initializable {
         newFrame.start(new Stage());
     }
     
-    @FXML
-    private void recuperarToken(ActionEvent event) {
-    }
+   
 
 }

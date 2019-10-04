@@ -55,7 +55,7 @@ public class KeyReturnController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-             KeyDao banco_key = new KeyDao();
+            KeyDao banco_key = new KeyDao();
             UserDAO banco_user = new UserDAO();
             ModelKey key = banco_key.buscarKey(selected.getId_chave());
             ModelUser user = banco_user.buscarUser(selected.getId_user());
