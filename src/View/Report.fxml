@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReportController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReportController">
    <children>
-      <VBox prefHeight="500.0" prefWidth="281.0" style="-fx-background-color: #00ae3c;">
+      <VBox prefHeight="600.0" prefWidth="281.0" style="-fx-background-color: #00ae3c;">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -44,7 +44,7 @@
                   <Image url="@../Images/Logo_qchaves05.png" />
                </image>
                <VBox.margin>
-                  <Insets left="30.0" top="85.0" />
+                  <Insets left="30.0" top="130.0" />
                </VBox.margin>
             </ImageView>
             <Label text="Sistema de Gerenciamento de Chaves do IFCE" textFill="WHITE">
@@ -60,61 +60,94 @@
                   <Font name="System Bold" size="13.0" />
                </font>
                <VBox.margin>
-                  <Insets left="70.0" top="205.0" />
+                  <Insets left="70.0" top="240.0" />
                </VBox.margin>
             </Label>
          </children>
       </VBox>
-      <Pane layoutX="292.0" layoutY="132.0" prefHeight="175.0" prefWidth="281.0" style="-fx-background-color: #5EC2BA;">
+      <Pane layoutX="302.0" layoutY="209.0" prefHeight="144.0" prefWidth="212.0" style="-fx-background-color: #5EC2BA;">
          <children>
             <Label layoutX="14.0" layoutY="30.0" text="Empréstimos" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="System Bold" size="22.0" />
                </font>
             </Label>
             <Label layoutX="14.0" layoutY="65.0" text="Total de empréstimos" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="totalEmprestimos" layoutX="14.0" layoutY="95.0" text="4" textAlignment="JUSTIFY" textFill="WHITE">
+            <Label fx:id="totalEmprestimos" layoutX="14.0" layoutY="91.0" text="4" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="35.0" />
                </font>
             </Label>
          </children>
+         <padding>
+            <Insets top="6.0" />
+         </padding>
       </Pane>
-      <Pane layoutX="608.0" layoutY="132.0" prefHeight="175.0" prefWidth="281.0" style="-fx-background-color: #5E77C2;">
+      <Pane layoutX="535.0" layoutY="209.0" prefHeight="144.0" prefWidth="212.0" style="-fx-background-color: #5E77C2;">
          <children>
             <Label layoutX="14.0" layoutY="34.0" text="Devoluções" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="System Bold" size="22.0" />
                </font>
             </Label>
             <Label layoutX="14.0" layoutY="69.0" text="Total de devoluções" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="totalDevolucoes" layoutX="14.0" layoutY="98.0" text="2" textAlignment="JUSTIFY" textFill="WHITE">
+            <Label fx:id="totalDevolucoes" layoutX="14.0" layoutY="94.0" text="2" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="35.0" />
                </font>
             </Label>
          </children>
+         <padding>
+            <Insets top="6.0" />
+         </padding>
       </Pane>
       <Label layoutX="292.0" layoutY="17.0" text="Relatórios">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Separator layoutX="281.0" layoutY="53.0" prefHeight="4.0" prefWidth="618.0" />
-      <Button layoutX="323.0" layoutY="321.0" mnemonicParsing="false" onAction="#gerarRelatorioEmprestimos" prefHeight="29.0" prefWidth="219.0" style="-fx-background-color: #A3FFC8;" text="Gerar Relatório de Emprestimos" textFill="#535353">
+      <Separator layoutX="281.0" layoutY="53.0" prefHeight="0.0" prefWidth="719.0" />
+      <Button layoutX="302.0" layoutY="363.0" mnemonicParsing="false" onAction="#gerarRelatorioEmprestimos" prefHeight="29.0" prefWidth="212.0" style="-fx-background-color: #A3FFC8;" text="Gerar Relatório" textFill="#535353">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="639.0" layoutY="321.0" mnemonicParsing="false" onAction="#gerarRelatorioDevolucoes" prefHeight="29.0" prefWidth="219.0" style="-fx-background-color: #A3FFC8;" text="Gerar Relatório de Devoluções" textFill="#535353">
+      <Button layoutX="536.0" layoutY="363.0" mnemonicParsing="false" onAction="#gerarRelatorioDevolucoes" prefHeight="29.0" prefWidth="212.0" style="-fx-background-color: #A3FFC8;" text="Gerar Relatório " textFill="#535353">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Pane layoutX="768.0" layoutY="209.0" prefHeight="144.0" prefWidth="212.0" style="-fx-background-color: #0F77FB;">
+         <children>
+            <Label layoutX="14.0" layoutY="34.0" text="Reservas" textAlignment="JUSTIFY" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="69.0" text="Total de Reservas" textAlignment="JUSTIFY" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="totalReservas" layoutX="14.0" layoutY="94.0" text="1" textAlignment="JUSTIFY" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="35.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets top="6.0" />
+         </padding>
+      </Pane>
+      <Button layoutX="768.0" layoutY="363.0" mnemonicParsing="false" onAction="#gerarRelatorioReservas" prefHeight="29.0" prefWidth="212.0" style="-fx-background-color: #A3FFC8;" text="Gerar Relatório " textFill="#535353">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

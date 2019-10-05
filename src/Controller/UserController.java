@@ -9,9 +9,11 @@ package Controller;
 import Classe.EditUser;
 import Classe.Home;
 import Classe.KeyPermission;
+import Classe.KeysAllowed;
 import Classe.RegisterUser;
 import Classe.User;
 import DAO.UserDAO;
+import Model.ModelKeyPermission;
 import Model.ModelUser;
 
 import java.net.URL;
@@ -61,7 +63,7 @@ public class UserController implements Initializable {
     private ImageView btn_buscar;
 
     private Model.ModelUser selected;
-
+    
     private ObservableList<ModelUser> usuarios = FXCollections.observableArrayList();
 
     /**
@@ -161,7 +163,7 @@ public class UserController implements Initializable {
 
     @FXML
     private void permitirChave(ActionEvent event) {
-        if (selected != null) {
+        /*if (selected != null) {
             if (selected.getTipo_user().equals("Bolsista") || selected.getTipo_user().equals("Estagiário")) {
                 KeyPermission permission = new KeyPermission(selected);
                 try {
@@ -169,6 +171,23 @@ public class UserController implements Initializable {
                     permission.start(new Stage());
                 } catch (Exception ex) {
                     Logger.getLogger(KeyPermissionController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario do tipo SERVIDOR tem acesso a qualquer chave!");
+            }
+        } else {
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setHeaderText("Selecione um usuário clicando sobre o mesmo para dá permissão para pegar uma chave.");
+            alerta.show();
+        }*/
+        if (selected != null) {
+            if (selected.getTipo_user().equals("Bolsista") || selected.getTipo_user().equals("Estagiário")) {
+                KeysAllowed keysallowed = new KeysAllowed(selected);
+                try {
+                    keysallowed.start(new Stage());
+                    User.getStage().close();
+                } catch (Exception ex) {
+                    Logger.getLogger(KeysAllowedController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario do tipo SERVIDOR tem acesso a qualquer chave!");

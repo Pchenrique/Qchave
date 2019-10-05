@@ -11,6 +11,7 @@ import Classe.Home;
 import Classe.Key;
 import Classe.Loan;
 import Classe.Report;
+import Classe.Reserve;
 import Classe.User;
 import DAO.DevolucaoDao;
 import DAO.EmprestarDAO;
@@ -46,8 +47,6 @@ import javafx.stage.Stage;
  */
 public class HomeController implements Initializable {
 
-    @FXML
-    private Button emprestar_chave;
     @FXML
     private Label info_emprestimos;
     @FXML
@@ -213,6 +212,18 @@ public class HomeController implements Initializable {
         
         try {
             report.start(new Stage());
+            Home.getStage().close();
+        } catch (Exception ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void reservarChave(ActionEvent event) {
+        Reserve reserve = new Reserve();
+        
+        try {
+            reserve.start(new Stage());
             Home.getStage().close();
         } catch (Exception ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);

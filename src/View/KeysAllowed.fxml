@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="491.0" prefWidth="532.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.KeysAllowedController">
+   <children>
+      <HBox prefHeight="50.0" prefWidth="534.0" styleClass="btn-emprestar" stylesheets="@../Style/css.css">
+         <children>
+            <Label text="Chaves Permitidas" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="195.0" top="12.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <Label layoutX="116.0" layoutY="90.0" text="Nome do Usuário">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="nome_usuario" layoutX="117.0" layoutY="109.0" text="Samuel Lima">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Button layoutX="116.0" layoutY="365.0" mnemonicParsing="false" onAction="#novaPermissao" prefHeight="30.0" prefWidth="147.0" text="Nova Permissão" />
+      <Button layoutX="270.0" layoutY="365.0" mnemonicParsing="false" onAction="#excluirPermissao" prefHeight="30.0" prefWidth="147.0" text="Excluir Permissão" />
+      <Button layoutX="117.0" layoutY="406.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="30.0" prefWidth="301.0" text="Cancelar" />
+      <TableView fx:id="table_chaves_permitidas" layoutX="116.0" layoutY="137.0" prefHeight="200.0" prefWidth="301.0">
+        <columns>
+          <TableColumn fx:id="chaves_permitidas" prefWidth="300.0" text="Chaves Permitidas" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -37,6 +37,8 @@ public class ReportController implements Initializable {
     private Label totalEmprestimos;
     @FXML
     private Label totalDevolucoes;
+    @FXML
+    private Label totalReservas;
 
     /**
      * Initializes the controller class.
@@ -99,6 +101,11 @@ public class ReportController implements Initializable {
             Logger.getLogger(ReportController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+   
+    @FXML
+    private void gerarRelatorioReservas(ActionEvent event) {
+    
+    }
     
     @FXML
     private void backPage(ActionEvent event) {
@@ -111,6 +118,8 @@ public class ReportController implements Initializable {
             Logger.getLogger(ReportController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+   
 
    
 }
