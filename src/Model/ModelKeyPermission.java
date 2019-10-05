@@ -13,11 +13,15 @@ public class ModelKeyPermission {
     private int id;
     private int id_usuario;
     private int id_chave;
+    private String nome_chave;
+    private String nome_usuario;
     private String data_confirmacao;
 
-    public ModelKeyPermission(int id_usuario, int id_chave) {
+    public ModelKeyPermission(int id_usuario, int id_chave, String nome_chave, String nome_usuario) {
         this.id_usuario = id_usuario;
         this.id_chave = id_chave;
+        this.nome_chave = nome_chave;
+        this.nome_usuario = nome_usuario;
         LocalDateTime agora = LocalDateTime.now();
         DateTimeFormatter formatterHora = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
         this.data_confirmacao = formatterHora.format(agora);
@@ -45,6 +49,22 @@ public class ModelKeyPermission {
 
     public void setId_chave(int id_chave) {
         this.id_chave = id_chave;
+    }
+
+    public String getNome_chave() {
+        return nome_chave;
+    }
+
+    public void setNome_chave(String nome_chave) {
+        this.nome_chave = nome_chave;
+    }
+
+    public String getNome_usuario() {
+        return nome_usuario;
+    }
+
+    public void setNome_usuario(String nome_usuario) {
+        this.nome_usuario = nome_usuario;
     }
 
     public String getData_confirmacao() {

@@ -5,6 +5,8 @@
  */
 package Classe;
 
+import Controller.TokenController;
+import Model.ModelAdmin;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,6 +25,10 @@ public class Token {
 
     public static void setStage(Stage stage) {
         Token.stage = stage;
+    }
+    
+    public Token(ModelAdmin selected){
+        TokenController.setSelected(selected);
     }
 
     public void start(Stage stage) throws Exception {

@@ -93,7 +93,7 @@ public class KeyPermissionController implements Initializable {
         try{
             try{
                 ModelKey key = pegarChave();
-                ModelKeyPermission keyP = new ModelKeyPermission(selected.getId(), key.getId());
+                ModelKeyPermission keyP = new ModelKeyPermission(selected.getId(), key.getId(), key.getNome_sala(), selected.getNome());
 
                 banco_permission.inserirPermission(keyP);
 

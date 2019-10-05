@@ -162,7 +162,7 @@ public class UserController implements Initializable {
     @FXML
     private void permitirChave(ActionEvent event) {
         if (selected != null) {
-            if (selected.getTipo_user().equals("Bolsista") || selected.getTipo_user().equals("Estagiario")) {
+            if (selected.getTipo_user().equals("Bolsista") || selected.getTipo_user().equals("Estagiário")) {
                 KeyPermission permission = new KeyPermission(selected);
                 try {
                     User.getStage().close();

@@ -9,7 +9,14 @@ import Classe.Home;
 import Classe.LoanReport;
 import Classe.Report;
 import Classe.ReturnReport;
+import DAO.DevolucaoDao;
+import DAO.EmprestarDAO;
+import Model.ModelDevolucao;
+import Model.ModelEmprestimo;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,7 +45,36 @@ public class ReportController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        EmprestarDAO emprestardao = new EmprestarDAO();
+        DevolucaoDao devolucao = new DevolucaoDao();
+        
+        List<ModelEmprestimo> listaEmprestimos = new ArrayList();
+        
+        try {
+            listaEmprestimos = emprestardao.listarTudo();
+        } catch (SQLException ex) {
+            Logger.getLogger(ReportController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        int cont=0;
+        for(int i=0; i<listaEmprestimos.size();i++){
+            cont++;
+        }
+        totalEmprestimos.setText(Integer.toString(cont));
+        
+        List<ModelDevolucao> listaDevolucao = new ArrayList();
+        
+        try {
+            listaDevolucao = devolucao.listar();
+        } catch (SQLException ex) {
+            Logger.getLogger(ReportController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        int cont2=0;
+        for(int i=0; i<listaDevolucao.size();i++){
+            cont2++;
+        }
+        totalDevolucoes.setText(Integer.toString(cont2));
+        
+        
     }    
 
     @FXML

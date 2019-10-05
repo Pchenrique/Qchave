@@ -8,7 +8,6 @@ package Controller;
 import Classe.Admin;
 import Classe.EditAdmin;
 import Classe.TokenEdit;
-import DAO.AdminDao;
 import Model.ModelAdmin;
 import java.net.URL;
 import java.sql.SQLException;
@@ -21,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -34,28 +34,44 @@ public class TokinEditController implements Initializable {
     @FXML
     private TextField token;
 
-    private ModelAdmin selected;
+    static ModelAdmin selected;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        nomeAdministrador.setText(selected.getNome());
     }
 
     @FXML
-    private void verificaToken(ActionEvent event) throws SQLException {
+    private void verificaToken(ActionEvent event) throws SQLException, Exception {
+        try{
+            int vtoken = Integer.parseInt(token.getText());
+            if(vtoken == selected.getToken()){
+                EditAdmin edit = new EditAdmin(selected);
+                try {
+                    edit.start(new Stage());
+                    Admin.getStage().close();
 
-        EditAdmin edit = new EditAdmin(selected);
-        try {
-            edit.start(new Stage());
-            Admin.getStage().close();
-
-        } catch (Exception ex) {
-            Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "O token desse admin é diferente!");
+            }
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "O token é somente numeros e com ate 8 digitos!");
+            Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, e);
         }
+    }
+    
+    public static ModelAdmin getSelected() {
+        return selected;
+    }
 
+    public static void setSelected(ModelAdmin selected) {
+        TokinEditController.selected = selected;
     }
 
     @FXML

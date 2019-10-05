@@ -7,7 +7,6 @@ package Controller;
 
 //Importação das classes EditAdmin, RegisterAdmin e do Model Admin e do DAO Admin.
 import Classe.Admin;
-import Classe.EditAdmin;
 import Classe.Home;
 import Classe.RegisterAdmin;
 import Classe.Token;
@@ -113,7 +112,7 @@ public class AdminController implements Initializable {
     @FXML
     private void editarAdministrador(ActionEvent event) {
        if (selected != null) {
-            TokenEdit tokenedit = new TokenEdit();
+            TokenEdit tokenedit = new TokenEdit(selected);
             try {
                 tokenedit.start(new Stage());
                 Admin.getStage().close();
@@ -161,7 +160,7 @@ public class AdminController implements Initializable {
     @FXML
     private void recuperarToken(ActionEvent event) {
          if (selected != null) {
-              Token token = new Token();
+              Token token = new Token(selected);
         try {
             token.start(new Stage());
         } catch (Exception ex) {

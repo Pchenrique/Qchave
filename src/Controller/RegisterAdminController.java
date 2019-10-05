@@ -21,7 +21,6 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -68,7 +67,7 @@ public class RegisterAdminController implements Initializable {
         }else {
             try{
                 String name = this.nome_completo.getText();
-                long cpf = Long.parseLong(this.cpf.getText());
+                String cpf = this.cpf.getText();
                 int token = Integer.parseInt(this.token.getText());
 
                 try{
@@ -96,7 +95,7 @@ public class RegisterAdminController implements Initializable {
                     Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, e);
                 }
             }catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Os campos CPF e TOKEN tem que ser números!");
+                JOptionPane.showMessageDialog(null, "Os campos TOKEN tem que ser números!");
                 Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, e);
             }
                   
