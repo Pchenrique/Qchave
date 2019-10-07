@@ -5,8 +5,10 @@
  */
 package Controller;
 
+import Classe.Key;
 import Classe.KeyPermission;
 import Classe.User;
+import DAO.KeyDao;
 import DAO.KeyPermissionDao;
 import Model.ModelKeyPermission;
 import Model.ModelUser;
@@ -15,7 +17,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.property.Property;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,7 +26,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -42,6 +44,8 @@ public class KeysAllowedController implements Initializable {
 
     private static Model.ModelUser usuario;
     
+    private Model.ModelKeyPermission selected;
+    
     @FXML
     private TableView<ModelKeyPermission> table_chaves_permitidas;
     @FXML
@@ -58,6 +62,13 @@ public class KeysAllowedController implements Initializable {
         nome_usuario.setText(usuario.getNome());
         
         initTable(); 
+        
+        table_chaves_permitidas.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                selected = (Model.ModelKeyPermission) newValue;
+            }
+        });
     }
 
     @FXML
@@ -74,7 +85,24 @@ public class KeysAllowedController implements Initializable {
     }
 
     @FXML
-    private void excluirPermissao(ActionEvent event) {
+    private void excluirPermissao(ActionEvent event) throws Exception {
+        if (selected != null) {
+            KeyPermissionDao deletar = new KeyPermissionDao();
+            int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir " + selected.getNome_chave() + "?","Excluir usuario?", JOptionPane.YES_NO_OPTION);
+          
+            if(resposta == JOptionPane.YES_OPTION){
+                try {
+                    deletar.excluir(selected);
+        
+                } catch (SQLException ex) {
+                    Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } else {
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setHeaderText("Selecione uma chave clicando sobre a mesma para exclui-lá.");
+            alerta.show();
+        }
     }
 
     public ObservableList<ModelKeyPermission> lista() throws SQLException {

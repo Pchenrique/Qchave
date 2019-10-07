@@ -14,6 +14,8 @@ import Model.ModelKeyPermission;
 import Model.ModelUser;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -88,28 +90,42 @@ public class KeyPermissionController implements Initializable {
 
     @FXML
     private void concederPermissao(ActionEvent event) throws SQLException, Exception {
-        KeyPermissionDao banco_permission = new KeyPermissionDao();
+        KeyPermissionDao banco_permission_total = new KeyPermissionDao();
+        List<ModelKeyPermission> lista = new ArrayList();
         
-        try{
+        lista = banco_permission_total.listarPorUsuario(selected.getId());
+        int cont =0;
+        for(int i=0; i < lista.size(); i++){
+            if(lista.get(i).getNome_chave().equals(pegarChave().getNome_sala())){
+                cont++;
+            }
+        }
+        
+        if(cont > 0){
+            JOptionPane.showMessageDialog(null, "A chave já foi permitida para esse usuario!");
+        }else{
             try{
-                ModelKey key = pegarChave();
-                ModelKeyPermission keyP = new ModelKeyPermission(selected.getId(), key.getId(), key.getNome_sala(), selected.getNome());
+                try{
+                    KeyPermissionDao banco_permission = new KeyPermissionDao();
+                    ModelKey key = pegarChave();
+                    ModelKeyPermission keyP = new ModelKeyPermission(selected.getId(), key.getId(), key.getNome_sala(), selected.getNome());
 
-                banco_permission.inserirPermission(keyP);
+                    banco_permission.inserirPermission(keyP);
 
-                JOptionPane.showMessageDialog(null, "Chave "+key.getNome_sala().toUpperCase()+" Permitida para "+selected.getNome().toUpperCase()+"");
+                    JOptionPane.showMessageDialog(null, "Chave "+key.getNome_sala().toUpperCase()+" Permitida para "+selected.getNome().toUpperCase()+"");
 
-                KeyPermission.getStage().close();
+                    KeyPermission.getStage().close();
 
-                User newFrame = new User();
-                newFrame.start(new Stage());
-            }catch(SQLException e){
-                JOptionPane.showMessageDialog(null, "ERRO! Por favor consulte o admistrador");
+                    User newFrame = new User();
+                    newFrame.start(new Stage());
+                }catch(SQLException e){
+                    JOptionPane.showMessageDialog(null, "ERRO! Por favor consulte o admistrador");
+                    Logger.getLogger(KeyPermissionController.class.getName()).log(Level.SEVERE, null, e);
+                }
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Selecione a chave para dar permissão!");
                 Logger.getLogger(KeyPermissionController.class.getName()).log(Level.SEVERE, null, e);
             }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Selecione a chave para dar permissão!");
-            Logger.getLogger(KeyPermissionController.class.getName()).log(Level.SEVERE, null, e);
         }
     }
     

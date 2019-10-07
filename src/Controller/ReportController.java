@@ -104,7 +104,7 @@ public class ReportController implements Initializable {
    
     @FXML
     private void gerarRelatorioReservas(ActionEvent event) {
-    
+        
     }
     
     @FXML

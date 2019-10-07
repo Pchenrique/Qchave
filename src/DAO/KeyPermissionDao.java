@@ -68,4 +68,13 @@ public class KeyPermissionDao {
         return keys;
     }
     
+    public void excluir(ModelKeyPermission chavepermitida) throws SQLException {
+        String sql = "DELETE FROM chaves_permitidas where id = ?";
+        PreparedStatement stmt = conect.prepareStatement(sql);
+        stmt.setInt(1, chavepermitida.getId());
+        stmt.execute();
+        stmt.close();
+        conect.close();
+    }
+    
 }

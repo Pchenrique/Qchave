@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReserveController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReserveController">
    <children>
       <VBox prefHeight="600.0" prefWidth="281.0" style="-fx-background-color: #00ae3c;">
          <children>
@@ -151,12 +151,14 @@
       </HBox>
       <TableView fx:id="table_reservas" layoutX="281.0" layoutY="60.0" prefHeight="479.0" prefWidth="720.0">
         <columns>
-          <TableColumn fx:id="col_id" prefWidth="57.0" text="Id" />
-          <TableColumn fx:id="col_chave" prefWidth="106.0" text="Chave" />
-            <TableColumn fx:id="col_responsavel" prefWidth="183.0" text="Responsável" />
-            <TableColumn fx:id="col_reserva_feita_por" minWidth="0.0" prefWidth="151.0" text="Reserva Feita Por" />
-            <TableColumn fx:id="col_saida" minWidth="5.0" prefWidth="115.0" text="Saída " />
-            <TableColumn fx:id="col_entrada" prefWidth="107.0" text="Entrada" />
+          <TableColumn fx:id="col_id" prefWidth="37.0" text="Id" />
+          <TableColumn fx:id="col_chave" prefWidth="112.0" text="Chave" />
+            <TableColumn fx:id="col_responsavel" prefWidth="155.0" text="Responsável" />
+            <TableColumn fx:id="col_reserva_feita_por" minWidth="0.0" prefWidth="136.0" text="Reserva Feita Por" />
+            <TableColumn fx:id="data_saida" minWidth="5.0" prefWidth="83.0" text="Data Saída" />
+            <TableColumn fx:id="hora_saida" prefWidth="61.0" text="Hora" />
+            <TableColumn fx:id="data_entrada" minWidth="5.0" prefWidth="82.0" text="Data Entrada" />
+            <TableColumn fx:id="hora_entrada" prefWidth="52.0" text="Hora" />
         </columns>
       </TableView>
    </children>

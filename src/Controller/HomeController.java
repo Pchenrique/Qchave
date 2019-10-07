@@ -16,10 +16,12 @@ import Classe.User;
 import DAO.DevolucaoDao;
 import DAO.EmprestarDAO;
 import DAO.KeyDao;
+import DAO.ReservaDao;
 import DAO.UserDAO;
 import Model.ModelDevolucao;
 import Model.ModelEmprestimo;
 import Model.ModelKey;
+import Model.ModelReservas;
 import Model.ModelUser;
 
 import java.net.URL;
@@ -34,7 +36,6 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -98,6 +99,7 @@ public class HomeController implements Initializable {
         List<ModelKey> chaves2 = new ArrayList<>();
         List<ModelUser> users = new ArrayList<>();
         List<ModelDevolucao> devolucoes = new ArrayList<>();
+        List<ModelReservas> reservas = new ArrayList<>();
 
         try {
             //lista de emprestimos
@@ -129,6 +131,16 @@ public class HomeController implements Initializable {
             }
             String valor_chaves2 = Integer.toString(cont_chaves_total);
             this.info_chaves_total.setText(valor_chaves2);
+            
+            //Lista de Reservas
+            ReservaDao banco_reservas = new ReservaDao();
+            reservas = banco_reservas.listaDisponivel();
+            int cont_reservas_total = 0;
+            for (int i = 0; i < reservas.size(); i++) {
+                cont_reservas_total++;
+            }
+            String valor_reservas = Integer.toString(cont_reservas_total);
+            this.info_reservas.setText(valor_reservas);
             
             //lista de usuarios
             UserDAO banco_user = new UserDAO();
