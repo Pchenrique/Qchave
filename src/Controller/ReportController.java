@@ -8,9 +8,10 @@ package Controller;
 import Classe.Home;
 import Classe.LoanReport;
 import Classe.Report;
+import Classe.ReservesReport;
 import Classe.ReturnReport;
 import DAO.DevolucaoDao;
-import DAO.EmprestarDAO;
+import DAO.EmprestarDao;
 import Model.ModelDevolucao;
 import Model.ModelEmprestimo;
 import java.net.URL;
@@ -47,7 +48,7 @@ public class ReportController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        EmprestarDAO emprestardao = new EmprestarDAO();
+        EmprestarDao emprestardao = new EmprestarDao();
         DevolucaoDao devolucao = new DevolucaoDao();
         
         List<ModelEmprestimo> listaEmprestimos = new ArrayList();
@@ -104,7 +105,14 @@ public class ReportController implements Initializable {
    
     @FXML
     private void gerarRelatorioReservas(ActionEvent event) {
+        ReservesReport reservesreport = new ReservesReport();
         
+        try {
+            reservesreport.start(new Stage());
+            Report.getStage().close();
+        } catch (Exception ex) {
+            Logger.getLogger(ReportController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     @FXML

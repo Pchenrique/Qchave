@@ -160,9 +160,10 @@ public class AdminController implements Initializable {
     @FXML
     private void recuperarToken(ActionEvent event) {
          if (selected != null) {
-              Token token = new Token(selected);
+             Token token = new Token(selected);
         try {
             token.start(new Stage());
+            Admin.getStage().close();
         } catch (Exception ex) {
             Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
         }

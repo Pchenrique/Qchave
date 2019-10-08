@@ -7,6 +7,7 @@ package Controller;
 
 import Classe.Key;
 import Classe.KeyPermission;
+import Classe.KeysAllowed;
 import Classe.User;
 import DAO.KeyDao;
 import DAO.KeyPermissionDao;
@@ -76,7 +77,7 @@ public class KeysAllowedController implements Initializable {
 
         KeyPermission permission = new KeyPermission(usuario);
         try {
-            User.getStage().close();
+            KeysAllowed.getStage().close();
             permission.start(new Stage());
         } catch (Exception ex) {
             Logger.getLogger(KeyPermissionController.class.getName()).log(Level.SEVERE, null, ex);
@@ -93,7 +94,11 @@ public class KeysAllowedController implements Initializable {
             if(resposta == JOptionPane.YES_OPTION){
                 try {
                     deletar.excluir(selected);
-        
+                    
+                    KeysAllowed.getStage().close();
+                    
+                    KeysAllowed newFrame = new KeysAllowed();
+                    newFrame.start(new Stage());
                 } catch (SQLException ex) {
                     Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -121,6 +126,15 @@ public class KeysAllowedController implements Initializable {
     }
     @FXML
     private void cancelar(ActionEvent event) {
+        KeysAllowed.getStage().close();
+        
+        User newFrame = new User();
+        
+        try {
+            newFrame.start(new Stage());
+        } catch (Exception ex) {
+            Logger.getLogger(KeysAllowedController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public static ModelUser getPermitida() {

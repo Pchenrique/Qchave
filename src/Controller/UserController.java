@@ -11,7 +11,7 @@ import Classe.Home;
 import Classe.KeysAllowed;
 import Classe.RegisterUser;
 import Classe.User;
-import DAO.UserDAO;
+import DAO.UserDao;
 import Model.ModelUser;
 
 import java.net.URL;
@@ -132,7 +132,7 @@ public class UserController implements Initializable {
     @FXML
     private void excluirUsuario(ActionEvent event) throws SQLException, Exception {
         if (selected != null) {
-            UserDAO deletar = new UserDAO();
+            UserDao deletar = new UserDao();
             int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir " + selected.getNome() + "?","Deseja excluir a chave?", JOptionPane.YES_NO_OPTION);
             
             if(resposta == JOptionPane.YES_OPTION){
@@ -193,7 +193,7 @@ public class UserController implements Initializable {
 
     //Função ObservableList para listar os campos da tabela.
     public ObservableList<Model.ModelUser> atualizaTable() throws SQLException {
-        UserDAO userdao = new UserDAO();
+        UserDao userdao = new UserDao();
         usuarios = FXCollections.observableArrayList(userdao.listar());
         return usuarios;
     }

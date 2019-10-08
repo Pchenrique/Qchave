@@ -8,13 +8,12 @@ package Controller;
 //Importação do User DAO e do Model User.
 import Classe.RegisterUser;
 import Classe.User;
-import DAO.UserDAO;
+import DAO.UserDao;
 import Model.ModelUser;
+import Validacoes.Validacoes;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -60,24 +59,34 @@ public class RegisterUserController implements Initializable {
         ObservableList<String> options = FXCollections.observableArrayList("Servidor", "Bolsista", "Estagiário");
         tipo_usuario.setItems(options);
     }
-    
+
     //Método de registrar usuário.
     @FXML
-    private void registrarUsuario(ActionEvent event) throws SQLException, Exception, NumberFormatException{
+    private void registrarUsuario(ActionEvent event) throws SQLException, Exception, NumberFormatException {
 
         if (this.nome_completo.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo nome está vázio!");
+        } else if (this.nome_completo.getText().matches(Validacoes.regexNumeros())) {
+            JOptionPane.showMessageDialog(null, "O campo nome não pode conter numéros!");
+        } else if (this.nome_completo.getText().matches(Validacoes.regexCaracteres())) {
+            JOptionPane.showMessageDialog(null, "O campo nome não pode conter caracteres especiais!");
         } else if (this.matricula.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo matricula está vázio!");
+        } else if (this.matricula.getText().matches(Validacoes.regexCaracteres())) {
+            JOptionPane.showMessageDialog(null, "O campo matrícula não pode conter caracteres especiais!");
+        } else if (this.matricula.getText().matches(Validacoes.regexLetras())) {
+            JOptionPane.showMessageDialog(null, "O campo matrícula não pode conter letras!");
+        } else if (this.matricula.getText().length() > 7) {
+            JOptionPane.showMessageDialog(null, "O matrícula não pode conter mais do que 7 numéros!");
         } else if (this.email.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo email está vázio!");
         } else {
-            try{
+            try {
                 try {
                     long matricula = Long.parseLong(this.matricula.getText());
                     ModelUser user = new ModelUser(this.nome_completo.getText(), this.email.getText(), matricula, tipo_usuario.getSelectionModel().getSelectedItem());
-                    UserDAO userdao = new UserDAO();
-                    try{
+                    UserDao userdao = new UserDao();
+                    try {
                         userdao.inserirUser(user);
                         JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!");
 
@@ -85,11 +94,11 @@ public class RegisterUserController implements Initializable {
 
                         User newFrame = new User();
                         newFrame.start(new Stage());
-                    }catch(SQLException e){
+                    } catch (SQLException e) {
                         Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, e);
                         JOptionPane.showMessageDialog(null, "A Matricula informada ja existe!");
                     }
-                }catch(NumberFormatException e){
+                } catch (NumberFormatException e) {
                     Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, e);
                     JOptionPane.showMessageDialog(null, "A Matricula precisa ser so números!");
                 }

@@ -7,7 +7,7 @@ package Controller;
 
 import Classe.LoanReport;
 import Classe.Report;
-import DAO.EmprestarDAO;
+import DAO.EmprestarDao;
 import Model.ModelEmprestimo;
 import java.net.URL;
 import java.sql.SQLException;
@@ -86,7 +86,7 @@ public class LoanReportController implements Initializable {
 
     //Função ObservableList para listar os campos da tabela.
     public ObservableList<ModelEmprestimo> atualizaTable() throws SQLException {
-        EmprestarDAO emprestardao = new EmprestarDAO();
+        EmprestarDao emprestardao = new EmprestarDao();
         this.emprestimos = FXCollections.observableArrayList(emprestardao.listarTudo());
         return emprestimos;
     }
@@ -101,8 +101,7 @@ public class LoanReportController implements Initializable {
         }
         return emprestimoFiltrada;
     }
-    
-    
+     
     @FXML
     private void backPage(ActionEvent event) {
         LoanReport.getStage().close();

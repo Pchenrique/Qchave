@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  * @author Samuel Lima
  */
 public class Reserve {
-     private static Stage stage;
+    private static Stage stage;
 
     public static Stage getStage() {
         return stage;

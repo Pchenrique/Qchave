@@ -51,9 +51,8 @@ public class TokinEditController implements Initializable {
             if(vtoken == selected.getToken()){
                 EditAdmin edit = new EditAdmin(selected);
                 try {
+                    TokenEdit.getStage().close();
                     edit.start(new Stage());
-                    Admin.getStage().close();
-
                 } catch (Exception ex) {
                     Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
                 }

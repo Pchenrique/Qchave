@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Classe.Admin;
 import Model.ModelAdmin;
 import java.net.URL;
 import java.util.ResourceBundle;

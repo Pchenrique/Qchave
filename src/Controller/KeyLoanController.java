@@ -3,10 +3,10 @@ package Controller;
 import Classe.Key;
 import Classe.KeyLoan;
 import DAO.AdminDao;
-import DAO.EmprestarDAO;
+import DAO.EmprestarDao;
 import DAO.KeyDao;
 import DAO.KeyPermissionDao;
-import DAO.UserDAO;
+import DAO.UserDao;
 import Model.ModelAdmin;
 import Model.ModelEmprestimo;
 import Model.ModelKey;
@@ -73,14 +73,14 @@ public class KeyLoanController implements Initializable {
     
     //Função para pegar a lista de usuarios do BD e popular o ComboBox.
     public void BuscarListaDeUsuarios() throws SQLException{
-        UserDAO userdao = new UserDAO();
+        UserDao userdao = new UserDao();
         ObservableList<ModelUser> users = FXCollections.observableArrayList(userdao.listar());
         lista_usuarios.setItems(users);
     }
     
     @FXML
     private void confirmEmprestimo(ActionEvent event) throws SQLException, Exception {
-        EmprestarDAO banco = new EmprestarDAO();
+        EmprestarDao banco = new EmprestarDao();
         AdminDao banco_admindao = new AdminDao();
         KeyDao banco_key = new KeyDao();
         

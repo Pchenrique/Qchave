@@ -10,6 +10,7 @@ import Classe.EditKey;
 import Classe.Key;
 import DAO.KeyDao;
 import Model.ModelKey;
+import Validacoes.Validacoes;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -59,16 +60,22 @@ public class EditKeyController implements Initializable {
     @FXML
     private void alterarChave(ActionEvent event) throws SQLException, Exception {
         int id = key2.getId();
-        String nome_sala = this.nomeSala.getText();
-        String bloco = this.blocoSala.getText();
-        String status_chave = key2.getStatus();
 
-        if (nome_sala.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O campo nome não pode ser vazio!");
-        } else if (bloco.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O campo bloco não pode ser vazio!");
+        if (this.nomeSala.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo nome está vazio!");
+        } else if (this.nomeSala.getText().matches(Validacoes.regexCaracteres())) {
+            JOptionPane.showMessageDialog(null, "O campo nome não pode conter caracteres especiais!");
+        } else if (this.nomeSala.getText().matches(Validacoes.regexNumeros())) {
+            JOptionPane.showMessageDialog(null, "O campo nome não pode conter numéros!");
+        } else if (this.blocoSala.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo bloco está vazio!");
+        } else if (this.blocoSala.getText().matches(Validacoes.regexCaracteres())) {
+            JOptionPane.showMessageDialog(null, "O campo bloco não pode conter caracteres especiais!");
         } else {
             try {
+                String nome_sala = this.nomeSala.getText();
+                String bloco = this.blocoSala.getText();
+                String status_chave = key2.getStatus();
                 ModelKey chave = new ModelKey(nome_sala, bloco, status_chave);
 
                 KeyDao keydao = new KeyDao();

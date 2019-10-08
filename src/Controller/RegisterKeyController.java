@@ -10,6 +10,7 @@ import Classe.Key;
 import Classe.RegisterKey;
 import DAO.KeyDao;
 import Model.ModelKey;
+import Validacoes.Validacoes;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -50,17 +51,22 @@ public class RegisterKeyController implements Initializable {
     //Método de registrar administrador.
     @FXML
     private void registrarChave(ActionEvent event) throws SQLException, Exception {
-        String nome_sala = this.nome_sala.getText();
-        //int number = Integer.parseInt(codigo_chave.getText());
-        String bloco = this.bloco.getText();
-        String status_chave = "Disponivel";
 
-        if (nome_sala.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O campo nome não pode está vazio!");
-        } else if (bloco.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O campo bloco não pode está vazio!");
-
+        if (this.nome_sala.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo nome está vazio!");
+        } else if (this.nome_sala.getText().matches(Validacoes.regexCaracteres())) {
+            JOptionPane.showMessageDialog(null, "O campo nome não pode conter caracteres especiais!");
+        } else if (this.nome_sala.getText().matches(Validacoes.regexNumeros())) {
+            JOptionPane.showMessageDialog(null, "O campo nome não pode conter numéros!");
+        } else if (this.bloco.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo bloco está vazio!");
+        } else if (this.bloco.getText().matches(Validacoes.regexCaracteres())) {
+            JOptionPane.showMessageDialog(null, "O campo bloco não pode conter caracteres especiais!");
         } else {
+            String nome_sala = this.nome_sala.getText();
+            String bloco = this.bloco.getText();
+            String status_chave = "Disponivel";
+            
             ModelKey chave = new ModelKey(nome_sala, bloco, status_chave);
             KeyDao keydao = new KeyDao();
             try {

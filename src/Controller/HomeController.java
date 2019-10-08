@@ -14,10 +14,10 @@ import Classe.Report;
 import Classe.Reserve;
 import Classe.User;
 import DAO.DevolucaoDao;
-import DAO.EmprestarDAO;
+import DAO.EmprestarDao;
 import DAO.KeyDao;
 import DAO.ReservaDao;
-import DAO.UserDAO;
+import DAO.UserDao;
 import Model.ModelDevolucao;
 import Model.ModelEmprestimo;
 import Model.ModelKey;
@@ -103,7 +103,7 @@ public class HomeController implements Initializable {
 
         try {
             //lista de emprestimos
-            EmprestarDAO banco_emprestimos = new EmprestarDAO();
+            EmprestarDao banco_emprestimos = new EmprestarDao();
             emprestimos = banco_emprestimos.listar();
             int cont_emprestimos = 0;
             for (int i = 0; i < emprestimos.size(); i++) {
@@ -143,7 +143,7 @@ public class HomeController implements Initializable {
             this.info_reservas.setText(valor_reservas);
             
             //lista de usuarios
-            UserDAO banco_user = new UserDAO();
+            UserDao banco_user = new UserDao();
             users = banco_user.listar();
             int cont_users = 0;
             for (int i = 0; i < users.size(); i++) {

@@ -5,7 +5,6 @@
  */
 package Classe;
 
-import Controller.KeysAllowedController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,7 +14,7 @@ import javafx.stage.Stage;
  *
  * @author Samuel Lima
  */
-public class KeysAllowed {
+public class ReservesReport {
     private static Stage stage;
 
     public static Stage getStage() {
@@ -23,27 +22,20 @@ public class KeysAllowed {
     }
 
     public static void setStage(Stage stage) {
-        KeysAllowed.stage = stage;
-    }
-    
-    public KeysAllowed(Model.ModelUser user){
-        KeysAllowedController.setPermitida(user);
-    }
-    
-    public KeysAllowed(){
-     
+        ReservesReport.stage = stage;
     }
 
     public void start(Stage stage) throws Exception {
 
-        stage.setTitle("Qchave - Chaves Permitidas");
+        stage.setTitle("Qchave - Relatório de Reservas");
         stage.setResizable(false);
-        Parent root = FXMLLoader.load(getClass().getResource("/View/KeysAllowed.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/View/ReservesReport.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
         setStage(stage);
     }
+
 
     /**
      * @param args the command line arguments

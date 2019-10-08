@@ -9,9 +9,9 @@ import Classe.KeyReturn;
 import Classe.Loan;
 import DAO.AdminDao;
 import DAO.DevolucaoDao;
-import DAO.EmprestarDAO;
+import DAO.EmprestarDao;
 import DAO.KeyDao;
-import DAO.UserDAO;
+import DAO.UserDao;
 import Model.ModelAdmin;
 import Model.ModelDevolucao;
 import Model.ModelEmprestimo;
@@ -56,7 +56,7 @@ public class KeyReturnController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
             KeyDao banco_key = new KeyDao();
-            UserDAO banco_user = new UserDAO();
+            UserDao banco_user = new UserDao();
             ModelKey key = banco_key.buscarKey(selected.getId_chave());
             ModelUser user = banco_user.buscarUser(selected.getId_user());
             
@@ -76,7 +76,7 @@ public class KeyReturnController implements Initializable {
     private void confirmDevolucao(ActionEvent event) throws SQLException {
         DevolucaoDao banco = new DevolucaoDao();
         AdminDao banco_admindao = new AdminDao();
-        EmprestarDAO banco_emprestar = new EmprestarDAO();
+        EmprestarDao banco_emprestar = new EmprestarDao();
         
         ModelAdmin admin = banco_admindao.buscarAdmin(Integer.parseInt(this.token_administrador.getText()));
         

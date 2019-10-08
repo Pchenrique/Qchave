@@ -8,8 +8,9 @@ package Controller;
 //Importação da classe user, do DAO user e do model user.
 import Classe.EditUser;
 import Classe.User;
-import DAO.UserDAO;
+import DAO.UserDao;
 import Model.ModelUser;
+import Validacoes.Validacoes;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -64,8 +65,18 @@ public class EditUserController implements Initializable {
 
         if (this.nomeCompleto.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo nome está vázio!");
+        } else if (this.nomeCompleto.getText().matches(Validacoes.regexNumeros())) {
+            JOptionPane.showMessageDialog(null, "O campo nome não pode conter numéros!");
+        } else if (this.nomeCompleto.getText().matches(Validacoes.regexCaracteres())) {
+            JOptionPane.showMessageDialog(null, "O campo nome não pode conter caracteres especiais!");
         } else if (this.matricula.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo matricula está vázio!");
+        } else if (this.matricula.getText().matches(Validacoes.regexCaracteres())) {
+            JOptionPane.showMessageDialog(null, "O campo matrícula não pode conter caracteres especiais!");
+        } else if (this.matricula.getText().matches(Validacoes.regexLetras())) {
+            JOptionPane.showMessageDialog(null, "O campo matrícula não pode conter letras!");
+        } else if (this.matricula.getText().length() > 7) {
+            JOptionPane.showMessageDialog(null, "O matrícula não pode conter mais do que 7 numéros!");
         } else if (this.email.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo email está vázio!");
         } else {
@@ -73,7 +84,7 @@ public class EditUserController implements Initializable {
             try{
                 Long matricula = Long.parseLong(this.matricula.getText());
                 Model.ModelUser usuario = new ModelUser(this.nomeCompleto.getText(), this.email.getText(), matricula, tipo_user.getSelectionModel().getSelectedItem());
-                UserDAO userdao = new UserDAO();
+                UserDao userdao = new UserDao();
                 try {
                     userdao.editar(usuario, id);
                     JOptionPane.showMessageDialog(null, "Dados Alterados com Sucesso!");

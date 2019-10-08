@@ -10,6 +10,7 @@ import Classe.Admin;
 import Classe.EditAdmin;
 import DAO.AdminDao;
 import Model.ModelAdmin;
+import Validacoes.Validacoes;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -61,26 +62,39 @@ public class EditAdminController implements Initializable {
 
         if (this.nomeCompleto.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo nome está vazio!");
+        } else if (this.nomeCompleto.getText().matches(Validacoes.regexNumeros())) {
+            JOptionPane.showMessageDialog(null, "O nome não pode conter numéros!");
+        } else if (this.nomeCompleto.getText().matches(Validacoes.regexCaracteres())) {
+            JOptionPane.showMessageDialog(null, "O campo nome não pode conter caracteres especiais!");
         } else if (this.cpf.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo cpf está vazio!");
+        } else if (this.cpf.getText().matches(Validacoes.regexLetras())) {
+            JOptionPane.showMessageDialog(null, "O CPF não pode conter letras!");
+        } else if (this.cpf.getText().length() > 11) {
+            JOptionPane.showMessageDialog(null, "O CPF não pode conter mais do que 11 numéros!");
+        } else if (this.cpf.getText().matches(Validacoes.regexCaracteres())) {
+            JOptionPane.showMessageDialog(null, "O campo CPF não pode conter caracteres especiais!");
         } else {
-            try{
+            try {
                 String nome_completo = this.nomeCompleto.getText();
                 String cpf = this.cpf.getText();
-                try{
+                try {
                     ModelAdmin admin = new ModelAdmin(nome_completo, cpf);
 
                     AdminDao admindao = new AdminDao();
 
                     admindao.editar(admin, id);
                     JOptionPane.showMessageDialog(null, "Dados Alterados com Sucesso!");
+                    
                     EditAdmin.getStage().close();
-                    openAdmin();
-                }catch(SQLException e){
+                    
+                    Admin newFrame = new Admin();
+                    newFrame.start(new Stage());
+                } catch (SQLException e) {
                     JOptionPane.showMessageDialog(null, "O CPF já existe!");
                     Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, e);
                 }
-            }catch(Exception e){
+            } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "O CPF tem que ser número!");
                 Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, e);
             }

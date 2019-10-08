@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author Paulo Cesar
  */
-public class EmprestarDAO {
+public class EmprestarDao {
     Conexao qq = new Conexao();
 
     Connection conect = (Connection) qq.conectar();

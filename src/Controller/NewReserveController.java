@@ -10,7 +10,7 @@ import Classe.Reserve;
 import DAO.AdminDao;
 import DAO.KeyDao;
 import DAO.ReservaDao;
-import DAO.UserDAO;
+import DAO.UserDao;
 import Model.ModelAdmin;
 import Model.ModelKey;
 import Model.ModelReservas;
@@ -74,7 +74,7 @@ public class NewReserveController implements Initializable {
     }
     
     public void BuscarListaDeUsuarios() throws SQLException{
-        UserDAO userdao = new UserDAO();
+        UserDao userdao = new UserDao();
         ObservableList<ModelUser> users = FXCollections.observableArrayList(userdao.listarServidor());
         select_servidor.setItems(users);
     }

@@ -6,6 +6,7 @@
 package Controller;
 
 import Classe.KeyPermission;
+import Classe.KeysAllowed;
 import Classe.User;
 import DAO.KeyDao;
 import DAO.KeyPermissionDao;
@@ -116,7 +117,7 @@ public class KeyPermissionController implements Initializable {
 
                     KeyPermission.getStage().close();
 
-                    User newFrame = new User();
+                    KeysAllowed newFrame = new KeysAllowed();
                     newFrame.start(new Stage());
                 }catch(SQLException e){
                     JOptionPane.showMessageDialog(null, "ERRO! Por favor consulte o admistrador");

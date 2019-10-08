@@ -14,15 +14,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReturnReportController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReturnReportController">
    <children>
-      <VBox prefHeight="500.0" prefWidth="281.0" style="-fx-background-color: #00ae3c;">
+      <VBox prefHeight="601.0" prefWidth="281.0" style="-fx-background-color: #00ae3c;">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#backPage" styleClass="btn-emprestar" stylesheets="@../Style/css.css" text="Voltar" textFill="WHITE">
                      <font>
-                        <Font name="Arial Black" size="13.0" />
+                        <Font name="Arial Black" size="14.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -45,7 +45,7 @@
                   <Image url="@../Images/Logo_qchaves05.png" />
                </image>
                <VBox.margin>
-                  <Insets left="30.0" top="85.0" />
+                  <Insets left="30.0" top="150.0" />
                </VBox.margin>
             </ImageView>
             <Label text="Sistema de Gerenciamento de Chaves do IFCE" textFill="WHITE">
@@ -61,26 +61,26 @@
                   <Font name="System Bold" size="13.0" />
                </font>
                <VBox.margin>
-                  <Insets left="70.0" top="205.0" />
+                  <Insets left="70.0" top="220.0" />
                </VBox.margin>
             </Label>
          </children>
       </VBox>
-      <Label layoutX="292.0" layoutY="17.0" text="Relatório de Devoluçoes" textFill="WHITE">
+      <Label layoutX="292.0" layoutY="14.0" text="Relatório de Devoluçoes" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="Arial Black" size="20.0" />
          </font>
       </Label>
-      <TableView fx:id="table_lista_devolucoes" layoutX="280.0" layoutY="55.0" prefHeight="445.0" prefWidth="624.0">
+      <TableView fx:id="table_lista_devolucoes" layoutX="280.0" layoutY="55.0" prefHeight="546.0" prefWidth="720.0">
         <columns>
           <TableColumn fx:id="col_chave" prefWidth="91.0" text="Chave" />
-          <TableColumn fx:id="col_responsavel" prefWidth="209.0" text="Responsável" />
-            <TableColumn fx:id="col_recebida_por" prefWidth="189.0" text="Recebida Por" />
-            <TableColumn fx:id="col_data" prefWidth="134.0" text="Data" />
+          <TableColumn fx:id="col_responsavel" prefWidth="263.0" text="Responsável" />
+            <TableColumn fx:id="col_recebida_por" prefWidth="223.0" text="Recebida Por" />
+            <TableColumn fx:id="col_data" prefWidth="142.0" text="Data" />
         </columns>
       </TableView>
-      <TextField fx:id="campoBuscar" layoutX="605.0" layoutY="13.0" prefHeight="30.0" prefWidth="190.0" promptText="Buscar" />
-      <Button fx:id="btnBuscar" layoutX="799.0" layoutY="13.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="58.0" style="-fx-background-color: #00ae3c;">
+      <TextField fx:id="campoBuscar" layoutX="722.0" layoutY="13.0" prefHeight="30.0" prefWidth="190.0" promptText="Buscar" />
+      <Button fx:id="btnBuscar" layoutX="922.0" layoutY="13.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="58.0" style="-fx-background-color: #00ae3c;">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
