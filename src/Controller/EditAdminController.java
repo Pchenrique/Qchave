@@ -70,8 +70,10 @@ public class EditAdminController implements Initializable {
             JOptionPane.showMessageDialog(null, "O campo cpf está vazio!");
         } else if (this.cpf.getText().matches(Validacoes.regexLetras())) {
             JOptionPane.showMessageDialog(null, "O CPF não pode conter letras!");
-        } else if (this.cpf.getText().length() > 11) {
-            JOptionPane.showMessageDialog(null, "O CPF não pode conter mais do que 11 numéros!");
+        } else if (this.cpf.getText().length() > 14) {
+            JOptionPane.showMessageDialog(null, "O CPF não pode conter mais do que 14 digitos!");
+        }else if(this.cpf.getText().length() < 14){
+            JOptionPane.showMessageDialog(null, "O CPF não pode conter menos de 14 digitos!");
         } else if (this.cpf.getText().matches(Validacoes.regexCaracteres())) {
             JOptionPane.showMessageDialog(null, "O campo CPF não pode conter caracteres especiais!");
         } else {

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller;
 
 import Classe.LoanReport;
@@ -95,7 +90,7 @@ public class LoanReportController implements Initializable {
         ObservableList<ModelEmprestimo> emprestimoFiltrada = FXCollections.observableArrayList();
         
         for(int i=0; i<emprestimos.size();i++){
-            if(emprestimos.get(i).getNome_chave().toLowerCase().contains(campoBuscar.getText().toLowerCase()) || emprestimos.get(i).getNome_usuario().contains(campoBuscar.getText()) || emprestimos.get(i).getData_emprestimo().contains(campoBuscar.getText())){
+            if(emprestimos.get(i).getNome_chave().toLowerCase().contains(campoBuscar.getText().toLowerCase()) || emprestimos.get(i).getNome_usuario().toLowerCase().contains(campoBuscar.getText().toLowerCase()) || emprestimos.get(i).getData_emprestimo().contains(campoBuscar.getText())){
                  emprestimoFiltrada.add(emprestimos.get(i));
             }
         }

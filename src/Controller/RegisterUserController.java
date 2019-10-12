@@ -14,6 +14,8 @@ import Validacoes.Validacoes;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +24,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -76,37 +79,46 @@ public class RegisterUserController implements Initializable {
             JOptionPane.showMessageDialog(null, "O campo matrícula não pode conter caracteres especiais!");
         } else if (this.matricula.getText().matches(Validacoes.regexLetras())) {
             JOptionPane.showMessageDialog(null, "O campo matrícula não pode conter letras!");
-        } else if (this.matricula.getText().length() > 7) {
-            JOptionPane.showMessageDialog(null, "O matrícula não pode conter mais do que 7 numéros!");
+        } else if (this.matricula.getText().length() < 7) {
+            JOptionPane.showMessageDialog(null, "O matrícula não pode conter menos do que 7 numéros!");
+        }else if(this.matricula.getText().length() > 14){
+            JOptionPane.showMessageDialog(null, "O matrícula não pode conter mais do que 14 numéros!");
         } else if (this.email.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo email está vázio!");
+        }else if(this.tipo_usuario.getSelectionModel().isEmpty()){
+           JOptionPane.showMessageDialog(null, "Selecione o tipo de usuario!"); 
         } else {
-            try {
-                try {
-                    long matricula = Long.parseLong(this.matricula.getText());
-                    ModelUser user = new ModelUser(this.nome_completo.getText(), this.email.getText(), matricula, tipo_usuario.getSelectionModel().getSelectedItem());
-                    UserDao userdao = new UserDao();
-                    try {
-                        userdao.inserirUser(user);
-                        JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!");
-
-                        RegisterUser.getStage().close();
-
-                        User newFrame = new User();
-                        newFrame.start(new Stage());
-                    } catch (SQLException e) {
-                        Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, e);
-                        JOptionPane.showMessageDialog(null, "A Matricula informada ja existe!");
-                    }
-                } catch (NumberFormatException e) {
-                    Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, e);
-                    JOptionPane.showMessageDialog(null, "A Matricula precisa ser so números!");
+            UserDao dao = new UserDao();
+            List<ModelUser> listauser = new ArrayList();
+            listauser = dao.listar();
+            long matricula = Long.parseLong(this.matricula.getText());
+            int confirm = 0;
+            for(int i=0; i< listauser.size(); i++){
+                if(listauser.get(i).getMatricula() == matricula){
+                    confirm++;
                 }
-            } catch (Exception e) {
-                Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, e);
-                JOptionPane.showMessageDialog(null, "O tipo de usuário precisa ser selecionado!");
             }
 
+            if(confirm == 0){
+                try {
+                    ModelUser user = new ModelUser(this.nome_completo.getText(), this.email.getText(), matricula, tipo_usuario.getSelectionModel().getSelectedItem());
+                    UserDao userdao = new UserDao();
+                    userdao.inserirUser(user);
+                    JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!");
+
+                    RegisterUser.getStage().close();
+
+                    User newFrame = new User();
+                    newFrame.start(new Stage());
+                } catch (SQLException e) {
+                    Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, e);
+                    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                    alerta.setHeaderText("ERRO inesperado.");
+                    alerta.show();
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "A Matricula informada ja existe!");
+            }
         }
     }
 

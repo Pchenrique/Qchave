@@ -12,6 +12,7 @@ import Model.ModelEmprestimo;
 import Model.ModelKey;
 import Model.ModelKeyPermission;
 import Model.ModelUser;
+import Validacoes.Validacoes;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ import javax.swing.JOptionPane;
  * @author Paulo Cesar
  */
 public class KeyLoanController implements Initializable {
-    
+
     @FXML
     private TextField token_administrador;
     @FXML
@@ -48,94 +49,109 @@ public class KeyLoanController implements Initializable {
     private Label Label_nome_chave;
     @FXML
     private ComboBox<ModelUser> lista_usuarios;
-    
+
     private static Model.ModelKey selected;
-    
-    
-    
+
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.Label_Id_Chave.setText(Integer.toString(selected.getId()));
-        
+
         this.Label_nome_chave.setText(selected.getNome_sala());
-        
+
         try {
-            BuscarListaDeUsuarios();   
+            BuscarListaDeUsuarios();
         } catch (SQLException ex) {
             Logger.getLogger(KeyPermissionController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     //Função para pegar a lista de usuarios do BD e popular o ComboBox.
-    public void BuscarListaDeUsuarios() throws SQLException{
+    public void BuscarListaDeUsuarios() throws SQLException {
         UserDao userdao = new UserDao();
         ObservableList<ModelUser> users = FXCollections.observableArrayList(userdao.listar());
         lista_usuarios.setItems(users);
     }
-    
+
     @FXML
     private void confirmEmprestimo(ActionEvent event) throws SQLException, Exception {
         EmprestarDao banco = new EmprestarDao();
         AdminDao banco_admindao = new AdminDao();
         KeyDao banco_key = new KeyDao();
         
-        if(this.token_administrador.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Preencha o campo CPF ADMINISTRADOR!");
-        }else{
+        if(this.lista_usuarios.getSelectionModel().isEmpty()){
+            JOptionPane.showMessageDialog(null, "O campo usuario precisar ser selecionado!");
+        }else if (this.token_administrador.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Preencha o campo TOKEN!");
+        } else if (this.token_administrador.getText().matches(Validacoes.regexLetras())) {
+            JOptionPane.showMessageDialog(null, "O Campo token não pode ter letras!");
+        } else if (this.token_administrador.getText().matches(Validacoes.regexCaracteres())) {
+            JOptionPane.showMessageDialog(null, "O Campo token não pode ter caracteres especiais!");
+        } else {
             ModelUser usuario = lista_usuarios.getSelectionModel().getSelectedItem();
-            ModelAdmin admin = banco_admindao.buscarAdmin(Integer.parseInt(this.token_administrador.getText()));
+            AdminDao listaAdminDao = new AdminDao();
+            List<ModelAdmin> listaAdmin = new ArrayList();
+            listaAdmin = listaAdminDao.listar();
+            int indentificar = 0;
+            for(int i=0; i < listaAdmin.size(); i++){
+                if(listaAdmin.get(i).getToken() == Integer.parseInt(this.token_administrador.getText())){
+                    indentificar++;
+                }
+            }
             
-            try{
-                if(usuario.getTipo_user().equals("Servidor")){
-                    try{
-                        ModelEmprestimo emprestimo = new ModelEmprestimo(usuario.getId(), usuario.getNome(), selected.getId(), selected.getNome_sala(), admin.getId(), admin.getNome());
-                        banco.inserirEmprestimo(emprestimo);
+            if(indentificar > 0){
+                ModelAdmin admin = banco_admindao.buscarAdmin(Integer.parseInt(this.token_administrador.getText()));
+                
+                    if (usuario.getTipo_user().equals("Servidor")) {
+                        try {
+                            ModelEmprestimo emprestimo = new ModelEmprestimo(usuario.getId(), usuario.getNome(), selected.getId(), selected.getNome_sala(), admin.getId(), admin.getNome());
+                            banco.inserirEmprestimo(emprestimo);
 
-                        selected.setStatus("Emprestada");
-                        banco_key.editar(selected, selected.getId());
+                            selected.setStatus("Emprestada");
+                            banco_key.editar(selected, selected.getId());
 
-                        JOptionPane.showMessageDialog(null, "Chave Emprestada com sucesso!");
-                    }catch(SQLException e){
-                        JOptionPane.showMessageDialog(null, "TOKEN INCORRETO!");
-                        Logger.getLogger(KeyLoanController.class.getName()).log(Level.SEVERE, null, e);
-                    }
-                }else{
-                    KeyPermissionDao banco_chavesPermitidas = new KeyPermissionDao();
-                    List<ModelKeyPermission> keysPermission = new ArrayList<>(); 
-                    keysPermission = banco_chavesPermitidas.listarPorUsuario(usuario.getId());
+                            JOptionPane.showMessageDialog(null, "Chave Emprestada com sucesso!");
+                            KeyLoan.getStage().close();
+                            Key newFrame = new Key();
+                            newFrame.start(new Stage());
+                        } catch (SQLException e) {
+                            JOptionPane.showMessageDialog(null, "ERRO na base de dados!");
+                            Logger.getLogger(KeyLoanController.class.getName()).log(Level.SEVERE, null, e);
+                        }
+                    } else {
+                        KeyPermissionDao banco_chavesPermitidas = new KeyPermissionDao();
+                        List<ModelKeyPermission> keysPermission = new ArrayList<>();
+                        keysPermission = banco_chavesPermitidas.listarPorUsuario(usuario.getId());
 
-                    for (int i=0; i < keysPermission.size(); i++) {
-                        if (selected.getId() == keysPermission.get(i).getId_chave()) {
-                            try{
-                                ModelEmprestimo emprestimo = new ModelEmprestimo(usuario.getId(), usuario.getNome(), selected.getId(), selected.getNome_sala(), admin.getId(), admin.getNome());
-                                banco.inserirEmprestimo(emprestimo);
+                        for (int i = 0; i < keysPermission.size(); i++) {
+                            if (selected.getId() == keysPermission.get(i).getId_chave()) {
+                                try {
+                                    ModelEmprestimo emprestimo = new ModelEmprestimo(usuario.getId(), usuario.getNome(), selected.getId(), selected.getNome_sala(), admin.getId(), admin.getNome());
+                                    banco.inserirEmprestimo(emprestimo);
 
-                                selected.setStatus("Emprestada");
-                                banco_key.editar(selected, selected.getId());
+                                    selected.setStatus("Emprestada");
+                                    banco_key.editar(selected, selected.getId());
 
-                                JOptionPane.showMessageDialog(null, "Chave Emprestada com sucesso!");
-                            }catch(SQLException e){
-                                JOptionPane.showMessageDialog(null, "TOKEN não é número!");
+                                    JOptionPane.showMessageDialog(null, "Chave Emprestada com sucesso!");
+                                    KeyLoan.getStage().close();
+                                    Key newFrame = new Key();
+                                    newFrame.start(new Stage());
+                                } catch (SQLException e) {
+                                    JOptionPane.showMessageDialog(null, "ERRO na base de dados!");
+                                }
                             }
                         }
+                        if (selected.getStatus().equals("Disponivel")) {
+                            JOptionPane.showMessageDialog(null, "O usuario " + usuario.getNome().toUpperCase() + " Não tem permissão de Pegar a chave " + selected.getNome_sala().toUpperCase() + "");
+                        }
                     }
-                    if(selected.getStatus().equals("Disponivel")){
-                        JOptionPane.showMessageDialog(null, "O usuario "+usuario.getNome().toUpperCase()+" Não tem permissão"
-                            + " de Pegar a chave "+selected.getNome_sala().toUpperCase()+"");
-                    }
-                }
-                
-                KeyLoan.getStage().close();
-                Key newFrame = new Key();
-                newFrame.start(new Stage());
-            }catch(Exception ex){
-                 Logger.getLogger(KeyLoanController.class.getName()).log(Level.SEVERE, null, ex);
-                 JOptionPane.showMessageDialog(null, "Selecione um usuario para o emprestimo!");
+            }else{
+                JOptionPane.showMessageDialog(null, "Token Incorreto!");
             }
         }
     }
@@ -145,7 +161,7 @@ public class KeyLoanController implements Initializable {
     }
 
     public static void setSelected(ModelKey selected) {
-       KeyLoanController.selected = selected;
+        KeyLoanController.selected = selected;
     }
 
     @FXML

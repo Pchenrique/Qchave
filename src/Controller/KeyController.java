@@ -174,8 +174,8 @@ public class KeyController implements Initializable {
                 } catch (SQLException ex) {
                     Alert alerta = new Alert(Alert.AlertType.WARNING);
                     alerta.setTitle("Cuidado!");
-                    alerta.setHeaderText("A chave que você tenta excluir pode esta emprestada ou devolvida.");
-                    alerta.setContentText("Consulte o Administrador do sistema para resolver isso!");
+                    alerta.setHeaderText("A chave que você tenta excluir pode esta em uma transação.");
+                    alerta.setContentText("Por esse motivo elá não pode mais ser apagada!");
                     alerta.show();
                     Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
                 }

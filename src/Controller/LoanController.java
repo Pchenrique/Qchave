@@ -103,7 +103,7 @@ public class LoanController implements Initializable{
         ObservableList<ModelEmprestimo> emprestimoFiltrada = FXCollections.observableArrayList();
         
         for(int i=0; i<emprestimos.size();i++){
-            if(emprestimos.get(i).getNome_chave().toLowerCase().contains(buscar_emprestimo.getText().toLowerCase()) || emprestimos.get(i).getNome_usuario().contains(buscar_emprestimo.getText())){
+            if(emprestimos.get(i).getNome_chave().toLowerCase().contains(buscar_emprestimo.getText().toLowerCase()) || emprestimos.get(i).getNome_usuario().toLowerCase().contains(buscar_emprestimo.getText().toLowerCase()) || emprestimos.get(i).getData_emprestimo().contains(buscar_emprestimo.getText())){
                  emprestimoFiltrada.add(emprestimos.get(i));
             }
         }
@@ -113,23 +113,16 @@ public class LoanController implements Initializable{
     @FXML
     private void devolverChave(ActionEvent event) {
         if(selected != null){
-            if(selected.getStatus().equals("Encerrado")){
-                Alert alerta = new Alert(Alert.AlertType.WARNING);
-                alerta.setHeaderText("Devolução Já foi efetuada!.");
-                alerta.show(); 
-            }else{
-                KeyReturn keyreturn = new KeyReturn(selected);
-
-                try {
-                    Loan.getStage().close();
-                    keyreturn.start(new Stage());
-                } catch (Exception ex) {
-                    Logger.getLogger(KeyLoanController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            KeyReturn keyreturn = new KeyReturn(selected);
+            try {
+                Loan.getStage().close();
+                keyreturn.start(new Stage());
+            } catch (Exception ex) {
+                Logger.getLogger(KeyLoanController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else{
             Alert alerta = new Alert(Alert.AlertType.WARNING);
-            alerta.setHeaderText("Selecione uma chave clicando para Devolvela.");
+            alerta.setHeaderText("Selecione um emprestimo clicando para Devolve-la.");
             alerta.show();
         }
     }

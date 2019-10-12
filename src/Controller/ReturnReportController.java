@@ -93,7 +93,7 @@ public class ReturnReportController implements Initializable {
         ObservableList<ModelDevolucao> devolucaoFiltrada = FXCollections.observableArrayList();
         
         for(int i=0; i<devolucao.size();i++){
-            if(devolucao.get(i).getNome_chave().toLowerCase().contains(campoBuscar.getText().toLowerCase()) || devolucao.get(i).getNome_usuario().contains(campoBuscar.getText()) || devolucao.get(i).getData_devolucao().contains(campoBuscar.getText())){
+            if(devolucao.get(i).getNome_chave().toLowerCase().contains(campoBuscar.getText().toLowerCase()) || devolucao.get(i).getNome_usuario().toLowerCase().contains(campoBuscar.getText().toLowerCase()) || devolucao.get(i).getData_devolucao().contains(campoBuscar.getText())){
                  devolucaoFiltrada.add(devolucao.get(i));
             }
         }

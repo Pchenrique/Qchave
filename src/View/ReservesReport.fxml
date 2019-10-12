@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReservesReportController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReservesReportController">
    <children>
       <VBox prefHeight="600.0" prefWidth="281.0" style="-fx-background-color: #00ae3c;">
          <children>
@@ -73,13 +73,14 @@
       </Label>
       <TableView fx:id="table_relatorio_reservas" layoutX="280.0" layoutY="55.0" prefHeight="545.0" prefWidth="720.0">
         <columns>
-          <TableColumn fx:id="col_chave" prefWidth="70.0" text="Chave" />
-          <TableColumn fx:id="col_responsavel" prefWidth="135.0" text="Responsável" />
-            <TableColumn fx:id="col_reserva_feita_por" prefWidth="135.0" text="Reserva Feita Por" />
-            <TableColumn fx:id="col_data_saida" prefWidth="95.0" text="Data Saida" />
-            <TableColumn fx:id="col_hora_saida" prefWidth="95.0" text="Hora Saída" />
-            <TableColumn fx:id="col_data_entrada" prefWidth="95.0" text="Data Entrada" />
-            <TableColumn fx:id="col_hora_entrada" prefWidth="95.0" text="Hora Entrada" />
+          <TableColumn fx:id="col_chave" prefWidth="89.0" text="Chave" />
+          <TableColumn fx:id="col_responsavel" prefWidth="105.0" text="Responsável" />
+            <TableColumn fx:id="col_reserva_feita_por" prefWidth="126.0" text="Reserva Feita Por" />
+            <TableColumn fx:id="col_data_saida" prefWidth="93.0" text="Data Saida" />
+            <TableColumn fx:id="col_hora_saida" prefWidth="68.0" text="Hora Saída" />
+            <TableColumn fx:id="col_data_entrada" prefWidth="96.0" text="Data Entrada" />
+            <TableColumn fx:id="col_hora_entrada" minWidth="0.0" text="Hora Entrada" />
+            <TableColumn fx:id="col_status" prefWidth="62.0" text="Status" />
         </columns>
       </TableView>
       <TextField fx:id="campoBuscar" layoutX="731.0" layoutY="16.0" prefHeight="30.0" prefWidth="190.0" promptText="Buscar" />

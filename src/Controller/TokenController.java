@@ -5,18 +5,18 @@
  */
 package Controller;
 
-import Classe.Admin;
 import Model.ModelAdmin;
+import Validacoes.Validacoes;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
 
 /**
  * FXML Controller class
@@ -45,19 +45,27 @@ public class TokenController implements Initializable {
     }    
 
     @FXML
-    private void recuperarToken(ActionEvent event) {
-       try{
-            String vcpf = cpf_administrador.getText();
+    private void recuperarToken(ActionEvent event) throws ParseException {
+       if(this.cpf_administrador.getText().matches(Validacoes.regexLetras())){
+            JOptionPane.showMessageDialog(null, "O CPF não pode ter letras");
+       }else if(this.cpf_administrador.getText().matches(Validacoes.regexCaracteres())){
+           JOptionPane.showMessageDialog(null, "O CPF não pode ter caracteres especiais");
+       }else{
+            String vcpf = FormataCPF(cpf_administrador.getText());
             if(vcpf.equals(selected.getCpf())){
                 String vtoken = Integer.toString(selected.getToken());
                 token.setText(vtoken);
             }else{
                  JOptionPane.showMessageDialog(null, "O CPF desse admin está incorreto!");
             }
-       }catch(NumberFormatException e){
-           JOptionPane.showMessageDialog(null, "O CPF tem que ser numeros e ate 11 digitos!");
-           Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, e);
        }
+    }
+    
+    public String FormataCPF(String cpf) throws ParseException {
+        MaskFormatter mask = new MaskFormatter("###.###.###-##");
+        mask.setValueContainsLiteralCharacters(false);
+
+        return mask.valueToString(cpf);
     }
     
     public static ModelAdmin getSelected() {

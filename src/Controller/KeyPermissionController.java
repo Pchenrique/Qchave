@@ -90,22 +90,24 @@ public class KeyPermissionController implements Initializable {
     }
 
     @FXML
-    private void concederPermissao(ActionEvent event) throws SQLException, Exception {
+    private void concederPermissao(ActionEvent event) throws SQLException, Exception{
         KeyPermissionDao banco_permission_total = new KeyPermissionDao();
         List<ModelKeyPermission> lista = new ArrayList();
         
-        lista = banco_permission_total.listarPorUsuario(selected.getId());
-        int cont =0;
-        for(int i=0; i < lista.size(); i++){
-            if(lista.get(i).getNome_chave().equals(pegarChave().getNome_sala())){
-                cont++;
-            }
-        }
-        
-        if(cont > 0){
-            JOptionPane.showMessageDialog(null, "A chave já foi permitida para esse usuario!");
+        if(this.CbChavePermitida.getSelectionModel().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Selecione uma chave para emprestar");
         }else{
-            try{
+            lista = banco_permission_total.listarPorUsuario(selected.getId());
+            int cont =0;
+            for(int i=0; i < lista.size(); i++){
+                if(lista.get(i).getNome_chave().equals(pegarChave().getNome_sala())){
+                    cont++;
+                }
+            }
+            
+            if(cont > 0){
+                JOptionPane.showMessageDialog(null, "A chave já foi permitida para esse usuario!");
+            }else{
                 try{
                     KeyPermissionDao banco_permission = new KeyPermissionDao();
                     ModelKey key = pegarChave();
@@ -123,9 +125,6 @@ public class KeyPermissionController implements Initializable {
                     JOptionPane.showMessageDialog(null, "ERRO! Por favor consulte o admistrador");
                     Logger.getLogger(KeyPermissionController.class.getName()).log(Level.SEVERE, null, e);
                 }
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Selecione a chave para dar permissão!");
-                Logger.getLogger(KeyPermissionController.class.getName()).log(Level.SEVERE, null, e);
             }
         }
     }

@@ -73,14 +73,17 @@ public class RegisterAdminController implements Initializable {
             JOptionPane.showMessageDialog(null, "O CPF não pode conter letras!");
         } else if (this.cpf.getText().length() > 11) {
             JOptionPane.showMessageDialog(null, "O CPF não pode conter mais do que 11 numéros!");
-        } else if (this.cpf.getText().matches(Validacoes.regexCaracteres())) {
+        } else if(this.cpf.getText().length() < 11){
+            JOptionPane.showMessageDialog(null, "O CPF tem que conter 11 caracteres!");
+        }else if (this.cpf.getText().matches(Validacoes.regexCaracteres())) {
             JOptionPane.showMessageDialog(null, "O campo nome não pode conter caracteres especiais!");
         } else if (this.token.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo token está vazio!");
         } else if (this.token.getText().length() > 8) {
             JOptionPane.showMessageDialog(null, "O campo token não pode conter mais do 8 numéros!");
-        } else {
-            try {
+        } else if(this.token.getText().length() < 4){
+            JOptionPane.showMessageDialog(null, "O campo token não pode ser menor que 4 números!");
+        }else {
                 String name = this.nome_completo.getText();
                 String cpf = FormataCPF(this.cpf.getText());
                 int token = Integer.parseInt(this.token.getText());
@@ -101,7 +104,7 @@ public class RegisterAdminController implements Initializable {
                     List<ModelAdmin> lista = new ArrayList();
                     lista = admindao.listar();
                     for (int i = 0; i < lista.size(); i++) {
-                        if (cpf == lista.get(i).getCpf()) {
+                        if (cpf.equals(lista.get(i).getCpf())) {
                             JOptionPane.showMessageDialog(null, "CPF já está cadastrados!");
                         } else if (token == lista.get(i).getToken()) {
                             JOptionPane.showMessageDialog(null, "TOKEN já está cadastrados!");
@@ -109,11 +112,6 @@ public class RegisterAdminController implements Initializable {
                     }
                     Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, e);
                 }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "O campo Token não pode conter letras!");
-                Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, e);
-            }
-
         }
 
     }

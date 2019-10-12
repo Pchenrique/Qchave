@@ -9,6 +9,7 @@ import Classe.Admin;
 import Classe.EditAdmin;
 import Classe.TokenEdit;
 import Model.ModelAdmin;
+import Validacoes.Validacoes;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -46,7 +47,11 @@ public class TokinEditController implements Initializable {
 
     @FXML
     private void verificaToken(ActionEvent event) throws SQLException, Exception {
-        try{
+        if(this.token.getText().matches(Validacoes.regexLetras())){
+            JOptionPane.showMessageDialog(null, "O TOKEN não pode ter letras");
+       }else if(this.token.getText().matches(Validacoes.regexCaracteres())){
+           JOptionPane.showMessageDialog(null, "O TOKEN não pode ter caracteres especiais");
+       }else{
             int vtoken = Integer.parseInt(token.getText());
             if(vtoken == selected.getToken()){
                 EditAdmin edit = new EditAdmin(selected);
@@ -54,15 +59,14 @@ public class TokinEditController implements Initializable {
                     TokenEdit.getStage().close();
                     edit.start(new Stage());
                 } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "ERRO no Sistema!");
                     Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }else{
                 JOptionPane.showMessageDialog(null, "O token desse admin é diferente!");
             }
-        }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "O token é somente numeros e com ate 8 digitos!");
-            Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, e);
-        }
+       }
+        
     }
     
     public static ModelAdmin getSelected() {

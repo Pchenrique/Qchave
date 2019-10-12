@@ -12,8 +12,10 @@ import Classe.ReservesReport;
 import Classe.ReturnReport;
 import DAO.DevolucaoDao;
 import DAO.EmprestarDao;
+import DAO.ReservaDao;
 import Model.ModelDevolucao;
 import Model.ModelEmprestimo;
+import Model.ModelReservas;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -50,7 +52,8 @@ public class ReportController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         EmprestarDao emprestardao = new EmprestarDao();
         DevolucaoDao devolucao = new DevolucaoDao();
-        
+        ReservaDao reservadao = new ReservaDao();
+                
         List<ModelEmprestimo> listaEmprestimos = new ArrayList();
         
         try {
@@ -76,6 +79,19 @@ public class ReportController implements Initializable {
             cont2++;
         }
         totalDevolucoes.setText(Integer.toString(cont2));
+        
+        List<ModelReservas> listaReservas = new ArrayList();
+        
+        try {
+            listaReservas = reservadao.lista();
+        } catch (SQLException ex) {
+            Logger.getLogger(ReportController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        int cont3=0;
+        for(int i=0; i<listaReservas.size();i++){
+            cont3++;
+        }
+        totalReservas.setText(Integer.toString(cont3));
         
         
     }    

@@ -75,13 +75,13 @@ public class EditUserController implements Initializable {
             JOptionPane.showMessageDialog(null, "O campo matrícula não pode conter caracteres especiais!");
         } else if (this.matricula.getText().matches(Validacoes.regexLetras())) {
             JOptionPane.showMessageDialog(null, "O campo matrícula não pode conter letras!");
-        } else if (this.matricula.getText().length() > 7) {
-            JOptionPane.showMessageDialog(null, "O matrícula não pode conter mais do que 7 numéros!");
+        } else if (this.matricula.getText().length() < 7) {
+            JOptionPane.showMessageDialog(null, "O matrícula não pode conter menos do que 7 numéros!");
+        }else if(this.matricula.getText().length() > 14){
+            JOptionPane.showMessageDialog(null, "O matrícula não pode conter mais do que 14 numéros!");
         } else if (this.email.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo email está vázio!");
         } else {
-
-            try{
                 Long matricula = Long.parseLong(this.matricula.getText());
                 Model.ModelUser usuario = new ModelUser(this.nomeCompleto.getText(), this.email.getText(), matricula, tipo_user.getSelectionModel().getSelectedItem());
                 UserDao userdao = new UserDao();
@@ -93,11 +93,7 @@ public class EditUserController implements Initializable {
                 } catch (SQLException ex) {
                     Logger.getLogger(EditUserController.class.getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, "A Matricula informada ja existe!");
-                }
-            }catch(NumberFormatException e){
-                    Logger.getLogger(KeyController.class.getName()).log(Level.SEVERE, null, e);
-                    JOptionPane.showMessageDialog(null, "A Matricula precisa ser so números!");
-            }   
+                }   
         }
     }
 

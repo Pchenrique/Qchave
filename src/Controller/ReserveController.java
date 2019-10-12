@@ -15,11 +15,14 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -27,6 +30,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -61,6 +65,8 @@ public class ReserveController implements Initializable {
     private TableColumn<ModelReservas, String> hora_entrada;
     
     private ObservableList<ModelReservas> reservas = FXCollections.observableArrayList();
+    
+    private ModelReservas selected;
 
     /**
      * Initializes the controller class.
@@ -82,6 +88,14 @@ public class ReserveController implements Initializable {
         
         btn_buscar.setOnMouseClicked((MouseEvent)->{
             table_reservas.setItems(buscar());
+        });
+        
+        //Função para verificar a linha selecionada na tabela.
+        table_reservas.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                selected = (ModelReservas) newValue;
+            }
         });
     }    
     
@@ -109,7 +123,7 @@ public class ReserveController implements Initializable {
         ObservableList<ModelReservas> reservasFiltrada = FXCollections.observableArrayList();
         
         for(int i=0; i<reservas.size();i++){
-            if(reservas.get(i).getNome_chave().toLowerCase().contains(buscar_reserva.getText().toLowerCase()) || reservas.get(i).getNome_usuario().contains(buscar_reserva.getText()) || reservas.get(i).getData_saida().contains(buscar_reserva.getText())){
+            if(reservas.get(i).getNome_chave().toLowerCase().contains(buscar_reserva.getText().toLowerCase()) || reservas.get(i).getNome_usuario().toLowerCase().contains(buscar_reserva.getText().toLowerCase()) || reservas.get(i).getData_saida().contains(buscar_reserva.getText())){
                 reservasFiltrada.add(reservas.get(i));
             }
         }
@@ -128,8 +142,21 @@ public class ReserveController implements Initializable {
     }
 
     @FXML
-    private void excluirReserva(ActionEvent event) {
-        
+    private void excluirReserva(ActionEvent event) throws SQLException {
+        if(selected != null){
+            int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente finalizar a reserva da sala " + selected.getNome_chave().toUpperCase() + "?","Finalizar reservas?", JOptionPane.YES_NO_OPTION);
+
+             if(resposta == JOptionPane.YES_OPTION){
+                 ReservaDao daoreserva = new ReservaDao();
+                 selected.setStatus("Finalizada");
+                 daoreserva.editar(selected, selected.getId());
+                 JOptionPane.showMessageDialog(null, "Reserva Finalizada com Sucesso!");
+             }
+        }else{
+            Alert alerta = new Alert(Alert.AlertType.WARNING);
+            alerta.setHeaderText("Selecione uma reserva clicando para Devolve-la.");
+            alerta.show();
+        }
     }
     
     @FXML
