@@ -15,15 +15,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.KeyController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.KeyController">
    <children>
-      <VBox prefHeight="500.0" prefWidth="281.0" style="-fx-background-color: #00ae3c;">
+      <VBox prefHeight="600.0" prefWidth="281.0" style="-fx-background-color: #00c444;">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#backPage" styleClass="btn-emprestar" stylesheets="@../Style/css.css" text="Voltar" textFill="WHITE">
                      <font>
-                        <Font name="Arial Black" size="13.0" />
+                        <Font name="Arial Black" size="14.0" />
                      </font>
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
@@ -46,7 +46,7 @@
                   <Image url="@../Images/Logo_qchaves05.png" />
                </image>
                <VBox.margin>
-                  <Insets left="30.0" top="85.0" />
+                  <Insets left="30.0" top="120.0" />
                </VBox.margin>
             </ImageView>
             <Label text="Sistema de Gerenciamento de Chaves do IFCE" textFill="WHITE">
@@ -59,31 +59,34 @@
             </Label>
             <Pane prefHeight="53.0" prefWidth="200.0">
                <VBox.margin>
-                  <Insets top="185.0" />
+                  <Insets top="225.0" />
                </VBox.margin>
                <children>
                   <Label layoutX="72.0" layoutY="17.0" text="IFCE - Campus Cedro" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
+                     <padding>
+                        <Insets top="12.0" />
+                     </padding>
                   </Label>
                </children>
             </Pane>
          </children>
       </VBox>
-      <HBox layoutX="281.0" prefHeight="60.0" prefWidth="619.0">
+      <HBox layoutX="281.0" prefHeight="60.0" prefWidth="720.0">
          <children>
-            <Label text="Lista de Chaves" textFill="WHITE">
+            <Label prefHeight="27.0" prefWidth="166.0" text="Lista de Chaves" textFill="WHITE">
                <font>
-                  <Font name="Candara Bold" size="20.0" />
+                  <Font name="Arial Black" size="18.0" />
                </font>
                <HBox.margin>
-                  <Insets left="20.0" top="20.0" />
+                  <Insets left="20.0" top="15.0" />
                </HBox.margin>
             </Label>
             <TextField fx:id="buscar_chave" prefHeight="30.0" prefWidth="190.0" promptText="Buscar Chave">
                <HBox.margin>
-                  <Insets left="195.0" top="15.0" />
+                  <Insets left="270.0" top="15.0" />
                </HBox.margin>
             </TextField>
             <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="58.0" style="-fx-background-color: #00ae3c;" textFill="WHITE">
@@ -106,11 +109,11 @@
             </Button>
          </children>
       </HBox>
-      <HBox layoutX="281.0" layoutY="450.0" prefHeight="50.0" prefWidth="619.0">
+      <HBox layoutX="281.0" layoutY="543.0" prefHeight="50.0" prefWidth="720.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#cadastrarChave" prefHeight="29.0" prefWidth="106.0" style="-fx-background-color: #4b4a54;" text="Inserir " textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#cadastrarChave" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #4b4a54;" text="Inserir " textFill="WHITE">
                <HBox.margin>
-                  <Insets left="80.0" top="12.0" />
+                  <Insets left="45.0" top="5.0" />
                </HBox.margin>
                <font>
                   <Font name="System Bold" size="13.0" />
@@ -126,9 +129,9 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="keyEdit" mnemonicParsing="false" onAction="#editarChave" prefHeight="30.0" prefWidth="105.0" style="-fx-background-color: #4b4a54;" text="Editar " textFill="WHITE">
+            <Button fx:id="keyEdit" mnemonicParsing="false" onAction="#editarChave" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #4b4a54;" text="Editar " textFill="WHITE">
                <HBox.margin>
-                  <Insets left="10.0" top="12.0" />
+                  <Insets left="10.0" top="5.0" />
                </HBox.margin>
                <font>
                   <Font name="System Bold" size="13.0" />
@@ -144,9 +147,9 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#excluirChave" prefHeight="30.0" prefWidth="107.0" style="-fx-background-color: #4b4a54;" text="Excluir " textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#excluirChave" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #4b4a54;" text="Excluir " textFill="WHITE">
                <HBox.margin>
-                  <Insets left="10.0" top="12.0" />
+                  <Insets left="10.0" top="5.0" />
                </HBox.margin>
                <font>
                   <Font name="System Bold" size="13.0" />
@@ -162,7 +165,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#emprestarChave" prefHeight="30.0" prefWidth="106.0" style="-fx-background-color: #4b4a54;" text="Emprestar" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#emprestarChave" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #4b4a54;" text="Emprestar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -170,7 +173,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <HBox.margin>
-                  <Insets left="10.0" top="12.0" />
+                  <Insets left="10.0" top="5.0" />
                </HBox.margin>
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
@@ -182,12 +185,12 @@
             </Button>
          </children>
       </HBox>
-      <TableView fx:id="table_chaves" layoutX="281.0" layoutY="60.0" prefHeight="389.0" prefWidth="619.0">
+      <TableView fx:id="table_chaves" layoutX="281.0" layoutY="60.0" prefHeight="478.0" prefWidth="720.0">
         <columns>
           <TableColumn fx:id="id" prefWidth="86.0" text="Id" />
-          <TableColumn fx:id="nome" prefWidth="197.0" text="Nome da Sala" />
-            <TableColumn fx:id="bloco" prefWidth="203.0" text="Bloco" />
-            <TableColumn fx:id="status" prefWidth="132.0" text="Status" />
+          <TableColumn fx:id="nome" prefWidth="261.0" text="Nome da Sala" />
+            <TableColumn fx:id="bloco" prefWidth="246.0" text="Bloco" />
+            <TableColumn fx:id="status" prefWidth="126.0" text="Status" />
         </columns>
       </TableView>
    </children>

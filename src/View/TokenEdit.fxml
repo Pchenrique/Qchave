@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -8,38 +9,55 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TokinEditController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TokinEditController">
    <children>
-      <HBox prefHeight="54.0" prefWidth="600.0" styleClass="btn-emprestar" stylesheets="@../Style/css.css">
+      <HBox prefHeight="54.0" prefWidth="436.0" style="-fx-background-color: #00c444;">
          <children>
             <Label />
-            <Label text="Verifica Token" textFill="WHITE">
+            <Label text="Verificação Token" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="Arial Black" size="18.0" />
                </font>
                <HBox.margin>
-                  <Insets left="223.0" top="14.0" />
+                  <Insets left="125.0" top="14.0" />
                </HBox.margin>
             </Label>
          </children>
       </HBox>
-      <Label layoutX="173.0" layoutY="100.0" text="Nome do Administrador">
+      <Label layoutX="73.0" layoutY="155.0" text="Nome do Administrador">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="nomeAdministrador" layoutX="173.0" layoutY="119.0" text="Paulo Cesar">
+      <Label fx:id="nomeAdministrador" layoutX="73.0" layoutY="176.0" text="Paulo Cesar">
          <font>
-            <Font size="13.0" />
+            <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="173.0" layoutY="141.0" text="Token">
+      <Label layoutX="73.0" layoutY="199.0" text="Token">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="token" layoutX="173.0" layoutY="163.0" prefHeight="30.0" prefWidth="245.0" promptText="Ex: 1234" />
-      <Button layoutX="173.0" layoutY="209.0" mnemonicParsing="false" onAction="#verificaToken" prefHeight="30.0" prefWidth="245.0" text="Verificar Token" />
-      <Button layoutX="173.0" layoutY="248.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="30.0" prefWidth="245.0" text="Cancelar" />
+      <TextField fx:id="token" layoutX="73.0" layoutY="224.0" prefHeight="35.0" prefWidth="290.0" promptText="Ex: 1234" />
+      <Button layoutX="73.0" layoutY="270.0" mnemonicParsing="false" onAction="#verificaToken" prefHeight="35.0" prefWidth="290.0" style="-fx-background-color: #00C444;" text="Verificar Token" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button layoutX="73.0" layoutY="315.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="35.0" prefWidth="290.0" style="-fx-background-color: #DE2525;" text="Cancelar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Label layoutX="148.0" layoutY="475.0" text="IFCE - CAMPUS CEDRO">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

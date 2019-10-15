@@ -133,7 +133,7 @@ public class KeyPermissionController implements Initializable {
     private void backPage(ActionEvent event) {
         KeyPermission.getStage().close();
         
-        User newFrame = new User();
+        KeysAllowed newFrame = new KeysAllowed();
         try {
             newFrame.start(new Stage());
         } catch (Exception ex) {

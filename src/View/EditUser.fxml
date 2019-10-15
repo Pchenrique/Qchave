@@ -6,71 +6,70 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="403.0" prefWidth="443.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditUserController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="435.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditUserController">
    <children>
-      <HBox prefHeight="40.0" prefWidth="490.0" style="-fx-background-color: #00ae3c;">
+      <HBox prefHeight="50.0" prefWidth="435.0" style="-fx-background-color: #00ae3c;">
          <children>
             <Label text="Editar Usuário" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="Arial Black" size="18.0" />
                </font>
                <HBox.margin>
-                  <Insets left="190.0" top="7.0" />
+                  <Insets left="145.0" top="10.0" />
                </HBox.margin>
             </Label>
-            <Button mnemonicParsing="false" onAction="#backPage" styleClass="btn-emprestar" stylesheets="@../Style/css.css" text="Voltar" textFill="WHITE">
-               <font>
-                  <Font name="Arial Black" size="13.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Images/back-icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets left="100.0" top="5.0" />
-               </HBox.margin>
-            </Button>
          </children>
       </HBox>
-      <Label layoutX="100.0" layoutY="67.0" text="Nome Completo">
+      <Label layoutX="78.0" layoutY="73.0" text="Nome Completo">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nomeCompleto" layoutX="78.0" layoutY="97.0" prefHeight="35.0" prefWidth="290.0" />
+      <TextField fx:id="email" layoutX="78.0" layoutY="163.0" prefHeight="35.0" prefWidth="290.0" />
+      <TextField fx:id="matricula" layoutX="78.0" layoutY="229.0" prefHeight="35.0" prefWidth="290.0" />
+      <Label layoutX="78.0" layoutY="139.0" text="E-mail">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="79.0" layoutY="204.0" text="Matricula/SIAPE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Button layoutX="78.0" layoutY="347.0" mnemonicParsing="false" onAction="#alterarUsuario" prefHeight="35.0" prefWidth="290.0" styleClass="key-buttom" stylesheets="@../Style/css.css" text="Alterar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Label layoutX="78.0" layoutY="271.0" text="Tipo de Usuário">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="tipo_user" layoutX="79.0" layoutY="297.0" prefHeight="30.0" prefWidth="166.0" promptText="Selecione o Tipo">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ComboBox>
+      <Button layoutX="78.0" layoutY="393.0" mnemonicParsing="false" onAction="#backPage" prefHeight="35.0" prefWidth="290.0" style="-fx-background-color: #de2525;" text="Cancelar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label layoutX="159.0" layoutY="475.0" text="IFCE - CAMPUS CEDRO">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="nomeCompleto" layoutX="100.0" layoutY="91.0" prefHeight="30.0" prefWidth="271.0" />
-      <TextField fx:id="email" layoutX="100.0" layoutY="153.0" prefHeight="30.0" prefWidth="271.0" />
-      <TextField fx:id="matricula" layoutX="100.0" layoutY="215.0" prefHeight="30.0" prefWidth="271.0" />
-      <Label layoutX="100.0" layoutY="130.0" text="E-mail">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="100.0" layoutY="191.0" text="Matricula/SIAPE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Button layoutX="100.0" layoutY="320.0" mnemonicParsing="false" onAction="#alterarUsuario" prefHeight="30.0" prefWidth="271.0" styleClass="key-buttom" stylesheets="@../Style/css.css" text="Alterar" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Button>
-      <Label layoutX="100.0" layoutY="252.0" text="Tipo de Usuário">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <ComboBox fx:id="tipo_user" layoutX="100.0" layoutY="279.0" prefHeight="25.0" prefWidth="166.0" promptText="Selecione o Tipo" />
    </children>
 </AnchorPane>

@@ -9,6 +9,7 @@ import Controller.KeysAllowedController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -38,6 +39,7 @@ public class KeysAllowed {
 
         stage.setTitle("Qchave - Chaves Permitidas");
         stage.setResizable(false);
+        stage.getIcons().add(new Image(getClass().getResourceAsStream(".././Images/logoKey.png")));
         Parent root = FXMLLoader.load(getClass().getResource("/View/KeysAllowed.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);

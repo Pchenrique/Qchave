@@ -4,6 +4,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,11 +13,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeController">
    <children>
-      <VBox prefHeight="500.0" prefWidth="281.0" style="-fx-background-color: #93FE95;">
+      <VBox prefHeight="600.0" prefWidth="281.0" style="-fx-background-color: #00c444;">
          <children>
-            <HBox prefHeight="126.0" prefWidth="281.0" style="-fx-background-color: #93FE95;">
+            <HBox prefHeight="126.0" prefWidth="281.0" style="-fx-background-color: #00c444;">
                <children>
                   <ImageView fitHeight="96.0" fitWidth="212.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -28,12 +29,12 @@
                   </ImageView>
                </children>
             </HBox>
-            <Label prefHeight="37.0" prefWidth="268.0" text="Sistema de Gerenciamento de Chaves do IFCE">
+            <Label prefHeight="37.0" prefWidth="278.0" text="Sistema de Gerenciamento de Chaves do IFCE" textFill="WHITE">
                <font>
-                  <Font name="Candara Bold" size="13.0" />
+                  <Font name="Candara Bold" size="14.0" />
                </font>
                <VBox.margin>
-                  <Insets left="13.0" top="-10.0" />
+                  <Insets left="5.0" top="-55.0" />
                </VBox.margin>
             </Label>
             <Pane prefHeight="354.0" prefWidth="281.0">
@@ -93,27 +94,27 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <ImageView fitHeight="30.0" fitWidth="29.0" layoutX="60.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="29.0" layoutX="60.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/menu-icon-admin.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="32.0" fitWidth="30.0" layoutX="60.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="32.0" fitWidth="30.0" layoutX="60.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/menu-icon-usuario.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="60.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="60.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/menu-icon-chave.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="60.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="60.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/relatorio-icon.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="60.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="60.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/ss.png" />
                      </image>
@@ -136,26 +137,26 @@
                   </ImageView>
                </children>
                <VBox.margin>
-                  <Insets top="2.0" />
+                  <Insets top="-15.0" />
                </VBox.margin>
             </Pane>
-            <ImageView fitHeight="79.0" fitWidth="174.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/logoifce.png" />
-               </image>
+            <Label text="IFCE - CAMPUS CEDRO" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
                <VBox.margin>
-                  <Insets bottom="10.0" left="54.0" />
+                  <Insets left="65.0" top="123.0" />
                </VBox.margin>
-            </ImageView>
+            </Label>
          </children>
       </VBox>
-      <Pane layoutX="281.0" prefHeight="500.0" prefWidth="619.0" style="-fx-background-color: #fff;">
+      <Pane layoutX="281.0" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #fff;">
          <children>
-            <HBox prefHeight="60.0" prefWidth="619.0" style="-fx-background-color: #3e3c4a;">
+            <HBox prefHeight="60.0" prefWidth="720.0" style="-fx-background-color: #3e3c4a;">
                <children>
                   <Label prefHeight="22.0" prefWidth="241.0" text="Dashboard" textFill="WHITE">
                      <font>
-                        <Font name="Arial Black" size="22.0" />
+                        <Font name="Arial Black" size="20.0" />
                      </font>
                      <padding>
                         <Insets top="-5.0" />
@@ -166,7 +167,7 @@
                   </Label>
                </children>
             </HBox>
-            <Pane layoutX="11.0" layoutY="110.0" prefHeight="100.0" prefWidth="190.0" style="-fx-background-color: #922FFF;" styleClass="box-home" stylesheets="@../Style/css.css">
+            <Pane layoutX="11.0" layoutY="126.0" prefHeight="120.0" prefWidth="220.0" style="-fx-background-color: #922FFF;" styleClass="form" stylesheets="@../Style/css.css">
                <children>
                   <Label layoutX="11.0" layoutY="55.0" prefHeight="27.0" prefWidth="192.0" text="Empréstimos" textFill="WHITE">
                      <font>
@@ -178,7 +179,7 @@
                         <Font name="Arial Black" size="30.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="138.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="152.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/menu-icon-emprestar.png" />
                      </image>
@@ -193,7 +194,7 @@
                   <Insets top="2.0" />
                </padding>
             </Pane>
-            <Pane layoutX="215.0" layoutY="110.0" prefHeight="100.0" prefWidth="190.0" style="-fx-background-color: #2FFF77;">
+            <Pane layoutX="250.0" layoutY="126.0" prefHeight="120.0" prefWidth="220.0" style="-fx-background-color: #2FFF77;" styleClass="form" stylesheets="@../Style/css.css">
                <children>
                   <Label layoutX="11.0" layoutY="55.0" prefHeight="27.0" prefWidth="192.0" text="Chaves" textFill="WHITE">
                      <font>
@@ -205,7 +206,7 @@
                         <Font name="Arial Black" size="30.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="147.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="163.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/menu-icon-chave.png" />
                      </image>
@@ -220,7 +221,7 @@
                   <Insets top="2.0" />
                </padding>
             </Pane>
-            <Pane layoutX="419.0" layoutY="110.0" prefHeight="100.0" prefWidth="190.0" style="-fx-background-color: #8CF;">
+            <Pane layoutX="490.0" layoutY="126.0" prefHeight="120.0" prefWidth="220.0" style="-fx-background-color: #8CF;" styleClass="form" stylesheets="@../Style/css.css">
                <children>
                   <Label layoutX="11.0" layoutY="55.0" prefHeight="27.0" prefWidth="192.0" text="Cadastrados" textFill="WHITE">
                      <font>
@@ -235,7 +236,7 @@
                         <Insets top="2.0" />
                      </padding>
                   </Label>
-                  <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="142.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="163.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/menu-icon-usuario.png" />
                      </image>
@@ -260,7 +261,7 @@
                   <Image url="@../Images/info-icon.png" />
                </image>
             </ImageView>
-            <Pane layoutX="11.0" layoutY="227.0" prefHeight="100.0" prefWidth="190.0" style="-fx-background-color: #FF2F53;" styleClass="box-home" stylesheets="@../Style/css.css">
+            <Pane layoutX="11.0" layoutY="274.0" prefHeight="120.0" prefWidth="220.0" style="-fx-background-color: #FF2F53;" styleClass="form" stylesheets="@../Style/css.css">
                <children>
                   <Label layoutX="11.0" layoutY="55.0" prefHeight="27.0" prefWidth="192.0" text="Devoluções" textFill="WHITE">
                      <font>
@@ -272,7 +273,7 @@
                         <Font name="Arial Black" size="30.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="142.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="159.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/menu-icon-devolver.png" />
                      </image>
@@ -284,7 +285,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="215.0" layoutY="227.0" prefHeight="100.0" prefWidth="190.0" style="-fx-background-color: #FFD438;" styleClass="box-home" stylesheets="@../Style/css.css">
+            <Pane layoutX="250.0" layoutY="274.0" prefHeight="120.0" prefWidth="220.0" style="-fx-background-color: #FFD438;" styleClass="form" stylesheets="@../Style/css.css">
                <children>
                   <Label layoutX="11.0" layoutY="55.0" prefHeight="27.0" prefWidth="192.0" text="Reservas" textFill="WHITE">
                      <font>
@@ -296,7 +297,7 @@
                         <Font name="Arial Black" size="30.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="137.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="153.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/reserved-icon.png" />
                      </image>
@@ -308,18 +309,26 @@
                   </Label>
                </children>
             </Pane>
-            <HBox layoutX="11.0" layoutY="450.0" prefHeight="40.0" prefWidth="600.0" style="-fx-background-color: #3e3c4a;">
+            <HBox layoutX="-1.0" layoutY="550.0" prefHeight="50.0" prefWidth="721.0" style="-fx-background-color: #3e3c4a;">
                <children>
                   <Label prefHeight="20.0" prefWidth="467.0" text="Developed by: Felipe Nogueira, Paulo Cesar, Samuel Lima e Tiago Dias" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="80.0" top="12.0" />
+                        <Insets left="120.0" top="15.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="V. 0.0.1 - BETA" textFill="WHITE">
+                     <font>
+                        <Font name="Lato Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="35.0" top="15.0" />
                      </HBox.margin>
                   </Label>
                </children></HBox>
-            <Pane layoutX="419.0" layoutY="227.0" prefHeight="100.0" prefWidth="190.0" style="-fx-background-color: #599FE4;">
+            <Pane layoutX="490.0" layoutY="274.0" prefHeight="120.0" prefWidth="220.0" style="-fx-background-color: #599FE4;" styleClass="form" stylesheets="@../Style/css.css">
                <children>
                   <Label layoutX="11.0" layoutY="55.0" prefHeight="27.0" prefWidth="192.0" text="Chaves" textFill="WHITE">
                      <font>
@@ -331,7 +340,7 @@
                         <Font name="Arial Black" size="30.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="147.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="164.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/menu-icon-chave.png" />
                      </image>
@@ -346,23 +355,19 @@
                   <Insets top="2.0" />
                </padding>
             </Pane>
-            <Pane layoutX="11.0" layoutY="344.0" prefHeight="93.0" prefWidth="600.0" style="-fx-background-color: #3e3c4a;" styleClass="box-home" stylesheets="@../Style/css.css">
+            <Pane layoutY="457.0" prefHeight="93.0" prefWidth="720.0" style="-fx-background-color: #3e3c4a;" styleClass="box-home" stylesheets="@../Style/css.css">
                <children>
-                  <ImageView fx:id="img_sol" fitHeight="50.0" fitWidth="50.0" layoutX="221.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="img_sol" fitHeight="50.0" fitWidth="50.0" layoutX="275.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/sunny.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="mensagem" layoutX="277.0" layoutY="33.0" text="Bom Dia!" textFill="WHITE">
+                  <Label fx:id="mensagem" layoutX="335.0" layoutY="34.0" text="Bom Dia!" textFill="WHITE">
                      <font>
                         <Font name="Calibri Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label layoutX="8.0" layoutY="71.0" text="V. 0.0.1 - BETA" textFill="WHITE">
-                     <font>
-                        <Font name="Lato Bold" size="14.0" />
-                     </font>
-                  </Label>
+                  <Separator layoutX="-1.0" layoutY="90.0" prefHeight="0.0" prefWidth="721.0" />
                </children>
             </Pane>
          </children>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -9,37 +10,60 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="491.0" prefWidth="532.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.KeysAllowedController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.KeysAllowedController">
    <children>
-      <HBox prefHeight="50.0" prefWidth="534.0" styleClass="btn-emprestar" stylesheets="@../Style/css.css">
+      <HBox prefHeight="50.0" prefWidth="435.0" style="-fx-background-color: #00c444;">
          <children>
             <Label text="Chaves Permitidas" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="Arial Black" size="18.0" />
                </font>
                <HBox.margin>
-                  <Insets left="195.0" top="12.0" />
+                  <Insets left="122.0" top="12.0" />
                </HBox.margin>
             </Label>
          </children>
       </HBox>
-      <Label layoutX="116.0" layoutY="90.0" text="Nome do Usuário">
+      <Label layoutX="65.0" layoutY="67.0" text="Nome do Usuário">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="nome_usuario" layoutX="117.0" layoutY="109.0" text="Samuel Lima">
+      <Label fx:id="nome_usuario" layoutX="65.0" layoutY="88.0" text="Samuel Lima">
          <font>
-            <Font size="13.0" />
+            <Font size="15.0" />
          </font>
       </Label>
-      <Button layoutX="116.0" layoutY="365.0" mnemonicParsing="false" onAction="#novaPermissao" prefHeight="30.0" prefWidth="147.0" text="Nova Permissão" />
-      <Button layoutX="270.0" layoutY="365.0" mnemonicParsing="false" onAction="#excluirPermissao" prefHeight="30.0" prefWidth="147.0" text="Excluir Permissão" />
-      <Button layoutX="117.0" layoutY="406.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="30.0" prefWidth="301.0" text="Cancelar" />
-      <TableView fx:id="table_chaves_permitidas" layoutX="116.0" layoutY="137.0" prefHeight="200.0" prefWidth="301.0">
+      <Button layoutX="65.0" layoutY="342.0" mnemonicParsing="false" onAction="#novaPermissao" prefHeight="35.0" prefWidth="147.0" style="-fx-background-color: #00c444;" text="Nova Permissão" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button layoutX="219.0" layoutY="342.0" mnemonicParsing="false" onAction="#excluirPermissao" prefHeight="35.0" prefWidth="147.0" style="-fx-background-color: #3b91d7;" text="Excluir Permissão" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button layoutX="69.0" layoutY="390.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="35.0" prefWidth="301.0" style="-fx-background-color: #de2525;" text="Cancelar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <TableView fx:id="table_chaves_permitidas" layoutX="65.0" layoutY="123.0" prefHeight="200.0" prefWidth="301.0">
         <columns>
           <TableColumn fx:id="chaves_permitidas" prefWidth="300.0" text="Chaves Permitidas" />
         </columns>
       </TableView>
+      <Label layoutX="148.0" layoutY="475.0" text="IFCE - CAMPUS CEDRO">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

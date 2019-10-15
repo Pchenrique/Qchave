@@ -14,15 +14,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReservesReportController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReservesReportController">
    <children>
-      <VBox prefHeight="600.0" prefWidth="281.0" style="-fx-background-color: #00ae3c;">
+      <VBox prefHeight="600.0" prefWidth="281.0" style="-fx-background-color: #00c444;">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#backPage" styleClass="btn-emprestar" stylesheets="@../Style/css.css" text="Voltar" textFill="WHITE">
                      <font>
-                        <Font name="Arial Black" size="13.0" />
+                        <Font name="Arial Black" size="14.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -92,6 +92,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
    </children>
 </AnchorPane>

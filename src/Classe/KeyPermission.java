@@ -10,6 +10,7 @@ import Model.ModelUser;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -35,6 +36,7 @@ public class KeyPermission {
 
         stage.setTitle("Qchave - Permissão de Chaves");
         stage.setResizable(false);
+        stage.getIcons().add(new Image(getClass().getResourceAsStream(".././Images/logoKey.png")));
         Parent root = FXMLLoader.load(getClass().getResource("/View/KeyPermission.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);

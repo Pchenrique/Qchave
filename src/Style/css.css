@@ -2,6 +2,12 @@
     -fx-background-color: #ffffff;
     -fx-effect: dropshadow(three-pass-box, rgb(0, 0, 0), 10, 0, 0, 0);
 }
+
+.reports{
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(three-pass-box, rgb(0, 0, 0), 10, 0, 0, 0);
+}
+
 .login-header{
     -fx-background-color: #00c444;
 }
@@ -10,10 +16,4 @@
 }
 .btn-emprestar{
     -fx-background-color: #00ae3c;
-}
-.btn-emprestar:hover{
-    -fx-background-color:  #00832e;
-}
-.box-home{
-    -fx-border-radius: 20;
 }

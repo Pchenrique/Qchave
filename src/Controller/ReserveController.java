@@ -151,6 +151,15 @@ public class ReserveController implements Initializable {
                  selected.setStatus("Finalizada");
                  daoreserva.editar(selected, selected.getId());
                  JOptionPane.showMessageDialog(null, "Reserva Finalizada com Sucesso!");
+                 Reserve.getStage().close();
+                 
+                 Reserve newFrame = new Reserve();
+                 
+                try {
+                    newFrame.start(new Stage());
+                } catch (Exception ex) {
+                    Logger.getLogger(ReserveController.class.getName()).log(Level.SEVERE, null, ex);
+                }
              }
         }else{
             Alert alerta = new Alert(Alert.AlertType.WARNING);

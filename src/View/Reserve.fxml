@@ -15,9 +15,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReserveController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #3e3c4a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReserveController">
    <children>
-      <VBox prefHeight="600.0" prefWidth="281.0" style="-fx-background-color: #00ae3c;">
+      <VBox prefHeight="600.0" prefWidth="281.0" style="-fx-background-color: #00c444;">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -76,9 +76,9 @@
       </VBox>
       <HBox layoutX="281.0" prefHeight="60.0" prefWidth="720.0">
          <children>
-            <Label text="Lista de Reservas" textFill="WHITE">
+            <Label prefHeight="27.0" prefWidth="186.0" text="Lista de Reservas" textFill="WHITE">
                <font>
-                  <Font name="Candara Bold" size="20.0" />
+                  <Font name="Arial Black" size="18.0" />
                </font>
                <HBox.margin>
                   <Insets left="20.0" top="20.0" />
@@ -86,7 +86,7 @@
             </Label>
             <TextField fx:id="buscar_reserva" prefHeight="30.0" prefWidth="190.0" promptText="Buscar Reserva">
                <HBox.margin>
-                  <Insets left="290.0" top="15.0" />
+                  <Insets left="250.0" top="15.0" />
                </HBox.margin>
             </TextField>
             <Button fx:id="btn_reserva" mnemonicParsing="false" prefHeight="30.0" prefWidth="58.0" style="-fx-background-color: #00ae3c;" textFill="WHITE">
@@ -111,7 +111,7 @@
       </HBox>
       <HBox layoutX="281.0" layoutY="543.0" prefHeight="50.0" prefWidth="720.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#novaReserva" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: #4b4a54;" text="Nova Reserva" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#novaReserva" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #4b4a54;" text="Nova Reserva" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -119,7 +119,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <HBox.margin>
-                  <Insets left="203.0" top="12.0" />
+                  <Insets left="203.0" top="8.0" />
                </HBox.margin>
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
@@ -129,9 +129,9 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#excluirReserva" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: #4b4a54;" text="Finalizar Reserva" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#excluirReserva" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #4b4a54;" text="Finalizar Reserva" textFill="WHITE">
                <HBox.margin>
-                  <Insets left="10.0" top="12.0" />
+                  <Insets left="10.0" top="8.0" />
                </HBox.margin>
                <font>
                   <Font name="System Bold" size="13.0" />

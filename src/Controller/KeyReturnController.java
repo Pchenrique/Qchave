@@ -72,10 +72,6 @@ public class KeyReturnController implements Initializable {
     }    
 
     @FXML
-    private void backPage(ActionEvent event) {
-    }
-
-    @FXML
     private void confirmDevolucao(ActionEvent event) throws SQLException {
         if(this.token_administrador.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Preencha o campo Token!");
@@ -143,5 +139,18 @@ public class KeyReturnController implements Initializable {
     public static void setSelected(ModelEmprestimo selected) {
        KeyReturnController.selected = selected;
     }
-   
+    @FXML
+    private void backPage(ActionEvent event) {
+        KeyReturn.getStage().close();
+        
+        Loan newFrame = new Loan();
+        
+        try {
+            newFrame.start(new Stage());
+        } catch (Exception ex) {
+            Logger.getLogger(KeyReturnController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }
 }

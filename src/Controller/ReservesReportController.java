@@ -1,5 +1,6 @@
 package Controller;
 
+import Classe.Report;
 import Classe.Reserve;
 import Classe.ReservesReport;
 import DAO.ReservaDao;
@@ -108,7 +109,7 @@ public class ReservesReportController implements Initializable {
     private void backPage(ActionEvent event) {
         ReservesReport.getStage().close();
         
-        Reserve newFrame = new Reserve();
+        Report newFrame = new Report();
         
         try {
             newFrame.start(new Stage());

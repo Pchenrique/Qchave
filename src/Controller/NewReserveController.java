@@ -66,8 +66,6 @@ public class NewReserveController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-
         try {
             BuscarListaDeUsuarios();
             BuscarListaDeChaves();
@@ -180,6 +178,14 @@ public class NewReserveController implements Initializable {
 
                     JOptionPane.showMessageDialog(null, "Reserva feita com sucesso!");
                     
+                    NewReserve.getStage().close();
+ 
+                    Reserve newFrame = new Reserve();
+                    try {
+                        newFrame.start(new Stage());
+                    } catch (Exception ex) {
+                        Logger.getLogger(NewReserveController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }else{
                     JOptionPane.showMessageDialog(null, "Token Invalido!");
                 }

@@ -10,6 +10,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -36,6 +37,7 @@ public class EditKey extends Application {
 
         stage.setTitle("Qchave - Editar Chave");
         stage.setResizable(false);
+        stage.getIcons().add(new Image(getClass().getResourceAsStream(".././Images/logoKey.png")));
         Parent root = FXMLLoader.load(getClass().getResource("/View/EditKey.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
