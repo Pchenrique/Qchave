@@ -33,7 +33,7 @@ public class User extends Application {
 
         stage.setTitle("Qchave - Pagina do Usuário");
         stage.setResizable(false);
-        stage.getIcons().add(new Image(getClass().getResourceAsStream(".././Images/logoKey.png")));
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/logoKey.png")));
         Parent root = FXMLLoader.load(getClass().getResource("/View/UserPage.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);

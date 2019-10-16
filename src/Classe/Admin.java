@@ -34,7 +34,7 @@ public class Admin extends Application {
 
         stage.setTitle("Qchave - Página de Administradores");
         stage.setResizable(false);
-        stage.getIcons().add(new Image(getClass().getResourceAsStream(".././Images/logoKey.png")));
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/logoKey.png")));
         Parent root = FXMLLoader.load(getClass().getResource("/View/AdminPage.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);

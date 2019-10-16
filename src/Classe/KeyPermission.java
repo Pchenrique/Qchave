@@ -36,7 +36,7 @@ public class KeyPermission {
 
         stage.setTitle("Qchave - Permissão de Chaves");
         stage.setResizable(false);
-        stage.getIcons().add(new Image(getClass().getResourceAsStream(".././Images/logoKey.png")));
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/logoKey.png")));
         Parent root = FXMLLoader.load(getClass().getResource("/View/KeyPermission.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);

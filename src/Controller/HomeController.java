@@ -73,9 +73,9 @@ public class HomeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image noite = new Image("images/moon.png");
-        Image dia_tarde = new Image("images/sunny.png");
-        Image dia_manha = new Image("images/sunrise.png");
+        Image noite = new Image("Images/moon.png");
+        Image dia_tarde = new Image("Images/sunny.png");
+        Image dia_manha = new Image("Images/sunrise.png");
         LocalDateTime agora = LocalDateTime.now();
         
         DateTimeFormatter formatterHora = DateTimeFormatter.ofPattern("HH");
