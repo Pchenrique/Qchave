@@ -34,8 +34,6 @@ public class RegisterKeyController implements Initializable {
     //Ids dos campos de textfield e botão de cadastrar chave.
     @FXML
     private TextField nome_sala;
-    /*@FXML
-    private TextField codigo_chave;*/
     @FXML
     private TextField bloco;
     @FXML
