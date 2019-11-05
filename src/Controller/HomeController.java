@@ -41,6 +41,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -166,15 +167,13 @@ public class HomeController implements Initializable {
                 this.info_devolucoes.setText(valor_devolucoes);
 
             } catch (SQLException ex) {
-                Alert alerta = new Alert(Alert.AlertType.WARNING);
-                alerta.setHeaderText("O banco não está conectado.");
-                alerta.show();
+                JOptionPane.showMessageDialog(null, "Erro no banco!");
+                Home.getStage().close();
                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }catch(Exception e){
-            Alert alerta = new Alert(Alert.AlertType.WARNING);
-            alerta.setHeaderText("O banco não está conectado.");
-            alerta.show();
+            JOptionPane.showMessageDialog(null, "Erro no banco!");
+            Home.getStage().close();
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, e);
         }
     }
