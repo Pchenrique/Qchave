@@ -7,6 +7,7 @@ package Controller;
 
 import Classe.Admin;
 import Classe.EditAdmin;
+import Classe.Token;
 import Classe.TokenEdit;
 import Model.ModelAdmin;
 import Validacoes.Validacoes;

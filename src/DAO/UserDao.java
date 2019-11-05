@@ -79,6 +79,37 @@ public class UserDao {
 
         return users;
     }
+    
+    public List<ModelUser> listarOrdenado() throws SQLException {
+
+        ResultSet rs = null;
+
+        List<ModelUser> users = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM usuarios ORDER BY nome ASC";
+            PreparedStatement stmt = conect.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                ModelUser user = new ModelUser();
+                user.setId(rs.getInt("id"));
+                user.setNome(rs.getString("nome"));
+                user.setEmail(rs.getString("email"));
+                user.setMatricula(rs.getLong("matricula"));
+                user.setTipo_user(rs.getString("tipo_usuario"));
+                users.add(user);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Erro:" + e.getMessage());
+        } finally {
+            conect.close();
+        }
+
+        return users;
+    }
+    
     public List<ModelUser> listarServidor() throws SQLException {
 
         ResultSet rs = null;

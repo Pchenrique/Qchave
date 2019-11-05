@@ -74,7 +74,7 @@ public class KeyLoanController implements Initializable {
     //Função para pegar a lista de usuarios do BD e popular o ComboBox.
     public void BuscarListaDeUsuarios() throws SQLException {
         UserDao userdao = new UserDao();
-        ObservableList<ModelUser> users = FXCollections.observableArrayList(userdao.listar());
+        ObservableList<ModelUser> users = FXCollections.observableArrayList(userdao.listarOrdenado());
         lista_usuarios.setItems(users);
     }
 

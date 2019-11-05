@@ -20,7 +20,7 @@
             <Insets left="110.0" />
          </padding>
       </Label>
-      <TextField fx:id="bloco" layoutX="73.0" layoutY="164.0" prefHeight="35.0" prefWidth="290.0" promptText="Ex: Bloco 01" />
+      <TextField fx:id="nome_sala" layoutX="73.0" layoutY="164.0" prefHeight="35.0" prefWidth="290.0" promptText="Ex: Bloco 01" />
       <Button fx:id="btn_cadastrar_chave" layoutX="73.0" layoutY="282.0" mnemonicParsing="false" onAction="#registrarChave" prefHeight="35.0" prefWidth="290.0" styleClass="key-buttom" stylesheets="@../Style/css.css" text="Cadastrar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
@@ -29,7 +29,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TextField fx:id="nome_sala" layoutX="73.0" layoutY="228.0" prefHeight="35.0" prefWidth="290.0" promptText="Ex: Sala 20" styleClass="input-key" stylesheets="@../Style/css.css" />
+      <TextField fx:id="bloco" layoutX="73.0" layoutY="228.0" prefHeight="35.0" prefWidth="290.0" promptText="Ex: Sala 20" styleClass="input-key" stylesheets="@../Style/css.css" />
       <Label layoutX="73.0" layoutY="137.0" text="Nome da Sala">
          <font>
             <Font name="System Bold" size="15.0" />

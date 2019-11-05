@@ -50,15 +50,15 @@ public class RegisterKeyController implements Initializable {
     @FXML
     private void registrarChave(ActionEvent event) throws SQLException, Exception {
 
-        if (this.nome_sala.getText().isEmpty()) {
+        if(this.nome_sala.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo nome está vazio!");
-        } else if (this.nome_sala.getText().matches(Validacoes.regexCaracteres())) {
+        } else if (this.nome_sala.getText().matches(Validacoes.regexCaracteres())){
             JOptionPane.showMessageDialog(null, "O campo nome não pode conter caracteres especiais!");
-        } else if (this.nome_sala.getText().matches(Validacoes.regexNumeros())) {
+        } else if (this.nome_sala.getText().matches(Validacoes.regexNumeros())){
             JOptionPane.showMessageDialog(null, "O campo nome não pode conter numéros!");
-        } else if (this.bloco.getText().isEmpty()) {
+        } else if (this.bloco.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "O campo bloco está vazio!");
-        } else if (this.bloco.getText().matches(Validacoes.regexCaracteres())) {
+        } else if (this.bloco.getText().matches(Validacoes.regexCaracteres())){
             JOptionPane.showMessageDialog(null, "O campo bloco não pode conter caracteres especiais!");
         } else {
             String nome_sala = this.nome_sala.getText();
