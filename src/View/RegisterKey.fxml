@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="500.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterKeyController">
+<Pane prefHeight="500.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterKeyController">
    <children>
       <HBox prefHeight="50.0" prefWidth="435.0" style="-fx-background-color: #00c444;" />
       <Label prefHeight="50.0" prefWidth="435.0" text="Cadastro de Chaves" textFill="WHITE">
@@ -20,8 +20,8 @@
             <Insets left="110.0" />
          </padding>
       </Label>
-      <TextField fx:id="nome_sala" layoutX="73.0" layoutY="164.0" prefHeight="35.0" prefWidth="290.0" promptText="Ex: Bloco 01" />
-      <Button fx:id="btn_cadastrar_chave" layoutX="73.0" layoutY="282.0" mnemonicParsing="false" onAction="#registrarChave" prefHeight="35.0" prefWidth="290.0" styleClass="key-buttom" stylesheets="@../Style/css.css" text="Cadastrar" textFill="WHITE">
+      <TextField fx:id="nome_sala" layoutX="73.0" layoutY="205.0" prefHeight="35.0" prefWidth="290.0" promptText="Ex: PIBIC" />
+      <Button fx:id="btn_cadastrar_chave" layoutX="73.0" layoutY="323.0" mnemonicParsing="false" onAction="#registrarChave" prefHeight="35.0" prefWidth="290.0" styleClass="key-buttom" stylesheets="@../Style/css.css" text="Cadastrar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -29,18 +29,18 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TextField fx:id="bloco" layoutX="73.0" layoutY="228.0" prefHeight="35.0" prefWidth="290.0" promptText="Ex: Sala 20" styleClass="input-key" stylesheets="@../Style/css.css" />
-      <Label layoutX="73.0" layoutY="137.0" text="Nome da Sala">
+      <TextField fx:id="bloco" layoutX="73.0" layoutY="269.0" prefHeight="35.0" prefWidth="290.0" promptText="Ex: Bloco F" styleClass="input-key" stylesheets="@../Style/css.css" />
+      <Label layoutX="73.0" layoutY="178.0" text="Nome da Sala">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="73.0" layoutY="204.0" text="Bloco da Sala">
+      <Label layoutX="73.0" layoutY="245.0" text="Bloco da Sala">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Button layoutX="73.0" layoutY="328.0" mnemonicParsing="false" onAction="#backPage" prefHeight="35.0" prefWidth="290.0" style="-fx-background-color: #de2525;" text="Cancelar" textFill="WHITE">
+      <Button layoutX="73.0" layoutY="369.0" mnemonicParsing="false" onAction="#backPage" prefHeight="35.0" prefWidth="290.0" style="-fx-background-color: #de2525;" text="Cancelar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -51,6 +51,12 @@
       <Label layoutX="154.0" layoutY="475.0" text="IFCE - CAMPUS CEDRO">
          <font>
             <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="cod_sala" layoutX="73.0" layoutY="137.0" prefHeight="35.0" prefWidth="290.0" promptText="Ex: 01" />
+      <Label layoutX="73.0" layoutY="110.0" text="Código da sala">
+         <font>
+            <Font name="System Bold" size="15.0" />
          </font>
       </Label>
    </children>

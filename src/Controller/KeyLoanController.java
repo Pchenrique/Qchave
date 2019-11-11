@@ -60,7 +60,7 @@ public class KeyLoanController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        this.Label_Id_Chave.setText(Integer.toString(selected.getId()));
+        this.Label_Id_Chave.setText(selected.getCod_sala());
 
         this.Label_nome_chave.setText(selected.getNome_sala());
 

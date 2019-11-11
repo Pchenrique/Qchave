@@ -39,7 +39,7 @@ public class RegisterKeyController implements Initializable {
     @FXML
     private Button btn_cadastrar_chave;
     @FXML
-    private TextField codigo_chave;
+    private TextField cod_sala;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -49,8 +49,14 @@ public class RegisterKeyController implements Initializable {
     //Método de registrar administrador.
     @FXML
     private void registrarChave(ActionEvent event) throws SQLException, Exception {
-
-        if(this.nome_sala.getText().isEmpty()) {
+        
+        if(this.cod_sala.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "O campo cod_sala está vazio!");
+        }else if(this.cod_sala.getText().matches(Validacoes.regexCaracteres())){
+            JOptionPane.showMessageDialog(null, "O campo cod_sala não pode conter caracteres especiais!");
+        }else if(this.cod_sala.getText().matches(Validacoes.regexLetras())){
+            JOptionPane.showMessageDialog(null, "O campo cod_sala não pode conter letras!");
+        }else if(this.nome_sala.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo nome está vazio!");
         } else if (this.nome_sala.getText().matches(Validacoes.regexCaracteres())){
             JOptionPane.showMessageDialog(null, "O campo nome não pode conter caracteres especiais!");
@@ -61,11 +67,12 @@ public class RegisterKeyController implements Initializable {
         } else if (this.bloco.getText().matches(Validacoes.regexCaracteres())){
             JOptionPane.showMessageDialog(null, "O campo bloco não pode conter caracteres especiais!");
         } else {
+            String cod_sala = this.cod_sala.getText();
             String nome_sala = this.nome_sala.getText();
             String bloco = this.bloco.getText();
             String status_chave = "Disponivel";
             
-            ModelKey chave = new ModelKey(nome_sala, bloco, status_chave);
+            ModelKey chave = new ModelKey(cod_sala, nome_sala, bloco, status_chave);
             KeyDao keydao = new KeyDao();
             try {
                 keydao.inserirKey(chave);

@@ -1,13 +1,14 @@
 package Model;
 
 public class ModelKey {
-
-    private String nome_sala;
     private int id;
+    private String cod_sala;
+    private String nome_sala;
     private String bloco;
     private String status;
     
-     public ModelKey(String nome_sala, String bloco, String status) {
+     public ModelKey(String cod_sala, String nome_sala, String bloco, String status) {
+        this.cod_sala = cod_sala;
         this.nome_sala = nome_sala;
         this.bloco = bloco;
         this.status = status;
@@ -49,12 +50,17 @@ public class ModelKey {
         this.status = status;
     }
 
+    public String getCod_sala() {
+        return cod_sala;
+    }
+
+    public void setCod_sala(String cod_sala) {
+        this.cod_sala = cod_sala;
+    }
+
     @Override
     public String toString() {
         return getNome_sala();
     }
-    
-    
-
-
+ 
 }

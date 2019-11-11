@@ -17,11 +17,12 @@ public class KeyDao {
 
     public void inserirKey(ModelKey chave) throws SQLException {
 
-        String sql = "insert into chaves (nome_sala,bloco,status)values (?,?,?)";
+        String sql = "insert into chaves (cod_sala,nome_sala,bloco,status)values (?,?,?,?)";
         PreparedStatement stmt = conect.prepareStatement(sql);
-        stmt.setString(1, chave.getNome_sala());
-        stmt.setString(2, chave.getBloco());
-        stmt.setString(3, chave.getStatus());
+        stmt.setString(1, chave.getCod_sala());
+        stmt.setString(2, chave.getNome_sala());
+        stmt.setString(3, chave.getBloco());
+        stmt.setString(4, chave.getStatus());
         stmt.execute();
         stmt.close();
         conect.close();
@@ -29,12 +30,13 @@ public class KeyDao {
 
     public void editar(ModelKey chave, int id) throws SQLException {
 
-        String sql = "update chaves set nome_sala=?, bloco=?, status=? where id=?";
+        String sql = "update chaves set cod_sala=?, nome_sala=?, bloco=?, status=? where id=?";
         PreparedStatement stmt = conect.prepareStatement(sql);
-        stmt.setString(1, chave.getNome_sala());
-        stmt.setString(2, chave.getBloco());
-        stmt.setString(3, chave.getStatus());
-        stmt.setInt(4, id);
+        stmt.setString(1, chave.getCod_sala());
+        stmt.setString(2, chave.getNome_sala());
+        stmt.setString(3, chave.getBloco());
+        stmt.setString(4, chave.getStatus());
+        stmt.setInt(5, id);
         stmt.executeUpdate();
     }
 
@@ -61,6 +63,7 @@ public class KeyDao {
             while (rs.next()) {
                 ModelKey key = new ModelKey();
                 key.setId(rs.getInt("id"));
+                key.setCod_sala(rs.getString("cod_sala"));
                 key.setNome_sala(rs.getString("nome_sala"));
                 key.setBloco(rs.getString("bloco"));
                 key.setStatus(rs.getString("status"));
@@ -113,6 +116,7 @@ public class KeyDao {
 
              if(result != null && result.next()){
                 key.setId(result.getInt("id"));
+                key.setCod_sala(result.getString("cod_sala"));
                 key.setNome_sala(result.getString("nome_sala"));
                 key.setBloco(result.getString("bloco"));
                 key.setStatus(result.getString("status"));

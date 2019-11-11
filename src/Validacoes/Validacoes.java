@@ -11,7 +11,7 @@ package Validacoes;
  */
 public class Validacoes {
     public static String regexCaracteres(){
-        String regex = "^[(?=.*[@!#$%^&*()/\\\\])[@!#$%^&*()/\\\\]{8,20}]*$";
+        String regex = "^[(?=.*[@!#$%^&*()/\\\\])[@!#$%^&*()/\\\\]{}]*$";
         return regex;
     }
     

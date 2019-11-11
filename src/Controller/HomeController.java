@@ -36,7 +36,6 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -89,10 +88,10 @@ public class HomeController implements Initializable {
             if(hora >= 00 && hora < 12){
                 mensagem.setText("Bom Dia!");
                 img_sol.setImage(dia_manha);
-            }else if(hora >= 12 && hora < 18){
+            }else if(hora >= 12 && hora <= 18){
                 mensagem.setText("Boa Tarde!");
                 img_sol.setImage(dia_tarde);
-            }else if(hora >= 18 && hora <= 23){
+            }else if(hora > 18 && hora < 00){
                 mensagem.setText("Boa Noite!");
                 img_sol.setImage(noite);
             }

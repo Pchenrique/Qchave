@@ -40,7 +40,7 @@ public class KeyController implements Initializable {
 
     //Ids das colunas da tabela.
     @FXML
-    private TableColumn<ModelKey, Integer> id;
+    private TableColumn<ModelKey, String> codigo;
     @FXML
     private TableColumn<ModelKey, String> bloco;
     @FXML
@@ -185,7 +185,7 @@ public class KeyController implements Initializable {
 
     //Função para set os valores das colunas da tabela.
     public void initTable() throws SQLException {
-        id.setCellValueFactory(new PropertyValueFactory("id"));
+        codigo.setCellValueFactory(new PropertyValueFactory("cod_sala"));
         nome.setCellValueFactory(new PropertyValueFactory("nome_sala"));
         bloco.setCellValueFactory(new PropertyValueFactory("bloco"));
         status.setCellValueFactory(new PropertyValueFactory("status"));
@@ -203,8 +203,7 @@ public class KeyController implements Initializable {
         ObservableList<ModelKey> chaveFiltrada = FXCollections.observableArrayList();
         
         for(int i=0; i<chaves.size();i++){
-            String id_sala = Integer.toString(chaves.get(i).getId());
-            if(chaves.get(i).getNome_sala().toLowerCase().contains(buscar_chave.getText().toLowerCase()) || id_sala.contains(buscar_chave.getText())){
+            if(chaves.get(i).getNome_sala().toLowerCase().contains(buscar_chave.getText().toLowerCase()) || chaves.get(i).getCod_sala().contains(buscar_chave.getText())){
                  chaveFiltrada.add(chaves.get(i));
             }
         }

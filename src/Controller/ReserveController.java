@@ -8,7 +8,9 @@ package Controller;
 import Classe.Home;
 import Classe.NewReserve;
 import Classe.Reserve;
+import DAO.KeyDao;
 import DAO.ReservaDao;
+import Model.ModelKey;
 import Model.ModelReservas;
 import java.net.URL;
 import java.sql.SQLException;
@@ -147,6 +149,16 @@ public class ReserveController implements Initializable {
             int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente finalizar a reserva da sala " + selected.getNome_chave().toUpperCase() + "?","Finalizar reservas?", JOptionPane.YES_NO_OPTION);
 
              if(resposta == JOptionPane.YES_OPTION){
+                 KeyDao banco_key = new KeyDao();
+                 ModelKey key = new ModelKey();
+                 
+                 key = banco_key.buscarKey(selected.getId_chave());
+                 
+                 key.setStatus("Disponivel");
+                 KeyDao banco_key2 = new KeyDao();
+                 
+                 banco_key2.editar(key, key.getId());
+                 
                  ReservaDao daoreserva = new ReservaDao();
                  selected.setStatus("Finalizada");
                  daoreserva.editar(selected, selected.getId());
