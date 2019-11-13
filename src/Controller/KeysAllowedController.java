@@ -5,11 +5,9 @@
  */
 package Controller;
 
-import Classe.Key;
 import Classe.KeyPermission;
 import Classe.KeysAllowed;
 import Classe.User;
-import DAO.KeyDao;
 import DAO.KeyPermissionDao;
 import Model.ModelKeyPermission;
 import Model.ModelUser;

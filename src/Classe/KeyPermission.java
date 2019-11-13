@@ -6,7 +6,6 @@
 package Classe;
 
 import Controller.KeyPermissionController;
-import Model.ModelUser;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

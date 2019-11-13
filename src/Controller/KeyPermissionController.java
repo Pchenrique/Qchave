@@ -7,7 +7,6 @@ package Controller;
 
 import Classe.KeyPermission;
 import Classe.KeysAllowed;
-import Classe.User;
 import DAO.KeyDao;
 import DAO.KeyPermissionDao;
 import Model.ModelKey;
