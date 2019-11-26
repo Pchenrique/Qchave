@@ -85,13 +85,13 @@ public class HomeController implements Initializable {
             String horaFormatada = formatterHora.format(agora);
             int hora = Integer.parseInt(horaFormatada);
 
-            if(hora >= 00 && hora < 12){
+            if(hora > 00 && hora <= 12){
                 mensagem.setText("Bom Dia!");
                 img_sol.setImage(dia_manha);
-            }else if(hora >= 12 && hora <= 18){
+            }else if(hora > 12 && hora <= 18){
                 mensagem.setText("Boa Tarde!");
                 img_sol.setImage(dia_tarde);
-            }else if(hora > 18 && hora < 00){
+            }else if(hora > 18 && hora <= 00){
                 mensagem.setText("Boa Noite!");
                 img_sol.setImage(noite);
             }

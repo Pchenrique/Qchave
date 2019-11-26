@@ -51,6 +51,10 @@ public class KeyLoanController implements Initializable {
     private ComboBox<ModelUser> lista_usuarios;
 
     private static Model.ModelKey selected;
+    @FXML
+    private TextField text_usuario;
+    
+    private ObservableList<ModelUser> users = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
@@ -69,13 +73,32 @@ public class KeyLoanController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(KeyPermissionController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        text_usuario.setOnKeyReleased((KeyEvent)->{
+            lista_usuarios.setItems(buscarUser());
+        });
     }
 
     //Função para pegar a lista de usuarios do BD e popular o ComboBox.
     public void BuscarListaDeUsuarios() throws SQLException {
+        lista_usuarios.setItems(atualizaListUser());
+    }
+    
+    public ObservableList<ModelUser> atualizaListUser() throws SQLException {
         UserDao userdao = new UserDao();
-        ObservableList<ModelUser> users = FXCollections.observableArrayList(userdao.listarOrdenado());
-        lista_usuarios.setItems(users);
+        this.users = FXCollections.observableArrayList(userdao.listarServidor());
+        return users;
+    }
+    
+    public ObservableList<ModelUser> buscarUser(){
+        ObservableList<ModelUser> usuarioFiltrado = FXCollections.observableArrayList();
+        
+        for(int i=0; i<users.size();i++){
+            if(users.get(i).getNome().toLowerCase().contains(text_usuario.getText().toLowerCase())){
+                usuarioFiltrado.add(users.get(i));
+            }
+        }
+        return usuarioFiltrado;
     }
 
     @FXML

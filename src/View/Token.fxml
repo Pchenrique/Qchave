@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TokenController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TokenController">
    <children>
       <HBox prefHeight="50.0" prefWidth="435.0" style="-fx-background-color: #00c444;" stylesheets="@../Style/css.css">
          <children>
@@ -52,7 +52,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="token" layoutX="118.0" layoutY="357.0">
+      <Label fx:id="token" layoutX="125.0" layoutY="357.0" prefHeight="21.0" prefWidth="186.0">
          <font>
             <Font size="15.0" />
          </font></Label>
@@ -69,5 +69,13 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
+      <Button fx:id="button_voltar" layoutX="73.0" layoutY="404.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="35.0" prefWidth="290.0" style="-fx-background-color: #836FFF;" text="Voltar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>

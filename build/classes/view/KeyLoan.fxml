@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="500.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.KeyLoanController">
+<Pane prefHeight="500.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.KeyLoanController">
    <children>
       <HBox prefHeight="50.0" prefWidth="435.0" style="-fx-background-color: #00c444;">
          <children>
@@ -24,8 +24,8 @@
             </Label>
          </children>
       </HBox>
-      <TextField fx:id="token_administrador" layoutX="73.0" layoutY="265.0" prefHeight="35.0" prefWidth="290.0" promptText="Ex: 1111 ou 123456" />
-      <Button fx:id="btn_emprestar_chave" layoutX="73.0" layoutY="322.0" mnemonicParsing="false" onAction="#confirmEmprestimo" prefHeight="35.0" prefWidth="290.0" styleClass="key-buttom" stylesheets="@../Style/css.css" text="Confirmar Empréstimo" textFill="WHITE">
+      <TextField fx:id="token_administrador" layoutX="73.0" layoutY="286.0" prefHeight="35.0" prefWidth="290.0" promptText="Ex: 1111 ou 123456" />
+      <Button fx:id="btn_emprestar_chave" layoutX="73.0" layoutY="343.0" mnemonicParsing="false" onAction="#confirmEmprestimo" prefHeight="35.0" prefWidth="290.0" styleClass="key-buttom" stylesheets="@../Style/css.css" text="Confirmar Empréstimo" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -33,38 +33,38 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label layoutX="75.0" layoutY="176.0" text="Nome do Usuário">
+      <Label layoutX="75.0" layoutY="163.0" text="Nome do Usuário">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="73.0" layoutY="240.0" text="Token do Administrador">
+      <Label layoutX="73.0" layoutY="261.0" text="Token do Administrador">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="Label_Id_Chave" layoutX="200.0" layoutY="98.0" text="1">
+      <Label fx:id="Label_Id_Chave" layoutX="200.0" layoutY="85.0" text="1">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="73.0" layoutY="98.0" text="Código da Chave:">
+      <Label layoutX="73.0" layoutY="85.0" text="Código da Chave:">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="73.0" layoutY="133.0" text="Nome Chave">
+      <Label layoutX="73.0" layoutY="120.0" text="Nome Chave">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="Label_nome_chave" layoutX="74.0" layoutY="155.0" text="Chave 01">
+      <Label fx:id="Label_nome_chave" layoutX="74.0" layoutY="142.0" text="Chave 01">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <ComboBox fx:id="lista_usuarios" layoutX="73.0" layoutY="202.0" prefHeight="30.0" prefWidth="271.0" promptText="Selecione um Usuário" />
-      <Button layoutX="73.0" layoutY="368.0" mnemonicParsing="false" onAction="#backPage" prefHeight="35.0" prefWidth="290.0" style="-fx-background-color: #de2525;" text="Cancelar" textFill="WHITE">
+      <ComboBox fx:id="lista_usuarios" layoutX="73.0" layoutY="222.0" prefHeight="30.0" prefWidth="290.0" promptText="Selecione um Usuário" />
+      <Button layoutX="73.0" layoutY="389.0" mnemonicParsing="false" onAction="#backPage" prefHeight="35.0" prefWidth="290.0" style="-fx-background-color: #de2525;" text="Cancelar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -77,5 +77,6 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
+      <TextField fx:id="text_usuario" layoutX="73.0" layoutY="186.0" prefHeight="30.0" prefWidth="290.0" promptText="Digite para filtrar o usuario" />
    </children>
 </Pane>

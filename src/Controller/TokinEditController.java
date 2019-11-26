@@ -52,6 +52,10 @@ public class TokinEditController implements Initializable {
             JOptionPane.showMessageDialog(null, "O TOKEN não pode ter letras");
        }else if(this.token.getText().matches(Validacoes.regexCaracteres())){
            JOptionPane.showMessageDialog(null, "O TOKEN não pode ter caracteres especiais");
+       }else if(this.token.getText().length() < 4){
+            JOptionPane.showMessageDialog(null, "O TOKEN tem que ser maior que 4");
+       }else if(this.token.getText().length() > 8){
+            JOptionPane.showMessageDialog(null, "O TOKEN tem que ser menor que 8");
        }else{
             int vtoken = Integer.parseInt(token.getText());
             if(vtoken == selected.getToken()){

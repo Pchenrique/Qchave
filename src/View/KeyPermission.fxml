@@ -5,11 +5,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="500.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.KeyPermissionController">
+<Pane prefHeight="500.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.KeyPermissionController">
    <children>
       <HBox prefHeight="50.0" prefWidth="435.0" style="-fx-background-color: #00c444;">
          <children>
@@ -51,7 +52,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <ComboBox fx:id="CbChavePermitida" layoutX="81.0" layoutY="232.0" prefHeight="32.0" prefWidth="170.0" promptText="Selecione a Chave" />
+      <ComboBox fx:id="CbChavePermitida" layoutX="82.0" layoutY="268.0" prefHeight="32.0" prefWidth="231.0" promptText="Selecione a Chave" />
       <Label layoutX="82.0" layoutY="206.0" text="Selecionar Chave para Permissão">
          <font>
             <Font name="System Bold" size="15.0" />
@@ -70,5 +71,6 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
+      <TextField fx:id="text_chave" layoutX="82.0" layoutY="231.0" prefHeight="32.0" prefWidth="231.0" promptText="Buscar chave" />
    </children>
 </Pane>

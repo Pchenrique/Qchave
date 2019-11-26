@@ -27,6 +27,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -55,6 +56,10 @@ public class KeyPermissionController implements Initializable {
     public static void setSelected(ModelUser selected) {
         KeyPermissionController.selected = selected;
     }
+    @FXML
+    private TextField text_chave;
+    
+    private ObservableList<ModelKey> chaves = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
@@ -73,19 +78,38 @@ public class KeyPermissionController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(KeyPermissionController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        text_chave.setOnKeyReleased((KeyEvent)->{
+            CbChavePermitida.setItems(buscarChave());
+        });
     }    
 
     //Função para pegar a lista de chaves do BD e popular o ComboBox.
     public void BuscarListaDeChaves() throws SQLException{
+        CbChavePermitida.setItems(atualizaListChave());
+    }
+    
+    public ObservableList<ModelKey> atualizaListChave() throws SQLException {
         KeyDao keydao = new KeyDao();
-        ObservableList<ModelKey> chaves = FXCollections.observableArrayList(keydao.listar());
-        CbChavePermitida.setItems(chaves);
+        this.chaves = FXCollections.observableArrayList(keydao.listar());
+        return chaves;
     }
     
     //Função para pegar o valor selecionado no ComboBox.
      public ModelKey pegarChave(){
         ModelKey chaveParaPermissao = CbChavePermitida.getSelectionModel().getSelectedItem();
         return chaveParaPermissao;
+    }
+     
+     public ObservableList<ModelKey> buscarChave(){
+        ObservableList<ModelKey> chaveFiltrada = FXCollections.observableArrayList();
+        
+        for(int i=0; i<chaves.size();i++){
+            if(chaves.get(i).getNome_sala().toLowerCase().contains(text_chave.getText().toLowerCase()) || chaves.get(i).getCod_sala().equals(text_chave.getText())){
+                chaveFiltrada.add(chaves.get(i));
+            }
+        }
+        return chaveFiltrada;
     }
 
     @FXML
@@ -138,8 +162,5 @@ public class KeyPermissionController implements Initializable {
         } catch (Exception ex) {
             Logger.getLogger(KeyPermissionController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-    
-    
+    }  
 }

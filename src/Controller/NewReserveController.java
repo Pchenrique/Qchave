@@ -57,6 +57,14 @@ public class NewReserveController implements Initializable {
     private ComboBox<String> hora_entrada;
     @FXML
     private TextField token_administrador;
+    @FXML
+    private TextField text_servidor;
+    @FXML
+    private TextField text_chave;
+    
+    private ObservableList<ModelUser> users = FXCollections.observableArrayList();
+    
+    private ObservableList<ModelKey> chaves = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
@@ -74,6 +82,15 @@ public class NewReserveController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(KeyPermissionController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        text_servidor.setOnKeyReleased((KeyEvent)->{
+            select_servidor.setItems(buscarUser());
+        });
+        
+        text_chave.setOnKeyReleased((KeyEvent)->{
+            select_chave.setItems(buscarChave());
+        });
+        
     }
 
     public void selectHora_saida() {
@@ -87,15 +104,45 @@ public class NewReserveController implements Initializable {
     }
 
     public void BuscarListaDeUsuarios() throws SQLException {
-        UserDao userdao = new UserDao();
-        ObservableList<ModelUser> users = FXCollections.observableArrayList(userdao.listarServidor());
-        select_servidor.setItems(users);
+        select_servidor.setItems(atualizaListUser());
     }
 
     public void BuscarListaDeChaves() throws SQLException {
+        select_chave.setItems(atualizaListChave());
+    }
+    
+    public ObservableList<ModelUser> atualizaListUser() throws SQLException {
+        UserDao userdao = new UserDao();
+        this.users = FXCollections.observableArrayList(userdao.listarServidor());
+        return users;
+    }
+    
+    public ObservableList<ModelKey> atualizaListChave() throws SQLException {
         KeyDao keydao = new KeyDao();
-        ObservableList<ModelKey> chaves = FXCollections.observableArrayList(keydao.listar());
-        select_chave.setItems(chaves);
+        this.chaves = FXCollections.observableArrayList(keydao.listar());
+        return chaves;
+    }
+    
+    public ObservableList<ModelUser> buscarUser(){
+        ObservableList<ModelUser> usuarioFiltrado = FXCollections.observableArrayList();
+        
+        for(int i=0; i<users.size();i++){
+            if(users.get(i).getNome().toLowerCase().contains(text_servidor.getText().toLowerCase())){
+                usuarioFiltrado.add(users.get(i));
+            }
+        }
+        return usuarioFiltrado;
+    }
+    
+    public ObservableList<ModelKey> buscarChave(){
+        ObservableList<ModelKey> chaveFiltrada = FXCollections.observableArrayList();
+        
+        for(int i=0; i<chaves.size();i++){
+            if(chaves.get(i).getNome_sala().toLowerCase().contains(text_chave.getText().toLowerCase()) || chaves.get(i).getCod_sala().equals(text_chave.getText())){
+                chaveFiltrada.add(chaves.get(i));
+            }
+        }
+        return chaveFiltrada;
     }
 
     @FXML
@@ -116,6 +163,7 @@ public class NewReserveController implements Initializable {
         } else if (token_administrador.getText().matches(Validacoes.regexCaracteres())) {
             JOptionPane.showMessageDialog(null, "O campo token não pode ter caracteres especiais!");
         } else {
+            
             ReservaDao buscarlista = new ReservaDao();
             List<ModelReservas> listadereservas = new ArrayList();
             listadereservas = buscarlista.listaDisponivel();
@@ -126,10 +174,9 @@ public class NewReserveController implements Initializable {
             
             int contR = 0;
             int contRR = 0;
-            for (int i = 0; i < listadereservas.size(); i++) {
+            for(int i = 0; i < listadereservas.size(); i++) {
                 if (listadereservas.get(i).getId_usuario() == select_servidor.getSelectionModel().getSelectedItem().getId() && listadereservas.get(i).getId_chave() == select_chave.getSelectionModel().getSelectedItem().getId() && listadereservas.get(i).getData_saida().equals(data_saida_format) && listadereservas.get(i).getHora_saida().equals(hora_saida.getSelectionModel().getSelectedItem()) && listadereservas.get(i).getData_devolucao().equals(data_entrada_format) && listadereservas.get(i).getHora_devolucao().equals(hora_entrada.getSelectionModel().getSelectedItem())) {
                     contR++;
-
                 }
                 if ((listadereservas.get(i).getId_chave() == select_chave.getSelectionModel().getSelectedItem().getId() && listadereservas.get(i).getData_saida().equals(data_saida_format) && listadereservas.get(i).getHora_saida().equals(hora_saida.getSelectionModel().getSelectedItem())) || (listadereservas.get(i).getId_chave() == select_chave.getSelectionModel().getSelectedItem().getId() && listadereservas.get(i).getData_devolucao().equals(data_entrada_format) && listadereservas.get(i).getHora_devolucao().equals(hora_entrada.getSelectionModel().getSelectedItem()))) {
                     contRR++;
@@ -153,7 +200,7 @@ public class NewReserveController implements Initializable {
                 int confirm=0;
                 for(int i=0; i < lista.size(); i++){
                     if(lista.get(i).getToken() == token){
-                        confirm++;
+                       confirm++;
                     }
                 }
                 
@@ -165,15 +212,15 @@ public class NewReserveController implements Initializable {
                 if(confirm > 0){
                     ModelReservas reserva = new ModelReservas(id_user, nome_user, id_chave, nome_chave, admin.getId(), admin.getNome(), data_saida_format, hora_saida.getSelectionModel().getSelectedItem(), data_entrada_format, hora_entrada.getSelectionModel().getSelectedItem());
                     reservadao.inserirUser(reserva);
-
+      
                     if(select_chave.getSelectionModel().getSelectedItem().getStatus().equals("Reservada")){
 
                     }else{
                        KeyDao keydao = new KeyDao();
-                        ModelKey chave = select_chave.getSelectionModel().getSelectedItem();
-                        chave.setStatus("Reservada");
+                       ModelKey chave = select_chave.getSelectionModel().getSelectedItem();
+                       chave.setStatus("Reservada");
 
-                        keydao.editar(chave, chave.getId()); 
+                       keydao.editar(chave, chave.getId()); 
                     }
 
                     JOptionPane.showMessageDialog(null, "Reserva feita com sucesso!");
